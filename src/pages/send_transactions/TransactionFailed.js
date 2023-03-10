@@ -24,7 +24,6 @@ function TransactionFailed(props) {
         <AppText theText={"N2,000,000,000"} />
         <AppText theText={new Date().toUTCString()} />
         <Spacer height={190} />
-
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
           <TransactionButtons AppBtnText={"View Details"} onPress />
           <Spacer width={30} />

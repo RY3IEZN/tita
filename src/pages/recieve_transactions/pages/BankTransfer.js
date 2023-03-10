@@ -25,13 +25,16 @@ function BankTransfer(props) {
       <CustomeTextInputField2
         inputTitle={"Voucher code"}
         inputfieldIcon={"wallet"}
+        placeholder={"Voucher code"}
       />
       <CustomeTextInputField2
         inputTitle={"Account Number"}
+        placeholder={"Account Number"}
         inputfieldIcon={"credit-card-outline"}
       />
       <CustomeTextInputField2
         inputTitle={"Beneficiary"}
+        placeholder={"Beneficiary"}
         inputfieldIcon={"account-multiple-outline"}
       />
     </>

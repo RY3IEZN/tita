@@ -73,7 +73,7 @@ function Authentication(props) {
               maxLength={1}
               ref={fourthInput}
               onChangeText={(text) => {
-                setOtp({ ...otp, 6: text });
+                setOtp({ ...otp, 4: text });
                 !text && thirdInput.current.focus();
               }}
             />
@@ -82,7 +82,10 @@ function Authentication(props) {
         <Spacer height={20} />
         <AppButton
           AppBtnText={"Authenticate"}
-          onPress={() => setShowLoadingModal(true)}
+          onPress={() => {
+            setShowLoadingModal(true);
+            console.log(otp);
+          }}
         />
         <LoadingModal
           isLoading={showLoadingModal}

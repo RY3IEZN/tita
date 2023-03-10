@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("screen");
 
-function CustomeTextInputField({ inputTitle, inputfieldIcon }) {
+function CustomeTextInputField({ inputTitle, inputfieldIcon, TextinputTitle }) {
   return (
     <>
       <Text style={styles.textInputName}>{inputTitle}</Text>
@@ -18,7 +18,10 @@ function CustomeTextInputField({ inputTitle, inputfieldIcon }) {
             color="#4361EE"
           />
         </View>
-        <TextInput placeholder={inputTitle} style={{ width: width * 0.75 }} />
+        <TextInput
+          placeholder={TextinputTitle}
+          style={{ width: width * 0.75 }}
+        />
       </View>
     </>
   );
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
     width: width * 0.8,
     borderRadius: 15,
     borderColor: "black",
-    backgroundColor: "white",
+    backgroundColor: "#F4F4F4",
     flexDirection: "row",
     alignItems: "center",
     marginTop: 10,

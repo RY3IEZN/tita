@@ -6,7 +6,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("screen");
 
-function CustomeTextInputField2({ inputTitle, inputfieldIcon, visible }) {
+function CustomeTextInputField2({
+  inputTitle = "",
+  inputfieldIcon,
+  visible,
+  placeholder,
+}) {
   return (
     <>
       <Text style={styles.textInputName}>{inputTitle}</Text>
@@ -18,7 +23,7 @@ function CustomeTextInputField2({ inputTitle, inputfieldIcon, visible }) {
             color="#4361EE"
           />
         </View>
-        <TextInput placeholder={inputTitle} style={{ width: width * 0.75 }} />
+        <TextInput placeholder={placeholder} style={{ width: width * 0.75 }} />
         {visible ? <MaterialCommunityIcons name="lock" /> : ""}
       </View>
     </>

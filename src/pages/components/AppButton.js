@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#4361EE",
+    elevation: 3,
   },
   appBtnText: {
     color: "white",

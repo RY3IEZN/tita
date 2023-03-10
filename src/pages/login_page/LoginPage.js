@@ -23,11 +23,11 @@ import ErrorMessage from "../components/ErrorMessage";
 const { width, height } = Dimensions.get("screen");
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required("Required").label("username"),
-  password: Yup.string().required("Required").min(8).label("password"),
+  username: Yup.string().required("Required").label("Username").email(),
+  password: Yup.string().required("Required").min(8).label("Password"),
 });
 
-function LoginPage(props) {
+function LoginPage({ navigation }) {
   const [isVisible, setIsVisible] = useState(true);
   const [loginError, setLoginError] = useState(null);
 
@@ -43,7 +43,7 @@ function LoginPage(props) {
       <Formik
         initialValues={{ username: "", password: "" }}
         onSubmit={(values) => console.log(values)}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
           <>
@@ -58,12 +58,14 @@ function LoginPage(props) {
                   />
                 </View>
                 <TextInput
+                  autoCapitalize="none"
                   placeholder="Username"
                   onChangeText={handleChange("username")}
                   value={values.username}
                   style={{ width: width * 0.75 }}
                 />
               </View>
+              <AppText theText={errors.username} />
               {/* password */}
               <View style={styles.textInputBox2}>
                 <View style={{ marginHorizontal: 10 }}>
@@ -74,6 +76,8 @@ function LoginPage(props) {
                   />
                 </View>
                 <TextInput
+                  autoCapitalize="none"
+                  autoCorrect={false}
                   placeholder="Password"
                   onChangeText={handleChange("password")}
                   value={values.password}
@@ -88,6 +92,7 @@ function LoginPage(props) {
                   />
                 </TouchableOpacity>
               </View>
+              <AppText theText={errors.password} />
             </View>
             <View
               style={{ textAlign: "right", marginTop: 10, marginBottom: 150 }}
@@ -108,7 +113,7 @@ function LoginPage(props) {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: 50,
+          marginTop: height * 0.05,
         }}
       >
         <AppText theText={"Not a Member yet?"} />

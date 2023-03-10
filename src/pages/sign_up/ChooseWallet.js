@@ -7,6 +7,7 @@ import AppButton from "../components/AppButton";
 import AppContainerView from "../components/AppContainerView";
 import AppText from "../components/AppText";
 import Header from "../components/Header";
+import PageIndicator from "../components/PageIndicator";
 import Spacer from "../components/Spacer";
 
 const { width, height } = Dimensions.get("screen");
@@ -18,6 +19,7 @@ function ChooseWallet(props) {
     <AppContainerView>
       <Header headerTitle={"Choose Wallet"} />
       <View style={{ alignItems: "center" }}>
+        <PageIndicator pageIndex={1} />
         <Image source={require("../../../assets/icons/choosewallet.png")} />
         <AppText theText={"Choose an account that suits your needs"} />
         <AppText theText={"suits your needs"} />

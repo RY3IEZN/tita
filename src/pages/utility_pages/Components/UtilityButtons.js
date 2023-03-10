@@ -13,7 +13,7 @@ import AppText from "../../components/AppText";
 
 const { width, height } = Dimensions.get("screen");
 
-function TransactionButtons({ onPress, AppBtnText, color }) {
+function UtilityButtons({ onPress, AppBtnText, color }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.appBtn}>
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TransactionButtons;
+export default UtilityButtons;
