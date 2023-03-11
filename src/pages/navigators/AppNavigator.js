@@ -22,6 +22,10 @@ import LoginPage from "../login_page/LoginPage";
 import InitiateSendingPage from "../send_transactions/InitiateSendingPage";
 import InitiateRecieve from "../recieve_transactions/InitiateRecieve";
 import QrPage from "../profile_page/QrPage";
+import CreateAccount from "../sign_up/CreateAccount";
+import NotificationPage from "../home_page/NotificationPage";
+import SendAirtime from "../utility_pages/Airtime/SendAirtime";
+import InitiateElectricity from "../utility_pages/Electricity/InitiateElectricity";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -180,6 +184,41 @@ function AppNavigator(props) {
         <Stack.Screen
           name="qrpage"
           component={QrPage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="createAccount"
+          component={CreateAccount}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="profilePage"
+          component={ProfilePage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="notificationpage"
+          component={NotificationPage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="sendAirtime"
+          component={SendAirtime}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="initiateElectricity"
+          component={InitiateElectricity}
           options={{
             headerShown: false,
           }}

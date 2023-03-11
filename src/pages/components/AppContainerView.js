@@ -1,12 +1,18 @@
 /** @format */
 
 import React from "react";
+import { KeyboardAvoidingView } from "react-native";
+import { ScrollView } from "react-native";
 import { View, StyleSheet } from "react-native";
 
 function AppContainerView({ children }) {
   return (
     <View style={styles.background}>
-      <View style={styles.container}>{children}</View>
+      <ScrollView>
+        <KeyboardAvoidingView>
+          <View style={styles.container}>{children}</View>
+        </KeyboardAvoidingView>
+      </ScrollView>
     </View>
   );
 }

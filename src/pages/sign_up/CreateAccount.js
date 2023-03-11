@@ -9,10 +9,11 @@ import AppButton from "../components/AppButton";
 import Checkbox from "expo-checkbox";
 import Spacer from "../components/Spacer";
 import AppText from "../components/AppText";
+import { TouchableOpacity } from "react-native";
 
 const { width, height } = Dimensions.get("screen");
 
-function CreateAccount(props) {
+function CreateAccount({ navigation }) {
   return (
     <AppContainerView>
       <View style={{ alignItems: "center" }}>
@@ -116,11 +117,13 @@ function CreateAccount(props) {
         >
           <AppText theText={"Already have an account?"} />
           <Spacer width={5} />
-          <AppText
-            theText={"Login"}
-            color={"#3862F8"}
-            textDecorationLine={"underline"}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("loginpage")}>
+            <AppText
+              theText={"Login"}
+              color={"#3862F8"}
+              textDecorationLine={"underline"}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </AppContainerView>

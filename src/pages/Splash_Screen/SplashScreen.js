@@ -17,21 +17,7 @@ const { width, height } = Dimensions.get("screen");
 function SplashScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={["#4361EE", "#FC466B"]}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styles.container}
-      >
-        <View
-          style={{
-            marginVertical: height * 0.4,
-            marginHorizontal: width * 0.35,
-          }}
-        >
-          <Image source={require("../../../assets/icons/titaLogo.png")} />
-        </View>
-      </LinearGradient>
+      <Image source={require("../../../assets/icons/titaiconnew.png")} />
       <TouchableOpacity
         style={{
           marginVertical: 20,
@@ -57,6 +43,8 @@ function SplashScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

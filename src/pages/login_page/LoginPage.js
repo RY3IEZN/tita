@@ -42,7 +42,10 @@ function LoginPage({ navigation }) {
       </View>
       <Formik
         initialValues={{ username: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          console.log(values);
+          navigation.navigate("NestedTabs", { screen: "Home" });
+        }}
         validationSchema={validationSchema}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
@@ -118,11 +121,13 @@ function LoginPage({ navigation }) {
       >
         <AppText theText={"Not a Member yet?"} />
         <Spacer width={5} />
-        <AppText
-          theText={"Register now"}
-          color={"#3862F8"}
-          textDecorationLine={"underline"}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("createAccount")}>
+          <AppText
+            theText={"Register now"}
+            color={"#3862F8"}
+            textDecorationLine={"underline"}
+          />
+        </TouchableOpacity>
       </View>
     </AppContainerView>
   );
