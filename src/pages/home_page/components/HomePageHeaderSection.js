@@ -1,11 +1,16 @@
 /** @format */
 
 import React from "react";
+import { TouchableOpacity } from "react-native";
 import { View, StyleSheet, Image } from "react-native";
 import AppText from "../../components/AppText";
 import Spacer from "../../components/Spacer";
 
-function HomePageHeaderSection(props) {
+function HomePageHeaderSection({
+  navigation,
+  navigateToProfilePage,
+  navigateToNotificationPage,
+}) {
   return (
     <View
       style={{
@@ -16,13 +21,17 @@ function HomePageHeaderSection(props) {
     >
       <AppText fontSize={25} fontWeight={"600"} theText={"TITA"} />
       <View style={{ flexDirection: "row" }}>
-        <Image
-          source={require("../../../../assets/icons/profile-circle.png")}
-        />
+        <TouchableOpacity onPress={navigateToProfilePage}>
+          <Image
+            source={require("../../../../assets/icons/profile-circle.png")}
+          />
+        </TouchableOpacity>
         <Spacer width={10} />
-        <Image
-          source={require("../../../../assets/icons/notification-status.png")}
-        />
+        <TouchableOpacity onPress={navigateToNotificationPage}>
+          <Image
+            source={require("../../../../assets/icons/notification-status.png")}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

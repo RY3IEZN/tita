@@ -26,15 +26,26 @@ import HomePageHeaderSection from "./components/HomePageHeaderSection";
 import AppButton from "../components/AppButton";
 import ModalAppButton from "../components/ModalAppButton";
 import BalanceCard from "./components/BalanceCard";
+import LoadingModal from "../components/LoadingModal";
+import { useEffect } from "react";
 
 const { width, height } = Dimensions.get("screen");
 
 function HomeScreen({ navigation }) {
+  useEffect(() => {
+    setModalVisible(true);
+  }, []);
+
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <AppContainerView>
       {/* header section */}
-      <HomePageHeaderSection />
+      <HomePageHeaderSection
+        navigateToProfilePage={() => navigation.navigate("profilePage")}
+        navigateToNotificationPage={() =>
+          navigation.navigate("notificationpage")
+        }
+      />
       {/* balance at a glance */}
       <BalanceCard />
       {/* quick actions */}
@@ -67,11 +78,13 @@ function HomeScreen({ navigation }) {
           utilityBtnTitle={"Airtime"}
           tileColor={"#cad3fe"}
           imageSource={require("../../../assets/icons/phone.png")}
+          onPress={() => navigation.navigate("sendAirtime")}
         />
         <UtilityButtons
           utilityBtnTitle={"Electricity"}
           tileColor={"#f2f4fa"}
           imageSource={require("../../../assets/icons/electricity.png")}
+          onPress={() => navigation.navigate("initiateElectricity")}
         />
         <UtilityButtons
           utilityBtnTitle={"Transport"}
