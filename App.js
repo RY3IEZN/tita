@@ -15,11 +15,12 @@ import Authentication from "./src/pages/sign_up/Authentication";
 import ChooseWallet from "./src/pages/sign_up/ChooseWallet";
 import CreateAccount from "./src/pages/sign_up/CreateAccount";
 import Verify from "./src/pages/sign_up/Verify";
+import SplashScreen from "./src/pages/Splash_Screen/SplashScreen";
 import InitiateElectricity from "./src/pages/utility_pages/Electricity/InitiateElectricity";
 import Teststheview from "./Teststheview";
 
 export default function App() {
-  return <LoginPage />;
+  return <SplashScreen />;
 }
 
 const styles = StyleSheet.create({
