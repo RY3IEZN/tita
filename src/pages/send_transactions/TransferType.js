@@ -9,6 +9,7 @@ import AppText from "../components/AppText";
 import Header from "../components/Header";
 import Spacer from "../components/Spacer";
 import CustomeTextInputField2 from "../recieve_transactions/components/CustomTextInputField2";
+import TransferToOtherBanks from "./pages/TransferToOtherBanks";
 import TransferToTita from "./pages/TransferToTita";
 
 function TransferType({ itemValue }) {
@@ -33,8 +34,10 @@ function TransferType({ itemValue }) {
           label2={"Transfer to other banks"}
           value2={"TITA TO OTHER BANKS"}
           itemValue={itemValue}
+          onValueChange={(value) => console.log(value)}
         />
-        {<TransferToTita />}
+        {/* {<TransferToTita />} */}
+        <TransferToOtherBanks />
       </View>
     </AppContainerView>
   );

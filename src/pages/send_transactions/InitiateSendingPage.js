@@ -10,7 +10,7 @@ import AppSoftCards from "../components/AppSoftCards";
 
 const { width, height } = Dimensions.get("screen");
 
-function InitiateSendingPage(props) {
+function InitiateSendingPage({ navigation }) {
   return (
     <AppContainerView>
       <Header headerTitle={"Send"} />
@@ -25,7 +25,12 @@ function InitiateSendingPage(props) {
       </View>
       <Spacer height={70} />
 
-      <AppSoftCards cardTitle={"Transfer Voucher"} />
+      <AppSoftCards
+        cardTitle={"Transfer Voucher"}
+        onPress={() => {
+          navigation.navigate("initiateVoucherTransfer");
+        }}
+      />
       <AppSoftCards cardTitle={"Transfer Money"} />
     </AppContainerView>
   );
