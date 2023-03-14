@@ -13,9 +13,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Spacer from "./Spacer";
 import AppText from "./AppText";
 
-function AppSoftCards({ cardTitle }) {
+function AppSoftCards({ cardTitle, onPress }) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View
         style={{
           height: height * 0.1,

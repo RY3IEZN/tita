@@ -46,7 +46,7 @@ function ProfileCards({ title, subtitle, imageSource, subtitle2 }) {
               style={{
                 width: 40,
                 height: 40,
-                borderRadius: 10,
+                borderRadius: 15,
                 backgroundColor: "#4361EE",
                 justifyContent: "center",
                 alignItems: "center",

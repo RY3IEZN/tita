@@ -12,6 +12,8 @@ function AppPicker({
   value1,
   label2,
   value2,
+  label3,
+  value3,
   onValueChange,
   defaultTitle,
 }) {
@@ -60,6 +62,7 @@ function AppPicker({
             <Picker.Item label={defaultTitle} value="default" />
             <Picker.Item label={label1} value={value1} />
             <Picker.Item label={label2} value={value2} />
+            {value3 && <Picker.Item label={label3} value={value3} />}
           </Picker>
         </View>
       </View>

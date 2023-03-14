@@ -7,6 +7,9 @@ import LoginPage from "./src/pages/login_page/LoginPage";
 import AppNavigator from "./src/pages/navigators/AppNavigator";
 import QrPage from "./src/pages/profile_page/QrPage";
 import InitiateSendingPage from "./src/pages/send_transactions/InitiateSendingPage";
+import EnterAmount from "./src/pages/send_transactions/pages/EnterAmount";
+import InitiateVoucherTransfer from "./src/pages/send_transactions/pages/InitiateVoucherTransfer";
+import TransferToTita from "./src/pages/send_transactions/pages/TransferToTita";
 import TransactionDetails from "./src/pages/send_transactions/TransactionDetails";
 import TransactionFailed from "./src/pages/send_transactions/TransactionFailed";
 import TransactionSuccessful from "./src/pages/send_transactions/TransactionSuccessful";
@@ -22,7 +25,7 @@ import InitiateElectricity from "./src/pages/utility_pages/Electricity/InitiateE
 import Teststheview from "./Teststheview";
 
 export default function App() {
-  return <AppNavigator />;
+  return <EnterAmount />;
 }
 
 const styles = StyleSheet.create({
