@@ -8,6 +8,7 @@ import { Text } from "react-native";
 import { Image } from "react-native";
 import { View, StyleSheet } from "react-native";
 import AppText from "./src/pages/components/AppText";
+import Otp from "./src/pages/components/Otp";
 import SelectAccountType from "./src/pages/components/SelectAccountType";
 import ModalAccountType from "./src/pages/components/SelectAccountType";
 import Spacer from "./src/pages/components/Spacer";
@@ -15,18 +16,7 @@ import Spacer from "./src/pages/components/Spacer";
 function Teststheview(props) {
   return (
     <View style={styles.container}>
-      <SelectAccountType
-        imgSrc={require("./assets/icons/titawalleticon.png")}
-        accountType="TITA Account"
-      />
-      <SelectAccountType
-        imgSrc={require("./assets/icons/savingsaccoubticon.png")}
-        accountType="Savings Account"
-      />
-      <SelectAccountType
-        imgSrc={require("./assets/icons/businessaccounticon.png")}
-        accountType="Business Account"
-      />
+      <Otp />
     </View>
   );
 }

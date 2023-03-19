@@ -7,9 +7,9 @@ function LineDivider(props) {
   return (
     <View
       style={{
-        height: 0.5,
+        height: 0.2,
         width: "100%",
-        backgroundColor: "black",
+        backgroundColor: "grey",
         borderColor: "grey",
       }}
     ></View>

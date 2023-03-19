@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { Text } from "react-native";
 import { View, StyleSheet } from "react-native";
 import AppContainerView from "../components/AppContainerView";
 import Header from "../components/Header";
@@ -8,7 +9,7 @@ import Header from "../components/Header";
 function ChangePin2(props) {
   return (
     <AppContainerView>
-      <Text>hellp</Text>
+      <Text>hell0</Text>
     </AppContainerView>
   );
 }

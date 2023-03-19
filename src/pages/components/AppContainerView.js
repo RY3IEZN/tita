@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { SafeAreaView } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { ScrollView } from "react-native";
 import { View, StyleSheet } from "react-native";
@@ -8,11 +9,13 @@ import { View, StyleSheet } from "react-native";
 function AppContainerView({ children }) {
   return (
     <View style={styles.background}>
-      <ScrollView>
-        <KeyboardAvoidingView>
-          <View style={styles.container}>{children}</View>
-        </KeyboardAvoidingView>
-      </ScrollView>
+      <SafeAreaView>
+        <ScrollView>
+          <KeyboardAvoidingView>
+            <View style={styles.container}>{children}</View>
+          </KeyboardAvoidingView>
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 }

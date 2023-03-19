@@ -27,6 +27,7 @@ import NotificationPage from "../home_page/NotificationPage";
 import SendAirtime from "../utility_pages/Airtime/SendAirtime";
 import InitiateElectricity from "../utility_pages/Electricity/InitiateElectricity";
 import InitiateVoucherTransfer from "../send_transactions/pages/InitiateVoucherTransfer";
+import TransferType from "../send_transactions/TransferType";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -227,6 +228,13 @@ function AppNavigator(props) {
         <Stack.Screen
           name="initiateVoucherTransfer"
           component={InitiateVoucherTransfer}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="transferTypePage"
+          component={TransferType}
           options={{
             headerShown: false,
           }}

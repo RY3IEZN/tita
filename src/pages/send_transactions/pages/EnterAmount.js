@@ -1,8 +1,12 @@
 /** @format */
 
 import React from "react";
-import { TextInput } from "react-native";
-import { Dimensions } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Dimensions,
+  ScrollView,
+  TextInput,
+} from "react-native";
 import { View, StyleSheet } from "react-native";
 import AppButton from "../../components/AppButton";
 import AppContainerView from "../../components/AppContainerView";
@@ -19,81 +23,85 @@ const { width, height } = Dimensions.get("screen");
 function EnterAmount(props) {
   return (
     <>
-      <View style={{ alignItems: "center" }}>
-        <Spacer height={40} />
-        <Header headerTitle={"Enter Amount"} />
-        <Spacer height={40} />
-        <View>
-          <View style={styles.amountCard}>
-            {/* name */}
-            <Spacer height={15} />
-            <AppSoftButton />
-            <Spacer height={5} />
-            <AppText theText={"Aliyu Victor"} />
-            <AppText theText={"080123456789"} />
-            <Spacer height={25} />
-            <LineDivider />
-            {/* amount */}
-            <Spacer height={20} />
-            <TextInput
-              placeholder="Amount"
+      <ScrollView>
+        <KeyboardAvoidingView>
+          <View style={{ alignItems: "center" }}>
+            <Spacer height={40} />
+            <Header headerTitle={"Enter Amount"} />
+            <Spacer height={40} />
+            <View>
+              <View style={styles.amountCard}>
+                {/* name */}
+                <Spacer height={15} />
+                <AppSoftButton />
+                <Spacer height={5} />
+                <AppText theText={"Aliyu Victor"} />
+                <AppText theText={"080123456789"} />
+                <Spacer height={25} />
+                <LineDivider />
+                {/* amount */}
+                <Spacer height={20} />
+                <TextInput
+                  placeholder="Amount"
+                  style={{
+                    fontSize: 30,
+                    fontWeight: "600",
+                    width: 300,
+                    textAlign: "center",
+                  }}
+                />
+                <Spacer height={20} />
+                {/* description */}
+                <LineDivider />
+                <TextInput
+                  placeholder="Add a note (optional)"
+                  style={{
+                    fontWeight: "600",
+                    width: 300,
+                    textAlign: "center",
+                  }}
+                />
+              </View>
+            </View>
+            <Spacer height={height * 0.31} />
+            {/* select account type */}
+            <View
               style={{
-                fontSize: 30,
-                fontWeight: "600",
-                width: 300,
-                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                alignContent: "center",
               }}
-            />
-            <Spacer height={20} />
-            {/* description */}
-            <LineDivider />
-            <TextInput
-              placeholder="Add a note (optional)"
-              style={{
-                fontWeight: "600",
-                width: 300,
-                textAlign: "center",
-              }}
-            />
+            >
+              <View
+                style={{
+                  backgroundColor: "white",
+                  height: height * 0.2,
+                  borderTopLeftRadius: 50,
+                  borderTopRightRadius: 50,
+                  paddingHorizontal: 20,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  elevation: 1,
+                }}
+              >
+                <AppPicker
+                  defaultTitle={"Select Account "}
+                  label1={"TITA Wallet"}
+                  label2={"Savings Account"}
+                  value1={"TITA Wallet"}
+                  value2={"Savings Account"}
+                  label3={"Business Account"}
+                  value3={"Business Account"}
+                  onValueChange={(valueB) => console.log(valueB)}
+                  // for now it just console logs the value
+                />
+                <Spacer height={30} />
+                <AppButton AppBtnText={"Next"} />
+              </View>
+            </View>
           </View>
-        </View>
-        <Spacer height={height * 0.31} />
-        {/* select account type */}
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            alignContent: "center",
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "white",
-              height: height * 0.2,
-              borderTopLeftRadius: 50,
-              borderTopRightRadius: 50,
-              paddingHorizontal: 20,
-              alignItems: "center",
-              justifyContent: "center",
-              elevation: 10,
-            }}
-          >
-            <AppPicker
-              defaultTitle={"Select Account "}
-              label1={"TITA Wallet"}
-              label2={"Savings Account"}
-              value1={"TITA Wallet"}
-              value2={"Savings Account"}
-              label3={"Business Account"}
-              value3={"Business Account"}
-              onValueChange={(valueB) => console.log(valueB)}
-              // for now it just console logs the value
-            />
-            <Spacer height={30} />
-            <AppButton AppBtnText={"Next"} />
-          </View>
-        </View>
-      </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
     </>
   );
 }
