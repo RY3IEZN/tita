@@ -25,19 +25,8 @@ function InitiateSendingPage({ navigation }) {
       </View>
       <Spacer height={70} />
 
-      <AppSoftCards
-        cardTitle={"Transfer Voucher"}
-        onPress={() => {
-          navigation.navigate("initiateVoucherTransfer");
-        }}
-      />
-      <AppSoftCards
-        cardTitle={"Transfer Money"}
-        onPress={() => {
-          navigation.navigate("transferTypePage");
-        }}
-      />
-      <Spacer height={10} />
+      <AppSoftCards cardTitle={"Transfer Voucher"} />
+      <AppSoftCards cardTitle={"Transfer Money"} />
     </AppContainerView>
   );
 }
