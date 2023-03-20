@@ -9,7 +9,7 @@ import Spacer from "../../components/Spacer";
 import CustomeTextInputField from "../../profile_page/components/CustomeTextInputField";
 import CustomeTextInputField2 from "../../recieve_transactions/components/CustomTextInputField2";
 
-function TransferToOtherBanks(props) {
+function TransferToOtherBanks({ navigation, onPress }) {
   return (
     <>
       <Spacer height={30} />
@@ -24,7 +24,7 @@ function TransferToOtherBanks(props) {
       <Spacer height={20} />
       <CustomeTextInputField2 placeholder={"Aliyu kwankwaso"} />
       <Spacer height={50} />
-      <AppButton AppBtnText={"Next"} />
+      <AppButton AppBtnText={"Next"} onPress={onPress} />
     </>
   );
 }

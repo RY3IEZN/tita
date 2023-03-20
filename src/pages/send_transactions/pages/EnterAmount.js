@@ -20,7 +20,7 @@ import ProfileBtn1 from "../../profile_page/components/ProfileBtn1";
 
 const { width, height } = Dimensions.get("screen");
 
-function EnterAmount(props) {
+function EnterAmount({ navigation }) {
   return (
     <>
       <ScrollView>
@@ -38,7 +38,7 @@ function EnterAmount(props) {
                 <AppText theText={"Aliyu Victor"} />
                 <AppText theText={"080123456789"} />
                 <Spacer height={25} />
-                <LineDivider />
+                <LineDivider height={0.5} />
                 {/* amount */}
                 <Spacer height={20} />
                 <TextInput
@@ -52,7 +52,7 @@ function EnterAmount(props) {
                 />
                 <Spacer height={20} />
                 {/* description */}
-                <LineDivider />
+                <LineDivider height={0.5} />
                 <TextInput
                   placeholder="Add a note (optional)"
                   style={{
@@ -96,7 +96,10 @@ function EnterAmount(props) {
                   // for now it just console logs the value
                 />
                 <Spacer height={30} />
-                <AppButton AppBtnText={"Next"} />
+                <AppButton
+                  AppBtnText={"Next"}
+                  onPress={() => navigation.navigate("enterPin")}
+                />
               </View>
             </View>
           </View>

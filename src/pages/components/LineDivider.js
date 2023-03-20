@@ -3,11 +3,11 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-function LineDivider(props) {
+function LineDivider({ height }) {
   return (
     <View
       style={{
-        height: 0.2,
+        height: height,
         width: "100%",
         backgroundColor: "grey",
         borderColor: "grey",

@@ -12,7 +12,7 @@ import CustomeTextInputField2 from "../recieve_transactions/components/CustomTex
 import TransferToOtherBanks from "./pages/TransferToOtherBanks";
 import TransferToTita from "./pages/TransferToTita";
 
-function TransferType({ itemValue }) {
+function TransferType({ itemValue, navigation }) {
   const [typeOfTransfer, setTypeOfTransfer] = useState("");
 
   return (
@@ -42,7 +42,9 @@ function TransferType({ itemValue }) {
         />
         {typeOfTransfer == "TITA TO TITA" ? <TransferToTita /> : ""}
         {typeOfTransfer == "TITA TO OTHER BANKS" ? (
-          <TransferToOtherBanks />
+          <TransferToOtherBanks
+            onPress={() => navigation.navigate("enterAmount")}
+          />
         ) : (
           ""
         )}

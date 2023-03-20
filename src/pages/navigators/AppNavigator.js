@@ -28,6 +28,9 @@ import SendAirtime from "../utility_pages/Airtime/SendAirtime";
 import InitiateElectricity from "../utility_pages/Electricity/InitiateElectricity";
 import InitiateVoucherTransfer from "../send_transactions/pages/InitiateVoucherTransfer";
 import TransferType from "../send_transactions/TransferType";
+import EnterAmount from "../send_transactions/pages/EnterAmount";
+import EnterPin from "../send_transactions/pages/EnterPin";
+import TransactionSuccessful from "../send_transactions/TransactionSuccessful";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -235,6 +238,27 @@ function AppNavigator(props) {
         <Stack.Screen
           name="transferTypePage"
           component={TransferType}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="enterAmount"
+          component={EnterAmount}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="enterPin"
+          component={EnterPin}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="transactionSuccessful"
+          component={TransactionSuccessful}
           options={{
             headerShown: false,
           }}

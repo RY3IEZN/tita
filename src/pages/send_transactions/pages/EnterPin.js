@@ -19,7 +19,7 @@ import Spacer from "../../components/Spacer";
 
 const { width, height } = Dimensions.get("screen");
 
-function EnterPin(props) {
+function EnterPin({ navigation }) {
   const [isVerified, setIsVerified] = useState(false);
 
   return (
@@ -99,7 +99,10 @@ function EnterPin(props) {
           AppBtnText={isVerified === true ? "Send" : "Procced"}
           onPress={
             isVerified === true
-              ? () => console.log("moneysent")
+              ? () => {
+                  console.log("moneysent");
+                  navigation.navigate("transactionSuccessful");
+                }
               : () => setIsVerified(true)
           }
         />
