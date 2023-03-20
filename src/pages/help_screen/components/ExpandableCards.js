@@ -37,7 +37,60 @@ function ExpandableCards({ cardTitle }) {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
               risus in nibh eleifend tincidunt a vitae augue. Sed id augue
               euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula.
+              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
+              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
+              auctor urna sit amet, pharetra augue. Donec velit velit,
+              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
+              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
+              auctor urna sit amet, pharetra augue. Donec velit velit,
+              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
+              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
+              auctor urna sit amet, pharetra augue. Donec velit velit,
+              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
+              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
+              auctor urna sit amet, pharetra augue. Donec velit velit,
+              pellentesque vel dolor eget, congue blandit ligula. dolor sit
+              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
+              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
+              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
+              eget, congue blandit ligula. dolor sit amet, consectetur
+              adipiscing elit. Nullam a risus in nibh eleifend tincidunt a vitae
+              augue. Sed id augue euismod, auctor urna sit amet, pharetra augue.
+              Donec velit velit, pellentesque vel dolor eget, congue blandit
+              ligula. dolor sit amet, consectetur adipiscing elit. Nullam a
+              risus in nibh eleifend tincidunt a vitae augue. Sed id augue
+              euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
+              pellentesque vel dolor eget, congue blandit ligula. dolor sit
+              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
+              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
+              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
+              eget, congue blandit ligula. dolor sit amet, consectetur
+              adipiscing elit. Nullam a risus in nibh eleifend tincidunt a vitae
+              augue. Sed id augue euismod, auctor urna sit amet, pharetra augue.
+              Donec velit velit, pellentesque vel dolor eget, congue blandit
+              ligula. dolor sit amet, consectetur adipiscing elit. Nullam a
+              risus in nibh eleifend tincidunt a vitae augue. Sed id augue
+              euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
+              pellentesque vel dolor eget, congue blandit ligula. dolor sit
+              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
+              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
+              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
+              eget, congue blandit ligula. dolor sit amet, consectetur
+              adipiscing elit. Nullam a risus in nibh eleifend tincidunt a vitae
+              augue. Sed id augue euismod, auctor urna sit amet, pharetra augue.
+              Donec velit velit, pellentesque vel dolor eget, congue blandit
+              ligula. dolor sit amet, consectetur adipiscing elit. Nullam a
+              risus in nibh eleifend tincidunt a vitae augue. Sed id augue
+              euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
+              pellentesque vel dolor eget, congue blandit ligula. dolor sit
+              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
+              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
+              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
+              eget, congue blandit ligula.
             </Text>
           </View>
         )}

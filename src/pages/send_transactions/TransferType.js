@@ -29,15 +29,23 @@ function TransferType({ itemValue }) {
         </View>
         <Spacer height={20} />
         <AppPicker
+          defaultTitle={"Transfer type"}
           label1={"Transfer to my TITA account"}
           value1={"TITA TO TITA"}
           label2={"Transfer to other banks"}
           value2={"TITA TO OTHER BANKS"}
           itemValue={itemValue}
-          onValueChange={(value) => console.log(value)}
+          onValueChange={(value) => {
+            console.log(value);
+            setTypeOfTransfer(value);
+          }}
         />
-        {/* {<TransferToTita />} */}
-        <TransferToOtherBanks />
+        {typeOfTransfer == "TITA TO TITA" ? <TransferToTita /> : ""}
+        {typeOfTransfer == "TITA TO OTHER BANKS" ? (
+          <TransferToOtherBanks />
+        ) : (
+          ""
+        )}
       </View>
     </AppContainerView>
   );

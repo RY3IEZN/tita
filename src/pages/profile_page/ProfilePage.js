@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import ProfileBtn1 from "./components/ProfileBtn1";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ProfileCards from "./components/ProfileCards";
+import Spacer from "../components/Spacer";
 
 function ProfilePage({ navigation }) {
   return (
@@ -86,6 +87,7 @@ function ProfilePage({ navigation }) {
         subtitle={"Read our terms of service"}
         imageSource={require("../../../assets/icons/privacypolicy.png")}
       />
+      <Spacer height={30} />
     </AppContainerView>
   );
 }

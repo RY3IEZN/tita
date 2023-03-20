@@ -37,6 +37,7 @@ function InitiateSendingPage({ navigation }) {
           navigation.navigate("transferTypePage");
         }}
       />
+      <Spacer height={5} />
     </AppContainerView>
   );
 }
