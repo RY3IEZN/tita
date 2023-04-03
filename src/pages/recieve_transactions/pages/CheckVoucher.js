@@ -17,6 +17,7 @@ import ModalAppButton from "../../components/ModalAppButton";
 import Spacer from "../../components/Spacer";
 import CustomeTextInputField from "../../profile_page/components/CustomeTextInputField";
 import CustomTextInputField2 from "../components/CustomTextInputField2";
+import LoadVouchersvg from "../../../../assets/svg/LoadVouchersvg";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -28,8 +29,8 @@ function CheckVoucher(props) {
   return (
     <>
       <View style={{ alignItems: "center" }}>
-        <Spacer height={10} />
-        <Image source={require("../../../../assets/icons/recievemoney.png")} />
+        <Spacer height={30} />
+        <LoadVouchersvg />
         <Spacer height={10} />
         <AppText
           textAlign={"center"}

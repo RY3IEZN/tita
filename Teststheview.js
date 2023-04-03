@@ -12,11 +12,12 @@ import Otp from "./src/pages/components/Otp";
 import SelectAccountType from "./src/pages/components/SelectAccountType";
 import ModalAccountType from "./src/pages/components/SelectAccountType";
 import Spacer from "./src/pages/components/Spacer";
+import SvgComponent from "./ASampleSvgTest";
 
 function Teststheview(props) {
   return (
     <View style={styles.container}>
-      <Otp />
+      <SvgComponent />
     </View>
   );
 }

@@ -14,7 +14,7 @@ import AppText from "../../components/AppText";
 
 const { width, height } = Dimensions.get("screen");
 
-function ExpandableCards({ cardTitle }) {
+function ExpandableCards({ cardTitle, faqText }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -33,65 +33,7 @@ function ExpandableCards({ cardTitle }) {
         {expanded && (
           <View style={styles.cardBody}>
             <View style={{ width: width * 0.8, borderWidth: 0.5 }}></View>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-              risus in nibh eleifend tincidunt a vitae augue. Sed id augue
-              euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
-              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
-              auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
-              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
-              auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
-              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
-              auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Nullam a risus in
-              nibh eleifend tincidunt a vitae augue. Sed id augue euismod,
-              auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. dolor sit
-              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
-              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
-              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
-              eget, congue blandit ligula. dolor sit amet, consectetur
-              adipiscing elit. Nullam a risus in nibh eleifend tincidunt a vitae
-              augue. Sed id augue euismod, auctor urna sit amet, pharetra augue.
-              Donec velit velit, pellentesque vel dolor eget, congue blandit
-              ligula. dolor sit amet, consectetur adipiscing elit. Nullam a
-              risus in nibh eleifend tincidunt a vitae augue. Sed id augue
-              euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. dolor sit
-              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
-              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
-              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
-              eget, congue blandit ligula. dolor sit amet, consectetur
-              adipiscing elit. Nullam a risus in nibh eleifend tincidunt a vitae
-              augue. Sed id augue euismod, auctor urna sit amet, pharetra augue.
-              Donec velit velit, pellentesque vel dolor eget, congue blandit
-              ligula. dolor sit amet, consectetur adipiscing elit. Nullam a
-              risus in nibh eleifend tincidunt a vitae augue. Sed id augue
-              euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. dolor sit
-              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
-              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
-              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
-              eget, congue blandit ligula. dolor sit amet, consectetur
-              adipiscing elit. Nullam a risus in nibh eleifend tincidunt a vitae
-              augue. Sed id augue euismod, auctor urna sit amet, pharetra augue.
-              Donec velit velit, pellentesque vel dolor eget, congue blandit
-              ligula. dolor sit amet, consectetur adipiscing elit. Nullam a
-              risus in nibh eleifend tincidunt a vitae augue. Sed id augue
-              euismod, auctor urna sit amet, pharetra augue. Donec velit velit,
-              pellentesque vel dolor eget, congue blandit ligula. dolor sit
-              amet, consectetur adipiscing elit. Nullam a risus in nibh eleifend
-              tincidunt a vitae augue. Sed id augue euismod, auctor urna sit
-              amet, pharetra augue. Donec velit velit, pellentesque vel dolor
-              eget, congue blandit ligula.
-            </Text>
+            <AppText theText={faqText} />
           </View>
         )}
       </View>

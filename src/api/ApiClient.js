@@ -1,5 +1,7 @@
+/** @format */
+
 import { create } from "apisauce";
-import { getAsyncStoredInformation_ } from "../config/appfunctions";
+// import { getAsyncStoredInformation_ } from "../config/appfunctions";
 
 const apiClient = create({
   baseURL: "https://titafinancebackend.com/api/v1",
@@ -12,11 +14,11 @@ const apiClient = create({
 });
 
 // getting the bearer token (to be refreshed on login)
-export const updateApiSauceSettings = async () => {
-  const asyncValues = await getAsyncStoredInformation_();
-  if (asyncValues != null && asyncValues.token != null) {
-    apiClient.setHeader("Authorization", `Bearer ${asyncValues.token}`);
-  }
+export const updateApiSauceSettings = async (token) => {
+  apiClient.setHeader("Authorization", `Bearer ${token}`);
+  // const asyncValues = await getAsyncStoredInformation_();
+  // if (asyncValues != null && asyncValues.token != null) {
+  // }
 };
 
 export default apiClient;

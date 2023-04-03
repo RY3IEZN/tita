@@ -7,3 +7,5 @@ installation
 - npx expo install expo-checkbox
 - npm install formik --save
 - npm i yup
+- npm i react-native-svg
+- npm i react-native-svg-transformer

@@ -19,11 +19,16 @@ import AppText from "../components/AppText";
 import Spacer from "../components/Spacer";
 import * as Yup from "yup";
 import ErrorMessage from "../components/ErrorMessage";
+import apiClient from "../../api/ApiClient";
+import UseApi from "../../api/UseApi";
+import AuthApi from "../../api/auth/AuthApi";
+import { useEffect } from "react";
+import LoginPageSvg from "../../../assets/svg/LoginPageSvg";
 
 const { width, height } = Dimensions.get("screen");
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required("Required").label("Username").email(),
+  email: Yup.string().required("Required").label("Username").email(),
   password: Yup.string().required("Required").min(8).label("Password"),
 });
 
@@ -31,27 +36,40 @@ function LoginPage({ navigation }) {
   const [isVisible, setIsVisible] = useState(true);
   const [loginError, setLoginError] = useState(null);
 
+  // calling a function inside a function, helper function
+  const loginUserApi = UseApi(AuthApi.loginTest);
+
+  // onsubmit function to post
+  const onFormSubmit = (values) => {
+    loginUserApi.makeRequest(values);
+  };
+
+  useEffect(() => {
+    if (loginUserApi.data) {
+      console.log(loginUserApi.data.length);
+    }
+  }, [loginUserApi.data]);
+
   return (
     <AppContainerView>
       <Header headerTitle={"Login"} />
-      <View style={{ alignItems: "center", marginTop: 20 }}>
-        <Image
-          source={require("../../../assets/icons/loginpage.png")}
-          style={{ height: 300, width: 300 }}
-        />
+      <View style={{ alignItems: "center" }}>
+        <LoginPageSvg />
+        <Spacer height={30} />
       </View>
       <Formik
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
           console.log(values);
-          navigation.navigate("NestedTabs", { screen: "Home" });
+          onFormSubmit(values);
+          // navigation.navigate("NestedTabs", { screen: "Home" });
         }}
         validationSchema={validationSchema}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
           <>
             <View style={{ alignItems: "center" }}>
-              {/* username */}
+              {/* email */}
               <View style={styles.textInputBox}>
                 <View style={{ marginHorizontal: 10 }}>
                   <MaterialCommunityIcons
@@ -63,12 +81,12 @@ function LoginPage({ navigation }) {
                 <TextInput
                   autoCapitalize="none"
                   placeholder="Username"
-                  onChangeText={handleChange("username")}
-                  value={values.username}
+                  onChangeText={handleChange("email")}
+                  value={values.email}
                   style={{ width: width * 0.75 }}
                 />
               </View>
-              <AppText theText={errors.username} />
+              <AppText theText={errors.email} />
               {/* password */}
               <View style={styles.textInputBox2}>
                 <View style={{ marginHorizontal: 10 }}>
@@ -98,7 +116,7 @@ function LoginPage({ navigation }) {
               <AppText theText={errors.password} />
             </View>
             <View
-              style={{ textAlign: "right", marginTop: 10, marginBottom: 150 }}
+              style={{ textAlign: "right", marginTop: 10, marginBottom: 120 }}
             >
               <AppText textAlign={"right"} theText={"Forgot Password?"} />
             </View>
@@ -145,7 +163,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textInputBox2: {
-    marginTop: 10,
     borderWidth: 1,
     height: 55,
     width: width * 0.85,

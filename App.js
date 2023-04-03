@@ -22,9 +22,11 @@ import SplashScreen from "./src/pages/Splash_Screen/SplashScreen";
 import SendAirtime from "./src/pages/utility_pages/Airtime/SendAirtime";
 import InitiateElectricity from "./src/pages/utility_pages/Electricity/InitiateElectricity";
 import Teststheview from "./Teststheview";
+import InitiateRecieve from "./src/pages/recieve_transactions/InitiateRecieve";
+import SendAirtimeConfirmation from "./src/pages/utility_pages/Airtime/SendAirtimeConfirmation";
 
 export default function App() {
-  return <AppNavigator />;
+  return <SendAirtimeConfirmation />;
 }
 
 const styles = StyleSheet.create({

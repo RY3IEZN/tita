@@ -1,3 +1,5 @@
+/** @format */
+
 import { useState } from "react";
 import { Alert } from "react-native";
 
@@ -5,12 +7,15 @@ export default useApi = (apiFunction, noErrorEffect = false) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
+  const [statusCode, setStatusCode] = useState(null);
 
   const makeRequest = async (...args) => {
     // making api function call
     setLoading(true);
     const response = await apiFunction(...args);
     setLoading(false);
+    // show the status
+    setStatusCode(response.status);
 
     // when successful
     if (response.ok) {
@@ -67,5 +72,5 @@ export default useApi = (apiFunction, noErrorEffect = false) => {
     }
   };
 
-  return { data, error, loading, makeRequest };
+  return { data, error, loading, makeRequest, statusCode };
 };

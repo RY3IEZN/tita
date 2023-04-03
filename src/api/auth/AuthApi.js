@@ -1,3 +1,5 @@
+/** @format */
+
 import apiClient from "../ApiClient";
 
 // Login
@@ -8,11 +10,21 @@ const login = (values) => {
   return apiClient.post("/login", info);
 };
 
+// Logintest
+const loginTest = (values) => {
+  var info = new FormData();
+  info.append("email", values.email);
+  info.append("password", values.password);
+  return apiClient.get("/fact", info);
+};
+
 // ----------------------- Register User Flow -----------------------
 // verify phone number
-const verify_phone_number = (values) => {
+const verify_phone_number = async (values) => {
   var info = new FormData();
   info.append("phone_number", values.phone_number);
+  // const response = await apiClient.post("/verify-phone-number", info);
+  // response.status
   return apiClient.post("/verify-phone-number", info);
 };
 
@@ -65,4 +77,5 @@ export default {
   register,
   send_reset_token,
   reset_password,
+  loginTest,
 };

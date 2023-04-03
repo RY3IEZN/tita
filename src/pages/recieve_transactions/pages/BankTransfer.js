@@ -6,13 +6,14 @@ import AppButton from "../../components/AppButton";
 import AppText from "../../components/AppText";
 import Spacer from "../../components/Spacer";
 import CustomeTextInputField2 from "../components/CustomTextInputField2";
+import BankVouchersvg from "../../../../assets/svg/BankTransfersvg";
+import BankTransfersvg from "../../../../assets/svg/BankTransfersvg";
 
 function BankTransfer(props) {
   return (
     <>
       <View style={{ alignItems: "center" }}>
         <Spacer height={10} />
-        <Image source={require("../../../../assets/icons/banktransfer.png")} />
         <Spacer height={10} />
         <AppText
           textAlign={"center"}

@@ -63,7 +63,12 @@ function Faqs(props) {
         </View>
       </View>
       <Spacer height={10} />
-      <ExpandableCards cardTitle={"What is TITA"} />
+      <ExpandableCards
+        cardTitle={"What is TITA"}
+        faqText={
+          "Tita is a digital wallet that allows you to convert money into a unique code for safe, easy, and quick cross-platform transactions.Tita gives you access to add different conditions to your payment methods to ensure safety and transparency "
+        }
+      />
       <ExpandableCards cardTitle={"How do i send money"} />
       <ExpandableCards cardTitle={"How do i exit the app"} />
       <ExpandableCards cardTitle={"Can i delete my account"} />

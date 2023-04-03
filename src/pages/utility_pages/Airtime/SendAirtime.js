@@ -9,13 +9,21 @@ import Header from "../../components/Header";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TextInput } from "react-native";
 import { Dimensions } from "react-native";
+import LineDivider from "../../components/LineDivider";
+import Spacer from "../../components/Spacer";
+import CustomeTextInputField from "../../profile_page/components/CustomeTextInputField";
+import CustomeTextInputField2 from "../../recieve_transactions/components/CustomTextInputField2";
+import AppPicker from "../../components/AppPicker";
+import AppButton from "../../components/AppButton";
+import AppText from "../../components/AppText";
 
 const { width, height } = Dimensions.get("screen");
 
 function SendAirtime(props) {
   return (
     <AppContainerView>
-      <Header headerTitle={"Send Airtime"} />
+      <Header headerTitle={"Send Airtime to"} />
+      {/* selected service provider */}
       <View
         style={{
           flexDirection: "row",
@@ -36,12 +44,24 @@ function SendAirtime(props) {
           <Image source={require("../../../../assets/icons/9mobile.png")} />
         </TouchableOpacity>
       </View>
-
-      <View style={styles.textInputBox}>
-        <View style={{ marginHorizontal: 10 }}>
-          <MaterialCommunityIcons name="magnify" size={24} />
-        </View>
-        <TextInput placeholder="name" style={{ width: width * 0.75 }} />
+      <Spacer height={20} />
+      <LineDivider height={1} />
+      {/* select/input phone no */}
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Spacer height={10} />
+        <CustomeTextInputField2 placeholder={"Phone Number"} />
+      </View>
+      {/* select Amount */}
+      <Spacer height={30} />
+      <View style={{ flexDirection: "row" }}>
+        <Spacer width={10} />
+        <AppText theText={"Amount"} />
+      </View>
+      <AppPicker defaultTitle={"Please Select"} />
+      {/* app button */}
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Spacer height={40} />
+        <AppButton AppBtnText={"Next"} onPress={() => console.log("next")} />
       </View>
     </AppContainerView>
   );
