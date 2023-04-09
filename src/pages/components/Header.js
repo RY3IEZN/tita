@@ -11,7 +11,12 @@ function Header({ headerTitle, fontSize = 30 }) {
         alignItems: "center",
       }}
     >
-      <AppText theText={headerTitle} fontSize={fontSize} fontWeight={"600"} />
+      <AppText
+        theText={headerTitle}
+        fontSize={fontSize}
+        fontWeight={"700"}
+        color={"#3862F8"}
+      />
     </View>
   );
 }

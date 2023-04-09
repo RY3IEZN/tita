@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import AppButton from "../components/AppButton";
 import Checkbox from "expo-checkbox";
 import Spacer from "../components/Spacer";
+import PageIndicator from "../components/PageIndicator";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -17,8 +18,9 @@ function AddPhoneNumber(props) {
     <AppContainerView>
       <Header headerTitle={"Add Phone Number"} />
       <View style={{ alignItems: "center" }}>
-        <Spacer height={20} />
-        <Spacer height={20} />
+        <Spacer height={10} />
+        <PageIndicator pageIndex={3} />
+        <Spacer height={15} />
         <AppText theText={"We’ll need to confirm it by sending a text."} />
         <Spacer height={20} />
         <Image source={require("../../../assets/icons/phoneshownotp.png")} />

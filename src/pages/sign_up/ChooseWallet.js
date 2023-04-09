@@ -19,7 +19,7 @@ function ChooseWallet(props) {
     <AppContainerView>
       <Header headerTitle={"Choose Wallet"} />
       <View style={{ alignItems: "center" }}>
-        <PageIndicator pageIndex={1} />
+        <PageIndicator pageIndex={2} />
         <Image source={require("../../../assets/icons/choosewallet.png")} />
         <AppText theText={"Choose an account that suits your needs"} />
         <AppText theText={"suits your needs"} />

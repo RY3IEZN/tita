@@ -6,7 +6,6 @@ import AppButton from "../../components/AppButton";
 import AppText from "../../components/AppText";
 import Spacer from "../../components/Spacer";
 import CustomeTextInputField2 from "../components/CustomTextInputField2";
-import BankVouchersvg from "../../../../assets/svg/BankTransfersvg";
 import BankTransfersvg from "../../../../assets/svg/BankTransfersvg";
 
 function BankTransfer(props) {
@@ -21,6 +20,9 @@ function BankTransfer(props) {
             "Add Money to your TITA Bank Account by making a transfer to the account below and your account would be credited directly."
           }
         />
+      </View>
+      <View style={{ alignItems: "center" }}>
+        <BankTransfersvg />
       </View>
       <Spacer height={20} />
       <CustomeTextInputField2

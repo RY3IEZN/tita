@@ -13,6 +13,7 @@ import AppContainerView from "../components/AppContainerView";
 import Header from "../components/Header";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppButton from "../components/AppButton";
+import Resetpassword from "../../../assets/svg/resetpassword";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -21,10 +22,7 @@ function ResetPassword(props) {
     <AppContainerView>
       <Header headerTitle={"Reset Password"} />
       <View style={{ alignItems: "center", marginTop: 20 }}>
-        <Image
-          source={require("../../../assets/icons/resetpassword.png")}
-          style={{ height: 330, width: 350 }}
-        />
+        <Resetpassword />
       </View>
       <Text style={{ textAlign: "center", fontSize: 14, fontWeight: "500" }}>
         Enter your email address to receive 6 digit code to reset password.
@@ -39,7 +37,9 @@ function ResetPassword(props) {
           style={{ width: width * 0.75 }}
         />
       </View>
-      <AppButton AppBtnText={"Procced"} />
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <AppButton AppBtnText={"Procced"} />
+      </View>
     </AppContainerView>
   );
 }

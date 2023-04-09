@@ -24,9 +24,16 @@ import InitiateElectricity from "./src/pages/utility_pages/Electricity/InitiateE
 import Teststheview from "./Teststheview";
 import InitiateRecieve from "./src/pages/recieve_transactions/InitiateRecieve";
 import SendAirtimeConfirmation from "./src/pages/utility_pages/Airtime/SendAirtimeConfirmation";
+import BankTransfer from "./src/pages/recieve_transactions/pages/BankTransfer";
+import NewPassword from "./src/pages/sign_up/NewPassword";
+import ResetPassword from "./src/pages/reset_password/ResetPassword";
+import PrivacyPolicy from "./src/pages/profile_page/PrivacyPolicy";
+import Faqs from "./src/pages/help_screen/pages/Faqs";
+import HelpScreen from "./src/pages/help_screen/HelpScreen";
+import HistoryPage from "./src/pages/home_page/HistoryPage";
 
 export default function App() {
-  return <SendAirtimeConfirmation />;
+  return <InitiateRecieve />;
 }
 
 const styles = StyleSheet.create({

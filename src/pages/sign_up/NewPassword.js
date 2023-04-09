@@ -13,6 +13,7 @@ import AppContainerView from "../components/AppContainerView";
 import Header from "../components/Header";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppButton from "../components/AppButton";
+import LoginPageSvg from "../../../assets/svg/LoginPageSvg";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -21,10 +22,7 @@ function NewPassword(props) {
     <AppContainerView>
       <Header headerTitle={"New Password"} />
       <View style={{ alignItems: "center", marginTop: 20 }}>
-        <Image
-          source={require("../../../assets/icons/resetpassword.png")}
-          style={{ height: 330, width: 350 }}
-        />
+        <LoginPageSvg />
         <Text style={{ textAlign: "center", fontSize: 14, fontWeight: "500" }}>
           Enter a new password{" "}
         </Text>

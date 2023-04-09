@@ -61,8 +61,8 @@ function LoginPage({ navigation }) {
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
           console.log(values);
-          onFormSubmit(values);
-          // navigation.navigate("NestedTabs", { screen: "Home" });
+          // onFormSubmit(values);
+          navigation.navigate("NestedTabs", { screen: "Home" });
         }}
         validationSchema={validationSchema}
       >
@@ -115,11 +115,12 @@ function LoginPage({ navigation }) {
               </View>
               <AppText theText={errors.password} />
             </View>
-            <View
+            <TouchableOpacity
+              onPress={() => {}}
               style={{ textAlign: "right", marginTop: 10, marginBottom: 120 }}
             >
               <AppText textAlign={"right"} theText={"Forgot Password?"} />
-            </View>
+            </TouchableOpacity>
 
             {/* how do you implment fingerprint verification na */}
             <View style={{ alignItems: "center" }}>
@@ -134,7 +135,7 @@ function LoginPage({ navigation }) {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: height * 0.05,
+          marginTop: height * 0.03,
         }}
       >
         <AppText theText={"Not a Member yet?"} />

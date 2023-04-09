@@ -10,6 +10,7 @@ import Checkbox from "expo-checkbox";
 import Spacer from "../components/Spacer";
 import AppText from "../components/AppText";
 import { TouchableOpacity } from "react-native";
+import PageIndicator from "../components/PageIndicator";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -18,6 +19,8 @@ function CreateAccount({ navigation }) {
     <AppContainerView>
       <View style={{ alignItems: "center" }}>
         <Header headerTitle={"Create Account"} />
+        <PageIndicator />
+        <Spacer height={10} />
         {/* firstname */}
         <View style={styles.textInputBox}>
           <View style={{ marginHorizontal: 10 }}>

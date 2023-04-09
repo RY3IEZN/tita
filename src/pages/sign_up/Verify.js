@@ -14,6 +14,7 @@ import AppText from "../components/AppText";
 import Header from "../components/Header";
 import Spacer from "../components/Spacer";
 import CustomeTextInputField from "../profile_page/components/CustomeTextInputField";
+import PageIndicator from "../components/PageIndicator";
 
 function Verify(props) {
   const firstInput = useRef();
@@ -29,6 +30,8 @@ function Verify(props) {
       <View style={styles.container}>
         <Header headerTitle={"Verify"} />
         <Spacer height={15} />
+        <PageIndicator pageIndex={4} />
+        <Spacer height={50} />
         <AppText
           theText={
             "Please enter the 6 digit one time code to activate your account!"

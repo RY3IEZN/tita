@@ -23,6 +23,7 @@ function SendAirtime(props) {
   return (
     <AppContainerView>
       <Header headerTitle={"Send Airtime to"} />
+      <Spacer height={20} />
       {/* selected service provider */}
       <View
         style={{
