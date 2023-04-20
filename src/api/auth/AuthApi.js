@@ -10,13 +10,13 @@ const login = (values) => {
   return apiClient.post("/login", info);
 };
 
-// Logintest
-const loginTest = (values) => {
-  var info = new FormData();
-  info.append("email", values.email);
-  info.append("password", values.password);
-  return apiClient.get("/fact", info);
-};
+// // Logintest
+// const loginTest = (values) => {
+//   var info = new FormData();
+//   info.append("email", values.email);
+//   info.append("password", values.password);
+//   return apiClient.get("/fact", info);
+// };
 
 // ----------------------- Register User Flow -----------------------
 // verify phone number
@@ -77,5 +77,5 @@ export default {
   register,
   send_reset_token,
   reset_password,
-  loginTest,
+  // loginTest,
 };

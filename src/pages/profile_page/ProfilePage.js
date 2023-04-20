@@ -1,7 +1,7 @@
 /** @format */
 
-import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Image, Text, Alert } from "react-native";
 import AppContainerView from "../components/AppContainerView";
 import AppSoftButton from "../components/AppSoftButton";
 import Header from "../components/Header";
@@ -9,8 +9,28 @@ import ProfileBtn1 from "./components/ProfileBtn1";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ProfileCards from "./components/ProfileCards";
 import Spacer from "../components/Spacer";
+import axios from "axios";
+import AuthApi from "../../api/auth/AuthApi";
+import ProfileApi from "../../api/user/ProfileApi";
+import UseApi from "../../api/UseApi";
+import { updateApiSauceSettings } from "../../api/ApiClient";
+import AppText from "../components/AppText";
 
 function ProfilePage({ navigation }) {
+  const [profileDetails, setProfileDetails] = useState([]);
+
+  const getUserApi = UseApi(ProfileApi.get_profile);
+
+  const getUserDetails = () => {
+    getUserApi.makeRequest();
+    console.log(getUserApi.statusCode, "------------------");
+    console.log(getUserApi.data.account_number, "------------------");
+  };
+
+  useEffect(() => {
+    getUserDetails();
+  }, []);
+
   return (
     <AppContainerView>
       <Header headerTitle={"Account"} />
@@ -21,7 +41,8 @@ function ProfilePage({ navigation }) {
           source={require("../../../assets/icons/Moon.png")}
         />
         <AppSoftButton
-          onPress={() => navigation.replace("loginpage")}
+          onPress={() => getUserDetails()}
+          // onPress={() => navigation.replace("loginpage")}
           source={require("../../../assets/icons/Logout.png")}
         />
       </View>
@@ -35,6 +56,7 @@ function ProfilePage({ navigation }) {
       </View>
 
       <View style={styles.profileInfo}>
+        <AppText theText={getUserApi.data.account_number} />
         <Text>Favour Oluwatumishe</Text>
         <Text>+234812345678</Text>
         <Text>favouroluwatumishe@gmail.com</Text>

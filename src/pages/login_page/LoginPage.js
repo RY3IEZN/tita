@@ -9,6 +9,7 @@ import {
   Dimensions,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import AppButton from "../components/AppButton";
 import AppContainerView from "../components/AppContainerView";
@@ -19,25 +20,26 @@ import AppText from "../components/AppText";
 import Spacer from "../components/Spacer";
 import * as Yup from "yup";
 import ErrorMessage from "../components/ErrorMessage";
-import apiClient from "../../api/ApiClient";
+import apiClient, { updateApiSauceSettings } from "../../api/ApiClient";
 import UseApi from "../../api/UseApi";
 import AuthApi from "../../api/auth/AuthApi";
 import { useEffect } from "react";
 import LoginPageSvg from "../../../assets/svg/LoginPageSvg";
+import axios, { Axios } from "axios";
 
 const { width, height } = Dimensions.get("screen");
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required("Required").label("Username").email(),
-  password: Yup.string().required("Required").min(8).label("Password"),
+  password: Yup.string().required("Required").min(6).label("Password"),
 });
 
 function LoginPage({ navigation }) {
   const [isVisible, setIsVisible] = useState(true);
   const [loginError, setLoginError] = useState(null);
 
-  // calling a function inside a function, helper function
-  const loginUserApi = UseApi(AuthApi.loginTest);
+  // // calling a function inside a function, helper function
+  const loginUserApi = UseApi(AuthApi.login);
 
   // onsubmit function to post
   const onFormSubmit = (values) => {
@@ -46,7 +48,16 @@ function LoginPage({ navigation }) {
 
   useEffect(() => {
     if (loginUserApi.data) {
-      console.log(loginUserApi.data.length);
+      if (loginUserApi.statusCode == "200") {
+        updateApiSauceSettings(loginUserApi.data.token);
+        navigation.navigate("NestedTabs", { screen: "Home" });
+      }
+      if (loginUserApi.statusCode == "422") {
+        Alert.alert(
+          "Inavlid Credentials",
+          "These credentials do not match our records. Kindly check your email or password"
+        );
+      }
     }
   }, [loginUserApi.data]);
 
@@ -61,8 +72,8 @@ function LoginPage({ navigation }) {
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
           console.log(values);
-          // onFormSubmit(values);
-          navigation.navigate("NestedTabs", { screen: "Home" });
+          onFormSubmit(values);
+          // navigation.navigate("NestedTabs", { screen: "Home" });
         }}
         validationSchema={validationSchema}
       >

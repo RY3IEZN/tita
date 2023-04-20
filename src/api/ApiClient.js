@@ -4,9 +4,10 @@ import { create } from "apisauce";
 // import { getAsyncStoredInformation_ } from "../config/appfunctions";
 
 const apiClient = create({
-  baseURL: "https://titafinancebackend.com/api/v1",
+  baseURL: "http://18.130.5.192:8001/api/v1/",
   headers: {
-    // "Content-Type": "application/json",
+    accept: "application/json",
+    "Content-Type": "application/json",
     "Content-Type": "multipart/form-data",
   },
   // timeout in mili seconds (1.5 Minute)

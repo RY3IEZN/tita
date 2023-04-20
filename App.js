@@ -33,7 +33,7 @@ import HelpScreen from "./src/pages/help_screen/HelpScreen";
 import HistoryPage from "./src/pages/home_page/HistoryPage";
 
 export default function App() {
-  return <InitiateRecieve />;
+  return <AppNavigator />;
 }
 
 const styles = StyleSheet.create({
