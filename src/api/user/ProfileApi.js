@@ -1,3 +1,5 @@
+/** @format */
+
 import apiClient from "../ApiClient";
 
 // get user profile

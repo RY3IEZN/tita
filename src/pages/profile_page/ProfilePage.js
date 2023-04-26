@@ -13,7 +13,7 @@ import axios from "axios";
 import AuthApi from "../../api/auth/AuthApi";
 import ProfileApi from "../../api/user/ProfileApi";
 import UseApi from "../../api/UseApi";
-import { updateApiSauceSettings } from "../../api/ApiClient";
+import apiClient, { updateApiSauceSettings } from "../../api/ApiClient";
 import AppText from "../components/AppText";
 
 function ProfilePage({ navigation }) {
@@ -21,15 +21,25 @@ function ProfilePage({ navigation }) {
 
   const getUserApi = UseApi(ProfileApi.get_profile);
 
-  const getUserDetails = () => {
+  useEffect(() => {
     getUserApi.makeRequest();
-    console.log(getUserApi.statusCode, "------------------");
-    console.log(getUserApi.data.account_number, "------------------");
-  };
+  }, []);
 
   useEffect(() => {
-    getUserDetails();
-  }, []);
+    if (getUserApi.data && getUserApi.statusCode) {
+      setProfileDetails(getUserApi.data);
+    }
+  }, [getUserApi.data, profileDetails]);
+
+  // // calling a function inside a function, helper function
+  const LogOutApi = UseApi(ProfileApi.logout);
+
+  // function to logout the user
+  const onLogOut = () => {
+    LogOutApi.makeRequest();
+    console.log(LogOutApi.statusCode, "----------------");
+    navigation.replace("loginpage");
+  };
 
   return (
     <AppContainerView>
@@ -41,7 +51,7 @@ function ProfilePage({ navigation }) {
           source={require("../../../assets/icons/Moon.png")}
         />
         <AppSoftButton
-          onPress={() => getUserDetails()}
+          onPress={() => onLogOut()}
           // onPress={() => navigation.replace("loginpage")}
           source={require("../../../assets/icons/Logout.png")}
         />
@@ -56,10 +66,14 @@ function ProfilePage({ navigation }) {
       </View>
 
       <View style={styles.profileInfo}>
-        <AppText theText={getUserApi.data.account_number} />
-        <Text>Favour Oluwatumishe</Text>
-        <Text>+234812345678</Text>
-        <Text>favouroluwatumishe@gmail.com</Text>
+        <View style={{ flexDirection: "row" }}>
+          <AppText theText={profileDetails.first_name} />
+          <Spacer width={10} />
+          <AppText theText={profileDetails.last_name} />
+        </View>
+
+        <AppText theText={profileDetails.phone_number} />
+        <AppText theText={profileDetails.email} />
       </View>
 
       <View style={styles.profileBtnAction}>
