@@ -48,18 +48,23 @@ function LoginPage({ navigation }) {
 
   useEffect(() => {
     if (loginUserApi.data) {
-      if (loginUserApi.statusCode == "200") {
-        updateApiSauceSettings(loginUserApi.data.token);
-        navigation.navigate("NestedTabs", { screen: "Home" });
-      }
-      if (loginUserApi.statusCode == "422") {
-        Alert.alert(
-          "Inavlid Credentials",
-          "These credentials do not match our records. Kindly check your email or password"
-        );
-      }
+      responseAction();
     }
   }, [loginUserApi.data]);
+
+  // running during authentication
+  const responseAction = async (values) => {
+    if (loginUserApi.statusCode == "200") {
+      await updateApiSauceSettings(loginUserApi.data.token);
+      navigation.navigate("NestedTabs", { screen: "Home" });
+    }
+    if (loginUserApi.statusCode == "422") {
+      Alert.alert(
+        "Inavlid Credentials",
+        "These credentials do not match our records. Kindly check your email or password"
+      );
+    }
+  };
 
   return (
     <AppContainerView>

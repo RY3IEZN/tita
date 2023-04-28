@@ -37,7 +37,7 @@ function ProfilePage({ navigation }) {
   // function to logout the user
   const onLogOut = () => {
     LogOutApi.makeRequest();
-    console.log(LogOutApi.statusCode, "----------------");
+    updateApiSauceSettings("");
     navigation.replace("loginpage");
   };
 

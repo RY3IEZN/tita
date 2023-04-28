@@ -25,7 +25,7 @@ function BalanceCard(props) {
     if (getUserWalletApi.data && getUserWalletApi.statusCode) {
       setWalletDetails(getUserWalletApi.data);
     }
-  }, [getUserWalletApi.data, walletDetails]);
+  }, [getUserWalletApi.data]);
 
   return (
     <View style={{ alignItems: "center" }}>
@@ -59,6 +59,7 @@ function BalanceCard(props) {
                   "N" + walletDetails[0].balance
                 )
               }
+              z
               color={"white"}
               fontSize={20}
               fontWeight={"bold"}
