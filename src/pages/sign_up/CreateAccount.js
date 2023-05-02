@@ -34,42 +34,14 @@ function CreateAccount({ navigation }) {
   const [password, setPassword] = useState("");
   const [password_confirmation, setPassword_confirmation] = useState("");
   const [date_of_birth, setDate_of_birth] = useState("");
+  const [customerDetails, setCustomerDetails] = useState();
 
-  // console.log(
-  //   "++++++--------------------------------------------------",
-  //   first_name,
-  //   last_name,
-  //   email,
-  //   password,
-  //   password_confirmation,
-  //   date_of_birth,
-  //   "++++++--------------------------------------------------"
-  // );
-
-  function moveToTheNextPage() {
-    navigation.navigate("choosewalletpage", {
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation,
-      date_of_birth: date_of_birth,
-    });
-  }
+  // function moveToTheNextPage() {
+  //   navigation.navigate("choosewalletpage", { customerDetails });
+  // }
 
   const passValuesToNextPage = async (values) => {
-    await new Promise((resolve) => {
-      setFirst_name((prevFirst_name) => values.first_name);
-      setLast_name((prevLast_name) => values.last_name);
-      setEmail((prevEmail) => values.email);
-      setPassword((prevPassword) => values.password);
-      setPassword_confirmation(
-        (prevPassword_confirmation) => values.password_confirmation
-      );
-      setDate_of_birth((prevDate_of_birth) => values.date_of_birth);
-      resolve();
-    });
-    moveToTheNextPage();
+    navigation.navigate("choosewalletpage", { values });
   };
 
   // const passValuesToNextPage = (values) => {

@@ -14,19 +14,9 @@ import PageIndicator from "../components/PageIndicator";
 const { width, height } = Dimensions.get("screen");
 
 function AddPhoneNumber({ navigation, route }) {
-  const {
-    first_name,
-    last_name,
-    email,
-    password,
-    password_confirmation,
-    date_of_birth,
-    account_type,
-  } = route.params;
+  const { values } = route.params;
 
-  console.log(account_type);
-  console.log(first_name, "ghghghghh");
-
+  console.log(values, "this has been passed 3 times");
   return (
     <AppContainerView>
       <Header headerTitle={"Add Phone Number"} />

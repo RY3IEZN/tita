@@ -16,30 +16,12 @@ function ChooseWallet({ navigation, route }) {
   const [checked, setChecked] = useState("");
   const [account_type, setAccount_type] = useState("");
 
-  const {
-    first_name,
-    last_name,
-    email,
-    password,
-    password_confirmation,
-    date_of_birth,
-  } = route.params;
+  const { values } = route.params;
 
-  console.log(
-    "it may have not set on the firstpage, but it will set here",
-    first_name
-  );
+  console.log(values);
 
   function moveToTheNextPage() {
-    navigation.navigate("addphonenumber", {
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation,
-      date_of_birth: date_of_birth,
-      account_type: account_type,
-    });
+    navigation.navigate("addphonenumber", { values });
   }
 
   return (
