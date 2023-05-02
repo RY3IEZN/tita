@@ -9,20 +9,31 @@ import AppText from "../components/AppText";
 import Header from "../components/Header";
 import PageIndicator from "../components/PageIndicator";
 import Spacer from "../components/Spacer";
+import Choosewallet from "../../../assets/svg/Choosewallet";
 
 const { width, height } = Dimensions.get("screen");
 
 function ChooseWallet({ navigation, route }) {
   const [checked, setChecked] = useState("");
-  const [account_type, setAccount_type] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
 
+  // details from the previous page
   const { values } = route.params;
 
-  console.log(values);
+  //handle the choice the consumer picked
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
 
-  function moveToTheNextPage() {
-    navigation.navigate("addphonenumber", { values });
-  }
+  //onsubmit, add the selected choice to the object and move to the next page
+  const handleSubmit = () => {
+    const newValues = {
+      ...values,
+      account_type: selectedOption === "option1" ? "individual" : "business",
+    };
+    // Navigate to the next page with the updated data
+    navigation.navigate("addphonenumber", { newValues });
+  };
 
   return (
     <AppContainerView>
@@ -30,7 +41,7 @@ function ChooseWallet({ navigation, route }) {
       <Spacer height={20} />
       <View style={{ alignItems: "center" }}>
         <PageIndicator pageIndex={2} />
-        <Image source={require("../../../assets/icons/choosewallet.png")} />
+        <Choosewallet />
         <AppText theText={"Choose an account that"} />
         <AppText theText={"suits your needs"} />
       </View>
@@ -46,11 +57,12 @@ function ChooseWallet({ navigation, route }) {
           status={checked === "first" ? "checked" : "unchecked"}
           onPress={() => {
             setChecked("first");
-            setAccount_type("individual");
+            handleOptionSelect("option1");
           }}
         />
         <AppText theText={"Individual Wallet"} />
       </View>
+      <Spacer height={15} />
 
       <View
         style={{
@@ -64,7 +76,7 @@ function ChooseWallet({ navigation, route }) {
           status={checked === "second" ? "checked" : "unchecked"}
           onPress={() => {
             setChecked("second");
-            setAccount_type("business");
+            handleOptionSelect("option2");
           }}
         />
         <AppText theText={"Business Wallet"} />
@@ -75,11 +87,11 @@ function ChooseWallet({ navigation, route }) {
           AppBtnText={"Procced"}
           onPress={() => {
             console.log("Procced");
-            moveToTheNextPage();
+            handleSubmit();
           }}
         />
       </View>
-      <Spacer height={height * 0.3} />
+      <Spacer height={height * 0.1} />
       <View
         style={{
           flexDirection: "row",

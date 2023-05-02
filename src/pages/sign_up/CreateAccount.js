@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import { View, StyleSheet, Dimensions, TextInput } from "react-native";
+import { View, StyleSheet, Dimensions, TextInput, Alert } from "react-native";
 import AppContainerView from "../components/AppContainerView";
 import Header from "../components/Header";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -27,35 +27,21 @@ const validationSchema = Yup.object().shape({
 function CreateAccount({ navigation }) {
   const [isVisible, setIsVisible] = useState(true);
   const [isReady, setIsReady] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
-  const [first_name, setFirst_name] = useState("");
-  const [last_name, setLast_name] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password_confirmation, setPassword_confirmation] = useState("");
-  const [date_of_birth, setDate_of_birth] = useState("");
-  const [customerDetails, setCustomerDetails] = useState();
-
-  // function moveToTheNextPage() {
-  //   navigation.navigate("choosewalletpage", { customerDetails });
-  // }
-
-  const passValuesToNextPage = async (values) => {
-    navigation.navigate("choosewalletpage", { values });
+  const handleCheckBox = () => {
+    setIsSelected(!isSelected);
   };
-
-  // const passValuesToNextPage = (values) => {
-  //   setFirst_name((prevFirst_name) => values.first_name);
-  //   console.log(first_name, "----------------------");
-  //   setLast_name((prevLast_name) => values.last_name);
-  //   setEmail((prevEmail) => values.email);
-  //   setPassword((prevPassword) => values.password);
-  //   setPassword_confirmation(
-  //     (prevPassword_confirmation) => values.password_confirmation
-  //   );
-  //   setDate_of_birth((prevDate_of_birth) => values.date_of_birth);
-  //   moveToTheNextPage();
-  // };
+  const passValuesToNextPage = async (values) => {
+    if (!isSelected) {
+      Alert.alert(
+        "Terms and Conditions",
+        "You havent accepted the terms and conditions"
+      );
+    } else {
+      navigation.navigate("choosewalletpage", { values });
+    }
+  };
 
   return (
     <AppContainerView>
@@ -225,7 +211,11 @@ function CreateAccount({ navigation }) {
             marginHorizontal: 10,
           }}
         >
-          <Checkbox value color={"blue"} />
+          <Checkbox
+            value={isSelected}
+            onValueChange={handleCheckBox}
+            color={"blue"}
+          />
           <Spacer width={10} />
           <AppText
             theText={"I accept the Terms and Conditions          Policy"}

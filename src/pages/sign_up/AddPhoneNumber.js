@@ -10,13 +10,33 @@ import AppButton from "../components/AppButton";
 import Checkbox from "expo-checkbox";
 import Spacer from "../components/Spacer";
 import PageIndicator from "../components/PageIndicator";
+import Telephone from "../../../assets/svg/Telephone";
+import { useState } from "react";
+import { Alert } from "react-native";
 
 const { width, height } = Dimensions.get("screen");
 
 function AddPhoneNumber({ navigation, route }) {
-  const { values } = route.params;
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  console.log(values, "this has been passed 3 times");
+  // const { newValues } = route.params;
+
+  // console.log(newValues, "this has been passed 3 times");
+
+  const handleProceed = () => {
+    // Check if phone number is valid Nigerian number
+    const isValidNigerianNumber = /^0\d{10}$/.test(phoneNumber);
+    if (!isValidNigerianNumber) {
+      Alert.alert("Invalid phone number");
+      return;
+    }
+    setIsLoading(true);
+    // Do something with the phone number, like sending a text
+    console.log(phoneNumber);
+    setIsLoading(false);
+  };
+
   return (
     <AppContainerView>
       <Header headerTitle={"Add Phone Number"} />
@@ -26,7 +46,7 @@ function AddPhoneNumber({ navigation, route }) {
         <Spacer height={15} />
         <AppText theText={"We’ll need to confirm it by sending a text."} />
         <Spacer height={20} />
-        <Image source={require("../../../assets/icons/phoneshownotp.png")} />
+        <Telephone />
         <Spacer height={50} />
         <View style={styles.textInputBox}>
           <View style={{ marginHorizontal: 10 }}>
@@ -36,10 +56,15 @@ function AddPhoneNumber({ navigation, route }) {
               color="#4361EE"
             />
           </View>
-          <TextInput placeholder="Username" style={{ width: width * 0.75 }} />
+          <TextInput
+            placeholder="Phone Number"
+            style={{ width: width * 0.75 }}
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
+          />
         </View>
         <Spacer height={50} />
-        <AppButton AppBtnText={"Procced"} />
+        <AppButton AppBtnText={"Procced"} onPress={handleProceed} />
         <Spacer height={30} />
         <View
           style={{
