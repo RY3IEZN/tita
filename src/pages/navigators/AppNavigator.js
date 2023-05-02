@@ -31,6 +31,9 @@ import TransferType from "../send_transactions/TransferType";
 import EnterAmount from "../send_transactions/pages/EnterAmount";
 import EnterPin from "../send_transactions/pages/EnterPin";
 import TransactionSuccessful from "../send_transactions/TransactionSuccessful";
+import ResetPassword from "../reset_password/ResetPassword";
+import ChooseWallet from "../sign_up/ChooseWallet";
+import AddPhoneNumber from "../sign_up/AddPhoneNumber";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -138,8 +141,29 @@ function AppNavigator(props) {
           }}
         />
         <Stack.Screen
+          name="resetpasswordpage"
+          component={ResetPassword}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
           name="changepin"
           component={ChangePin1}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="choosewalletpage"
+          component={ChooseWallet}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="addphonenumber"
+          component={AddPhoneNumber}
           options={{
             headerShown: false,
           }}

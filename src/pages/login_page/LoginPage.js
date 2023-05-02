@@ -15,9 +15,9 @@ import AppButton from "../components/AppButton";
 import AppContainerView from "../components/AppContainerView";
 import Header from "../components/Header";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Formik } from "formik";
 import AppText from "../components/AppText";
 import Spacer from "../components/Spacer";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import ErrorMessage from "../components/ErrorMessage";
 import apiClient, { updateApiSauceSettings } from "../../api/ApiClient";
@@ -78,7 +78,6 @@ function LoginPage({ navigation }) {
         onSubmit={(values) => {
           console.log(values);
           onFormSubmit(values);
-          // navigation.navigate("NestedTabs", { screen: "Home" });
         }}
         validationSchema={validationSchema}
       >
@@ -131,8 +130,11 @@ function LoginPage({ navigation }) {
               </View>
               <AppText theText={errors.password} />
             </View>
+            {/* forgot password?  */}
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() => {
+                navigation.navigate("resetpasswordpage");
+              }}
               style={{ textAlign: "right", marginTop: 10, marginBottom: 120 }}
             >
               <AppText textAlign={"right"} theText={"Forgot Password?"} />

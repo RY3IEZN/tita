@@ -12,16 +12,44 @@ import Spacer from "../components/Spacer";
 
 const { width, height } = Dimensions.get("screen");
 
-function ChooseWallet(props) {
-  const [checked, setChecked] = useState("first");
+function ChooseWallet({ navigation, route }) {
+  const [checked, setChecked] = useState("");
+  const [account_type, setAccount_type] = useState("");
+
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    password_confirmation,
+    date_of_birth,
+  } = route.params;
+
+  console.log(
+    "it may have not set on the firstpage, but it will set here",
+    first_name
+  );
+
+  function moveToTheNextPage() {
+    navigation.navigate("addphonenumber", {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      date_of_birth: date_of_birth,
+      account_type: account_type,
+    });
+  }
 
   return (
     <AppContainerView>
       <Header headerTitle={"Choose Wallet"} />
+      <Spacer height={20} />
       <View style={{ alignItems: "center" }}>
         <PageIndicator pageIndex={2} />
         <Image source={require("../../../assets/icons/choosewallet.png")} />
-        <AppText theText={"Choose an account that suits your needs"} />
+        <AppText theText={"Choose an account that"} />
         <AppText theText={"suits your needs"} />
       </View>
       <View
@@ -34,7 +62,10 @@ function ChooseWallet(props) {
           value="first"
           color="#4260ee"
           status={checked === "first" ? "checked" : "unchecked"}
-          onPress={() => setChecked("first")}
+          onPress={() => {
+            setChecked("first");
+            setAccount_type("individual");
+          }}
         />
         <AppText theText={"Individual Wallet"} />
       </View>
@@ -49,7 +80,10 @@ function ChooseWallet(props) {
           value="second"
           color="#4260ee"
           status={checked === "second" ? "checked" : "unchecked"}
-          onPress={() => setChecked("second")}
+          onPress={() => {
+            setChecked("second");
+            setAccount_type("business");
+          }}
         />
         <AppText theText={"Business Wallet"} />
       </View>
@@ -57,7 +91,10 @@ function ChooseWallet(props) {
       <View style={{ alignItems: "center" }}>
         <AppButton
           AppBtnText={"Procced"}
-          onPress={() => console.log("Procced")}
+          onPress={() => {
+            console.log("Procced");
+            moveToTheNextPage();
+          }}
         />
       </View>
       <Spacer height={height * 0.3} />

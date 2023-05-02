@@ -59,7 +59,6 @@ function BalanceCard(props) {
                   "N" + walletDetails[0].balance
                 )
               }
-              z
               color={"white"}
               fontSize={20}
               fontWeight={"bold"}

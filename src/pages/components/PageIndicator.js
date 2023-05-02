@@ -9,7 +9,7 @@ function PageIndicator({ pageIndex }) {
       <View
         style={{
           height: 5,
-          width: 60,
+          width: 40,
           borderRadius: 10,
           backgroundColor: "blue",
           marginHorizontal: 5,
@@ -23,7 +23,7 @@ function PageIndicator({ pageIndex }) {
       <View
         style={{
           height: 5,
-          width: 60,
+          width: 40,
           borderRadius: 10,
           backgroundColor: "#D9D9D9",
           marginHorizontal: 5,
@@ -33,7 +33,7 @@ function PageIndicator({ pageIndex }) {
   };
 
   return (
-    <View style={{ flexDirection: "row", marginHorizontal: 20 }}>
+    <View style={{ flexDirection: "row", marginHorizontal: 40 }}>
       {pageIndex >= 1 ? <CurrentStep /> : <CurrentStep />}
       {pageIndex >= 2 ? <CurrentStep /> : <NextStep />}
       {pageIndex >= 3 ? <CurrentStep /> : <NextStep />}
