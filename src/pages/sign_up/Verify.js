@@ -36,6 +36,7 @@ function Verify(props) {
           theText={
             "Please enter the 6 digit one time code to activate your account!"
           }
+          textAlign={"center"}
         />
         <Spacer height={35} />
         <View style={styles.otpContainer}>
@@ -116,13 +117,13 @@ function Verify(props) {
         </View>
         <Spacer height={35} />
         <AppText theText={"Didn’t receive a Code?"} />
-        <Spacer height={15} />
+        <Spacer height={20} />
         <AppText
           theText={"Resend Code!"}
           fontWeight={"bold"}
           textDecorationLine={"underline"}
         />
-        <Spacer height={15} />
+        <Spacer height={40} />
         <AppButton AppBtnText={"Verify"} onPress={() => console.log(otp)} />
       </View>
     </AppContainerView>

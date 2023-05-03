@@ -31,9 +31,10 @@ import PrivacyPolicy from "./src/pages/profile_page/PrivacyPolicy";
 import Faqs from "./src/pages/help_screen/pages/Faqs";
 import HelpScreen from "./src/pages/help_screen/HelpScreen";
 import HistoryPage from "./src/pages/home_page/HistoryPage";
+import InitiateVoucherTransfer from "./src/pages/send_transactions/pages/InitiateVoucherTransfer";
 
 export default function App() {
-  return <AddPhoneNumber />;
+  return <InitiateVoucherTransfer />;
 }
 
 const styles = StyleSheet.create({

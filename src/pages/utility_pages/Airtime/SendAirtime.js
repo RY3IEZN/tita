@@ -55,9 +55,11 @@ function SendAirtime(props) {
       {/* select Amount */}
       <Spacer height={30} />
       <View style={{ flexDirection: "row" }}>
-        <Spacer width={10} />
+        <Spacer width={25} />
         <AppText theText={"Amount"} />
       </View>
+      <Spacer height={5} />
+
       <AppPicker defaultTitle={"Please Select"} />
       {/* app button */}
       <View style={{ justifyContent: "center", alignItems: "center" }}>

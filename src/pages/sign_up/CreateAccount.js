@@ -33,6 +33,7 @@ function CreateAccount({ navigation }) {
     setIsSelected(!isSelected);
   };
   const passValuesToNextPage = async (values) => {
+    console.log(values);
     if (!isSelected) {
       Alert.alert(
         "Terms and Conditions",
@@ -201,7 +202,7 @@ function CreateAccount({ navigation }) {
             </>
           )}
         </Formik>
-        <Spacer height={21} />
+        <Spacer height={23} />
         {/* checkbox */}
         <View
           style={{
@@ -218,7 +219,8 @@ function CreateAccount({ navigation }) {
           />
           <Spacer width={10} />
           <AppText
-            theText={"I accept the Terms and Conditions          Policy"}
+            theText={"I accept the Terms and Conditions Policy"}
+            textAlign={"center"}
           />
         </View>
         <Spacer height={45} />

@@ -9,7 +9,7 @@ function PageIndicator({ pageIndex }) {
       <View
         style={{
           height: 5,
-          width: 40,
+          width: 50,
           borderRadius: 10,
           backgroundColor: "blue",
           marginHorizontal: 5,
@@ -23,7 +23,7 @@ function PageIndicator({ pageIndex }) {
       <View
         style={{
           height: 5,
-          width: 40,
+          width: 50,
           borderRadius: 10,
           backgroundColor: "#D9D9D9",
           marginHorizontal: 5,

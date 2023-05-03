@@ -27,21 +27,23 @@ function AppPicker({
 
   return (
     <View
-      style={{
-        height: 60,
-        backgroundColor: "white",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 10,
-        elevation: 2,
-      }}
+      style={
+        {
+          // height: 60,
+          // backgroundColor: "white",
+          // justifyContent: "center",
+          // alignItems: "center",
+          // borderRadius: 10,
+          // elevation: 2,
+        }
+      }
     >
       <View style={styles.container}>
         <View
           style={{
             backgroundColor: "white",
             height: 50,
-            width: width * 0.85,
+            width: "100%",
             elevation: 1,
             //   shadowColor: "red",
           }}
@@ -72,17 +74,28 @@ function AppPicker({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    borderRadius: 10,
+    // backgroundColor: "white",
+    // borderRadius: 10,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 4,
+    borderRadius: 5,
+    overflow: "hidden",
   },
   picker: {
-    borderRadius: 10,
-    color: "black",
-    // marginHorizontal: 20,
-    backgroundColor: "white",
+    // borderRadius: 10,
+    // color: "black",
+    // // marginHorizontal: 20,
+    // backgroundColor: "white",
+    width: "100%",
+    height: 40,
+    paddingLeft: 10,
   },
   pickerSelected: {
-    backgroundColor: "white",
+    backgroundColor: "green",
     color: "white",
   },
 });

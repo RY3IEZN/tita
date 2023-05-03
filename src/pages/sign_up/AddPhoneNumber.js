@@ -13,6 +13,7 @@ import PageIndicator from "../components/PageIndicator";
 import Telephone from "../../../assets/svg/Telephone";
 import { useState } from "react";
 import { Alert } from "react-native";
+import AuthApi from "../../api/auth/AuthApi";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -20,11 +21,21 @@ function AddPhoneNumber({ navigation, route }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // const { newValues } = route.params;
+  const { newValues } = route.params;
+  console.log(newValues, "this has been passed 3 times");
 
-  // console.log(newValues, "this has been passed 3 times");
+  const verifyPhoneNumberApi = UseApi(AuthApi.verify_phone_number);
 
-  const handleProceed = () => {
+  updateNewValues = () => {
+    const newValues2 = {
+      ...values,
+      phone_number: phoneNumber,
+    };
+    // Navigate to the next page with the updated data
+    navigation.navigate("verifypage", { newValues2 });
+  };
+
+  const handleProceed = async () => {
     // Check if phone number is valid Nigerian number
     const isValidNigerianNumber = /^0\d{10}$/.test(phoneNumber);
     if (!isValidNigerianNumber) {
@@ -32,7 +43,18 @@ function AddPhoneNumber({ navigation, route }) {
       return;
     }
     setIsLoading(true);
+    verifyPhoneNumberApi.makeRequest(phoneNumber);
+
+    if (verifyPhoneNumberApi.statusCode === 200) {
+      Alert.alert("Verification Code sent to phone");
+    } else {
+      Alert.alert("Please try again");
+    }
+    updateNewValues();
     // Do something with the phone number, like sending a text
+    // send to the backend get a token validate and all that good good
+    //possibly Alert.alert succefully verified
+
     console.log(phoneNumber);
     setIsLoading(false);
   };
@@ -50,17 +72,14 @@ function AddPhoneNumber({ navigation, route }) {
         <Spacer height={50} />
         <View style={styles.textInputBox}>
           <View style={{ marginHorizontal: 10 }}>
-            <MaterialCommunityIcons
-              name="diving-scuba-flag"
-              size={24}
-              color="#4361EE"
-            />
+            <Image source={require("../../../assets/icons/nigerianflag.png")} />
           </View>
           <TextInput
-            placeholder="Phone Number"
+            placeholder="+234823456789"
             style={{ width: width * 0.75 }}
             value={phoneNumber}
             onChangeText={setPhoneNumber}
+            keyboardType="number-pad"
           />
         </View>
         <Spacer height={50} />

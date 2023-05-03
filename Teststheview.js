@@ -1,33 +1,47 @@
 /** @format */
 
-import Checkbox from "expo-checkbox";
-import ExpoCheckbox from "expo-checkbox/build/ExpoCheckbox";
-import React from "react";
-import { useState } from "react";
-import { Text } from "react-native";
-import { Image } from "react-native";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
-import AppText from "./src/pages/components/AppText";
-import Otp from "./src/pages/components/Otp";
-import SelectAccountType from "./src/pages/components/SelectAccountType";
-import ModalAccountType from "./src/pages/components/SelectAccountType";
-import Spacer from "./src/pages/components/Spacer";
-import SvgComponent from "./ASampleSvgTest";
-
-function Teststheview(props) {
-  return (
-    <View style={styles.container}>
-      <SvgComponent />
-    </View>
-  );
-}
+import { Picker } from "@react-native-picker/picker";
 
 const styles = StyleSheet.create({
   container: {
+    // backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 4,
+    borderRadius: 5,
+    overflow: "hidden",
     justifyContent: "center",
-    alignItems: "center",
     flex: 1,
+    alignItems: "center",
+  },
+  picker: {
+    width: "90%",
+    height: 40,
+    paddingLeft: 10,
   },
 });
 
-export default Teststheview;
+const DropDownMenu = () => {
+  const [selectedValue, setSelectedValue] = useState("item1");
+
+  return (
+    <View style={styles.container}>
+      <Picker
+        selectedValue={selectedValue}
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
+        style={styles.picker}
+        mode="dropdown"
+      >
+        <Picker.Item label="Item 1" value="item1" />
+        <Picker.Item label="Item 2" value="item2" />
+        <Picker.Item label="Item 3" value="item3" />
+      </Picker>
+    </View>
+  );
+};
+
+export default DropDownMenu;
