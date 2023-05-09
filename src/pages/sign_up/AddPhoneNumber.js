@@ -14,6 +14,7 @@ import Telephone from "../../../assets/svg/Telephone";
 import { useState } from "react";
 import { Alert } from "react-native";
 import AuthApi from "../../api/auth/AuthApi";
+import UseApi from "../../api/UseApi";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -21,42 +22,52 @@ function AddPhoneNumber({ navigation, route }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const { newValues } = route.params;
-  console.log(newValues, "this has been passed 3 times");
+  // const { newValues } = route.params;
+  // console.log(newValues, "this has been passed 3 times");
 
   const verifyPhoneNumberApi = UseApi(AuthApi.verify_phone_number);
 
-  updateNewValues = () => {
+  const updateNewValues = () => {
     const newValues2 = {
       ...values,
       phone_number: phoneNumber,
     };
+    console.log(newValues2, "0000000000000000000000000");
     // Navigate to the next page with the updated data
-    navigation.navigate("verifypage", { newValues2 });
+    // navigation.navigate("verifypage", { newValues2 });
   };
 
   const handleProceed = async () => {
     // Check if phone number is valid Nigerian number
-    const isValidNigerianNumber = /^0\d{10}$/.test(phoneNumber);
+    const isValidNigerianNumber = /^\+234\d{10}$/.test(phoneNumber);
+
     if (!isValidNigerianNumber) {
       Alert.alert("Invalid phone number");
       return;
-    }
-    setIsLoading(true);
-    verifyPhoneNumberApi.makeRequest(phoneNumber);
-
-    if (verifyPhoneNumberApi.statusCode === 200) {
-      Alert.alert("Verification Code sent to phone");
     } else {
-      Alert.alert("Please try again");
+      console.log("continue");
     }
-    updateNewValues();
-    // Do something with the phone number, like sending a text
-    // send to the backend get a token validate and all that good good
-    //possibly Alert.alert succefully verified
 
-    console.log(phoneNumber);
-    setIsLoading(false);
+    setIsLoading(true);
+
+    // verifyPhoneNumberApi.makeRequest(+23409121738252);
+    // console.log(verifyPhoneNumberApi.statusCode, "#########################3");
+
+    // if (verifyPhoneNumberApi.statusCode == 200) {
+    //   console.log(true);
+    //   Alert.alert("Verification Code sent to phone");
+    // } else {
+    //   console.log(false);
+    //   Alert.alert("Please try again");
+    //   return;
+    // }
+    updateNewValues();
+    // // Do something with the phone number, like sending a text
+    // // send to the backend get a token validate and all that good good
+    // //possibly Alert.alert succefully verified
+
+    // console.log(phoneNumber);
+    // setIsLoading(false);
   };
 
   return (
@@ -75,11 +86,11 @@ function AddPhoneNumber({ navigation, route }) {
             <Image source={require("../../../assets/icons/nigerianflag.png")} />
           </View>
           <TextInput
-            placeholder="+234823456789"
+            placeholder="+23480123456789"
             style={{ width: width * 0.75 }}
             value={phoneNumber}
             onChangeText={setPhoneNumber}
-            keyboardType="number-pad"
+            keyboardType="phone-pad"
           />
         </View>
         <Spacer height={50} />

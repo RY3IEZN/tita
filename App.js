@@ -32,9 +32,11 @@ import Faqs from "./src/pages/help_screen/pages/Faqs";
 import HelpScreen from "./src/pages/help_screen/HelpScreen";
 import HistoryPage from "./src/pages/home_page/HistoryPage";
 import InitiateVoucherTransfer from "./src/pages/send_transactions/pages/InitiateVoucherTransfer";
+import OnboardingScreen from "./src/pages/Onboarding/OnboardingScreen";
+import WelcomeScreen from "./src/pages/welcome_screen/WelcomeScreen";
 
 export default function App() {
-  return <InitiateVoucherTransfer />;
+  return <OnboardingScreen />;
 }
 
 const styles = StyleSheet.create({

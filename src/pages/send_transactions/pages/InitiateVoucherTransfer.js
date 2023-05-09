@@ -13,8 +13,8 @@ function InitiateVoucherTransfer(props) {
   const [valueA, setValueA] = useState("");
   return (
     <AppContainerView>
-      <Header headerTitle={"Voucher Transfer"} />
-      <Spacer height={70} />
+      <Header headerTitle={"Voucher Transfer"} fontWeight={"600"} />
+      <Spacer height={40} />
       {/* app picker */}
       <AppPicker
         defaultTitle={"Voucher Type"}

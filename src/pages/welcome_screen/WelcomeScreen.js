@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 import * as Font from "expo-font";
+import Welcomepagesvg from "../../../assets/svg/Welcomepagesvg";
+import AppText from "../components/AppText";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -25,15 +27,11 @@ function WelcomeScreen(props) {
   return (
     <View style={styles.container}>
       <View style={styles.image}>
-        <Image source={require("../../../assets/icons/welcomepage.png")} />
+        <Welcomepagesvg />
       </View>
 
       <View style={{ marginHorizontal: 25, marginRight: 50 }}>
-        <Text
-          style={{ fontFamily: "poppins", fontSize: 30, fontWeight: "700" }}
-        >
-          Welcome
-        </Text>
+        <AppText theText={"Welcome"} fontSize={30} fontWeight={"700"} />
         <View style={{ marginHorizontal: 2 }}>
           <Text
             style={{
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
   loginBtn: {
     borderWidth: 1,
     height: 45,
-    width: 170,
+    width: 180,
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
   createBtn: {
     backgroundColor: "#4361EE",
     height: 45,
-    width: 170,
+    width: 180,
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",

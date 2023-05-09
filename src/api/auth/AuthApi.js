@@ -25,7 +25,7 @@ const verify_phone_number = async (values) => {
   info.append("phone_number", values.phone_number);
   // const response = await apiClient.post("/verify-phone-number", info);
   // response.status
-  return apiClient.post("/verify-phone-number", info);
+  return apiClient.post("/guest/add-phone-number", info);
 };
 
 // verify any code sent (phone verification or password reset)

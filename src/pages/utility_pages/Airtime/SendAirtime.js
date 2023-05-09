@@ -32,7 +32,16 @@ function SendAirtime(props) {
           marginHorizontal: 10,
         }}
       >
-        <TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "#F2F2F2",
+            borderRadius: 50,
+            width: 70,
+            height: 70,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Image source={require("../../../../assets/icons/glo.png")} />
         </TouchableOpacity>
         <TouchableOpacity>

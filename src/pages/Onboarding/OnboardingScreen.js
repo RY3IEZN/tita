@@ -12,15 +12,13 @@ import {
 import Swiper from "react-native-swiper";
 import { useFonts } from "expo-font";
 import * as Font from "expo-font";
+import Splashscreen1 from "../../../assets/svg/Splashscreen1";
+import Onboarding2 from "../../../assets/svg/Onboarding2";
+import Onboarding3 from "../../../assets/svg/Onboarding3";
 
 const { width, height } = Dimensions.get("screen");
 
 function OnboardingScreen({ navigation }) {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../../assets/fonts/Lato-Regular.ttf"),
-    moondance: require("../../../assets/fonts/MoonDance-Regular.ttf"),
-    inter: require("../../../assets/fonts/Inter-Regular.ttf"),
-  });
   return (
     <View style={styles.container}>
       <Swiper
@@ -29,10 +27,7 @@ function OnboardingScreen({ navigation }) {
       >
         {/* Slide 1 */}
         <View style={styles.slide1}>
-          <Image
-            source={require("../../../assets/icons/onboard1.png")}
-            style={{ marginTop: 100 }}
-          />
+          <Splashscreen1 />
           <View style={{ marginTop: 50 }}>
             <Text style={styles.text}>Send Money</Text>
           </View>
@@ -50,10 +45,7 @@ function OnboardingScreen({ navigation }) {
 
         {/* slide2 */}
         <View style={styles.slide1}>
-          <Image
-            source={require("../../../assets/icons/onboard2.png")}
-            style={{ marginTop: 100 }}
-          />
+          <Onboarding2 />
           <View style={{ marginTop: 50 }}>
             <Text style={styles.text}>Pay Bills</Text>
           </View>
@@ -70,10 +62,7 @@ function OnboardingScreen({ navigation }) {
         </View>
         {/* slide3 */}
         <View style={styles.slide1}>
-          <Image
-            source={require("../../../assets/icons/onboard3.png")}
-            style={{ marginTop: 100 }}
-          />
+          <Onboarding3 />
           <View style={{ marginTop: 50 }}>
             <Text style={styles.text}>Great Experience</Text>
           </View>
@@ -83,7 +72,7 @@ function OnboardingScreen({ navigation }) {
               Great Experience with our Fintech App. We are here to satisfy you
               in all possible ways.
             </Text>
-            <TouchableOpacity onPress={navigation.navigate("welcomepage")}>
+            <TouchableOpacity>
               <Image
                 source={require("../../../assets/icons/edgestart.png")}
                 style={{
@@ -107,6 +96,7 @@ const styles = StyleSheet.create({
   wrapper: {},
   slide1: {
     flex: 1,
+    marginTop: 210,
     alignItems: "center",
     backgroundColor: "white",
   },

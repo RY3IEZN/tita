@@ -4,7 +4,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import AppText from "./AppText";
 
-function Header({ headerTitle, fontSize = 30 }) {
+function Header({ headerTitle, fontSize = 30, fontWeight }) {
   return (
     <View
       style={{
@@ -14,7 +14,7 @@ function Header({ headerTitle, fontSize = 30 }) {
       <AppText
         theText={headerTitle}
         fontSize={fontSize}
-        fontWeight={"700"}
+        fontWeight={fontWeight}
         color={"#3862F8"}
       />
     </View>
