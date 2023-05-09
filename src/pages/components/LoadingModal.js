@@ -22,7 +22,7 @@ function LoadingModal({ isLoading, onPress }) {
         }}
       >
         <ActivityIndicator size={40} color={"#4361EE"} />
-        <Button title="close" onPress={onPress} />
+        {/* <Button title="close" onPress={onPress} /> */}
       </View>
     </Modal>
   );

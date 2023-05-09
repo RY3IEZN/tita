@@ -34,9 +34,10 @@ import HistoryPage from "./src/pages/home_page/HistoryPage";
 import InitiateVoucherTransfer from "./src/pages/send_transactions/pages/InitiateVoucherTransfer";
 import OnboardingScreen from "./src/pages/Onboarding/OnboardingScreen";
 import WelcomeScreen from "./src/pages/welcome_screen/WelcomeScreen";
+import AddMoneyPage from "./src/pages/home_page/AddMoneyPage";
 
 export default function App() {
-  return <OnboardingScreen />;
+  return <HomeScreen />;
 }
 
 const styles = StyleSheet.create({

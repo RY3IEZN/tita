@@ -76,7 +76,7 @@ function OnboardingScreen({ navigation }) {
               <Image
                 source={require("../../../assets/icons/edgestart.png")}
                 style={{
-                  position: "relative",
+                  position: "absolute",
                   left: width * 0.72,
                   top: height * 0.16,
                 }}
@@ -116,14 +116,12 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontSize: 18,
     fontWeight: "bold",
-    fontFamily: "moondance",
     lineHeight: 22,
   },
   subText: {
     color: "#000000",
     fontSize: 15,
     fontWeight: "300",
-    fontFamily: "inter",
     textAlign: "center",
     marginHorizontal: 20,
   },

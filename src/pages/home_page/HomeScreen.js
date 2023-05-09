@@ -37,6 +37,7 @@ function HomeScreen({ navigation }) {
   }, []);
 
   const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <AppContainerView>
       {/* header section */}
@@ -47,7 +48,7 @@ function HomeScreen({ navigation }) {
         }
       />
       {/* balance at a glance */}
-      <BalanceCard />
+      <BalanceCard addMoneyonPress={() => console.log("didnnt ahappen")} />
       {/* quick actions */}
       <View style={styles.quickActionSection}>
         <QuickActionButton
@@ -121,6 +122,7 @@ function HomeScreen({ navigation }) {
         />
       </View>
       {/* pop up modal */}
+      <LoadingModal isLoading={modalVisible} />
       <Modal
         animationType="slide"
         transparent={true}

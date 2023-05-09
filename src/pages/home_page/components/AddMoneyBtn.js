@@ -4,9 +4,9 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-function AddMoneyBtn(props) {
+function AddMoneyBtn({ onPress }) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.outerCircle}>
         <View style={styles.innercircle1}>
           <View style={styles.innercircle2}>

@@ -12,7 +12,7 @@ import { ActivityIndicator } from "react-native";
 
 const { width, height } = Dimensions.get("screen");
 
-function BalanceCard(props) {
+function BalanceCard({ addMoneyonPress }) {
   const [walletDetails, setWalletDetails] = useState([]);
 
   const getUserWalletApi = UseApi(ProfileApi.get_wallets);
@@ -56,7 +56,7 @@ function BalanceCard(props) {
                 walletDetails == "" ? (
                   <ActivityIndicator />
                 ) : (
-                  "N" + walletDetails[0].balance
+                  "N" + "walletDetails[0].balance"
                 )
               }
               color={"white"}
@@ -74,7 +74,7 @@ function BalanceCard(props) {
         <Spacer width={50} />
         {/* addmoney */}
         <View style={{ alignItems: "center" }}>
-          <AddMoneyBtn />
+          <AddMoneyBtn onPress={addMoneyonPress} />
           <Spacer height={10} />
           <AppText color={"white"} fontWeight={"bold"} theText={"Add Money"} />
         </View>
