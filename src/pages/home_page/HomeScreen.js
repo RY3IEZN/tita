@@ -28,6 +28,7 @@ import ModalAppButton from "../components/ModalAppButton";
 import BalanceCard from "./components/BalanceCard";
 import LoadingModal from "../components/LoadingModal";
 import { useEffect } from "react";
+import HistoryPage from "../history_page/HistoryPage";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -63,7 +64,7 @@ function HomeScreen({ navigation }) {
         />
         <QuickActionButton
           title1={"History"}
-          onPress={() => console.log("make i check my account")}
+          onPress={() => navigation.navigate("historyPage")}
           imageSource={require("../../../assets/icons/history.png")}
         />
       </View>

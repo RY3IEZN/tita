@@ -49,17 +49,23 @@ function Faqs(props) {
       {/* <Text>grequesntly asjed question</Text> */}
       <Spacer height={15} />
       {/* <CategoriesList /> */}
-      <View style={styles.searchBox}>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Spacer width={5} />
-          <MaterialCommunityIcons name="magnify" size={20} color={"#8e8e93"} />
-          <Spacer width={5} />
-          <TextInput placeholder="Search" style={{ width: width * 0.6 }} />
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <View style={styles.searchBox}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Spacer width={5} />
+            <MaterialCommunityIcons
+              name="magnify"
+              size={20}
+              color={"#8e8e93"}
+            />
+            <Spacer width={5} />
+            <TextInput placeholder="Search" style={{ width: width * 0.6 }} />
+          </View>
         </View>
       </View>
       <Spacer height={10} />

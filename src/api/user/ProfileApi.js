@@ -24,4 +24,15 @@ const logout = () => {
   return apiClient.get("/logout");
 };
 
-export default { logout, get_profile, get_wallets, set_transaction_pin };
+// get user transaction history
+const get_transaction_hisory = () => {
+  return apiClient.get("/user/transactions");
+};
+
+export default {
+  logout,
+  get_profile,
+  get_wallets,
+  set_transaction_pin,
+  get_transaction_hisory,
+};

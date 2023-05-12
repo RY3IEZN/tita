@@ -56,7 +56,7 @@ function BalanceCard({ addMoneyonPress }) {
                 walletDetails == "" ? (
                   <ActivityIndicator />
                 ) : (
-                  "N" + "walletDetails[0].balance"
+                  "N" + walletDetails[0].balance
                 )
               }
               color={"white"}

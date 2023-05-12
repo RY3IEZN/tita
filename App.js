@@ -30,14 +30,14 @@ import ResetPassword from "./src/pages/reset_password/ResetPassword";
 import PrivacyPolicy from "./src/pages/profile_page/PrivacyPolicy";
 import Faqs from "./src/pages/help_screen/pages/Faqs";
 import HelpScreen from "./src/pages/help_screen/HelpScreen";
-import HistoryPage from "./src/pages/home_page/HistoryPage";
 import InitiateVoucherTransfer from "./src/pages/send_transactions/pages/InitiateVoucherTransfer";
 import OnboardingScreen from "./src/pages/Onboarding/OnboardingScreen";
 import WelcomeScreen from "./src/pages/welcome_screen/WelcomeScreen";
 import AddMoneyPage from "./src/pages/home_page/AddMoneyPage";
+import HistoryPage from "./src/pages/history_page/HistoryPage";
 
 export default function App() {
-  return <HomeScreen />;
+  return <AppNavigator />;
 }
 
 const styles = StyleSheet.create({

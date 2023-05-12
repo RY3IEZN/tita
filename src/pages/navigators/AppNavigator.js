@@ -34,6 +34,7 @@ import TransactionSuccessful from "../send_transactions/TransactionSuccessful";
 import ResetPassword from "../reset_password/ResetPassword";
 import ChooseWallet from "../sign_up/ChooseWallet";
 import AddPhoneNumber from "../sign_up/AddPhoneNumber";
+import HistoryPage from "../history_page/HistoryPage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -227,6 +228,13 @@ function AppNavigator(props) {
         <Stack.Screen
           name="profilePage"
           component={ProfilePage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="historyPage"
+          component={HistoryPage}
           options={{
             headerShown: false,
           }}
