@@ -1,7 +1,14 @@
 /** @format */
 
 import React from "react";
-import { View, StyleSheet, Text, TextInput, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Dimensions,
+  Image,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("screen");
@@ -11,6 +18,9 @@ function CustomeTextInputField2({
   inputfieldIcon,
   visible,
   placeholder,
+  img,
+  onChangeText,
+  keyboardType,
 }) {
   return (
     <>
@@ -22,8 +32,17 @@ function CustomeTextInputField2({
             size={24}
             color="#4361EE"
           />
+          <Image
+            source={img}
+            style={{ width: 20, height: 20, marginBottom: 30 }}
+          />
         </View>
-        <TextInput placeholder={placeholder} style={{ width: width * 0.75 }} />
+        <TextInput
+          placeholder={placeholder}
+          style={{ width: width * 0.75 }}
+          onChangeText={onChangeText}
+          keyboardType={keyboardType}
+        />
         {visible ? <MaterialCommunityIcons name="lock" /> : ""}
       </View>
     </>

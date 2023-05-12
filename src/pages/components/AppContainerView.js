@@ -22,7 +22,7 @@ function AppContainerView({ children }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
+    marginHorizontal: 15,
     marginTop: 40,
   },
   background: {

@@ -12,10 +12,16 @@ import { ActivityIndicator } from "react-native";
 
 const { width, height } = Dimensions.get("screen");
 
-function BalanceCard({ addMoneyonPress }) {
+function BalanceCard({ addMoneyonPress, navigation }) {
   const [walletDetails, setWalletDetails] = useState([]);
 
   const getUserWalletApi = UseApi(ProfileApi.get_wallets);
+
+  // useEffect(() => {
+  //   const unsubscribe = navigation.addListener("focus", () => {
+  //     getUserWalletApi.makeRequest();
+  //   });
+  // }, []);
 
   useEffect(() => {
     getUserWalletApi.makeRequest();

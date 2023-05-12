@@ -10,11 +10,14 @@ import Spacer from "../../components/Spacer";
 import CustomeTextInputField2 from "../../recieve_transactions/components/CustomTextInputField2";
 
 function InitiateVoucherTransfer(props) {
-  const [valueA, setValueA] = useState("");
+  const [valueA, setValueA] = useState();
+  const [valueB, setValueB] = useState();
+  const [valueC, setValueC] = useState();
+  const [amount, setAmount] = useState();
   return (
     <AppContainerView>
       <Header headerTitle={"Voucher Transfer"} fontWeight={"600"} />
-      <Spacer height={40} />
+      <Spacer height={80} />
       {/* app picker */}
       <AppPicker
         defaultTitle={"Voucher Type"}
@@ -28,7 +31,7 @@ function InitiateVoucherTransfer(props) {
         }}
         // for now it just console logs the value
       />
-      <Spacer height={40} />
+      <Spacer height={30} />
       {/* account type */}
       <AppPicker
         defaultTitle={"Select Account "}
@@ -38,14 +41,22 @@ function InitiateVoucherTransfer(props) {
         value2={"Savings Account"}
         label3={"Business Account"}
         value3={"Business Account"}
-        onValueChange={(valueB) => console.log(valueB)}
+        onValueChange={(valueB) => {
+          console.log(valueB);
+          setValueB(valueB);
+        }}
         // for now it just console logs the value
       />
       <Spacer height={10} />
-      <CustomeTextInputField2
-        placeholder={"Amount"}
-        inputfieldIcon={"currency-usd"}
-      />
+      <View style={{ alignItems: "center" }}>
+        <CustomeTextInputField2
+          placeholder={"Amount"}
+          img={require("../../../../assets/icons/naira_sign_img.png")}
+          onChangeText={(text) => setAmount(text)}
+          keyboardType={"number-pad"}
+        />
+      </View>
+
       <Spacer height={20} />
       {/* voucher condition only shows when the program type is set to "program" */}
       {valueA == "Program" ? (
@@ -58,14 +69,20 @@ function InitiateVoucherTransfer(props) {
             value2={"Request Back for Pin"}
             label3={"Beneficiary"}
             value3={"Beneficiary"}
-            onValueChange={(valueC) => console.log(valueC)}
+            onValueChange={(valueC) => {
+              console.log(valueC);
+              setValueC(valueC);
+            }}
           />
         </View>
       ) : (
         ""
       )}
       <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <AppButton AppBtnText={"Procced"} />
+        <AppButton
+          AppBtnText={"Procced"}
+          onPress={() => console.log(valueA, valueB, valueC, amount)}
+        />
       </View>
     </AppContainerView>
   );

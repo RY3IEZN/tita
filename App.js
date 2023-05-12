@@ -37,7 +37,7 @@ import AddMoneyPage from "./src/pages/home_page/AddMoneyPage";
 import HistoryPage from "./src/pages/history_page/HistoryPage";
 
 export default function App() {
-  return <AppNavigator />;
+  return <AddMoneyPage />;
 }
 
 const styles = StyleSheet.create({

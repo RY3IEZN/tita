@@ -11,10 +11,34 @@ import {
   Text,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width, height } = Dimensions.get("screen");
 
 function SplashScreen({ navigation }) {
+  // useEffect(() => {
+  //   checkLoginStatus();
+  // }, []);
+
+  // const checkLoginStatus = async () => {
+  //   try {
+  //     const storedToken = await AsyncStorage.getItem("bearerToken");
+  //     const isLoggedIn = storedToken !== null;
+
+  //     // Navigate to the appropriate screen based on login status
+  //     if (isLoggedIn) {
+  //       // User is logged in, navigate to the home screen
+  //       navigation.navigate("Home");
+  //     } else {
+  //       // User is not logged in, navigate to the login screen
+  //       navigation.navigate("Login");
+  //     }
+  //   } catch (error) {
+  //     console.log("Error retrieving stored token:", error);
+  //     // Handle the error
+  //   }
+  // };
+
   return (
     <View style={styles.container}>
       <Image source={require("../../../assets/icons/titaiconnew.png")} />
