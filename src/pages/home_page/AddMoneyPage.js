@@ -61,18 +61,23 @@ function AddMoneyPage(props) {
                   lineHeight={25}
                 />
               </View>
-              <Spacer width={80.5} />
+              <Spacer width={80} />
               <View
                 style={{
                   backgroundColor: "#d3dafd",
-                  width: 60,
+                  width: 70,
                   height: 30,
                   justifyContent: "center",
                   borderRadius: 5,
+                  flexDirection: "row",
                   alignItems: "center",
                 }}
               >
                 <AppText theText={"Copy"} color={"white"} />
+                <Image
+                  source={require("../../../assets/icons/copybtn-removebg-preview.png")}
+                  style={{ height: 20, width: 20 }}
+                />
               </View>
             </View>
           </View>

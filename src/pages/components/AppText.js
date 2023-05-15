@@ -16,6 +16,7 @@ function AppText({
 }) {
   const [loaded] = useFonts({
     poppins: require("../../../assets/fonts/Poppins-Regular.ttf"),
+    Montserrat: require("../../../assets/fonts/Montserrat-VariableFont_wght.ttf"),
   });
 
   if (!loaded) {
