@@ -18,7 +18,7 @@ function AppSoftCards({ cardTitle, onPress }) {
     <TouchableOpacity onPress={onPress}>
       <View
         style={{
-          height: height * 0.1,
+          height: height * 0.08,
           width: width * 0.85,
           borderRadius: 25,
           backgroundColor: "white",

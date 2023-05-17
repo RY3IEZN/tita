@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Spacer from "../../components/Spacer";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -21,6 +22,7 @@ function CustomeTextInputField2({
   img,
   onChangeText,
   keyboardType,
+  values,
 }) {
   return (
     <>
@@ -34,7 +36,11 @@ function CustomeTextInputField2({
           />
           <Image
             source={img}
-            style={{ width: 20, height: 20, marginBottom: 30 }}
+            style={{
+              width: 20,
+              height: 20,
+              marginBottom: 30,
+            }}
           />
         </View>
         <TextInput
@@ -42,6 +48,7 @@ function CustomeTextInputField2({
           style={{ width: width * 0.75 }}
           onChangeText={onChangeText}
           keyboardType={keyboardType}
+          value={values}
         />
         {visible ? <MaterialCommunityIcons name="lock" /> : ""}
       </View>
@@ -52,10 +59,10 @@ function CustomeTextInputField2({
 const styles = StyleSheet.create({
   container: {},
   textInputName: {
-    marginTop: 10,
+    marginBottom: 10,
     fontWeight: "500",
     fontSize: 15,
-    marginHorizontal: 20,
+    marginHorizontal: 40,
     color: "#4361EE",
   },
   textInputBox: {

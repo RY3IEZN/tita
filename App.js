@@ -38,7 +38,7 @@ import HistoryPage from "./src/pages/history_page/HistoryPage";
 import RequestVirtualCardPage from "./src/pages/home_page/RequestVirtualCardPage";
 
 export default function App() {
-  return <RequestVirtualCardPage />;
+  return <AppNavigator />;
 }
 
 const styles = StyleSheet.create({
