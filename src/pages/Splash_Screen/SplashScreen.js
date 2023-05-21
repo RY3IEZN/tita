@@ -11,6 +11,7 @@ import {
   Text,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import Titamainlogo from "../../../assets/svg/Titamainlogo";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width, height } = Dimensions.get("screen");
@@ -41,7 +42,7 @@ function SplashScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../../../assets/icons/titaiconnew.png")} />
+      <Titamainlogo />
       <TouchableOpacity
         style={{
           marginVertical: 20,
