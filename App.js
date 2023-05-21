@@ -36,9 +36,10 @@ import WelcomeScreen from "./src/pages/welcome_screen/WelcomeScreen";
 import AddMoneyPage from "./src/pages/home_page/AddMoneyPage";
 import HistoryPage from "./src/pages/history_page/HistoryPage";
 import RequestVirtualCardPage from "./src/pages/home_page/RequestVirtualCardPage";
+import ProfilePage from "./src/pages/profile_page/ProfilePage";
 
 export default function App() {
-  return <SplashScreen />;
+  return <LoginPage />;
 }
 
 const styles = StyleSheet.create({

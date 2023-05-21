@@ -18,12 +18,6 @@ import AppText from "../components/AppText";
 const { width, height } = Dimensions.get("screen");
 
 function WelcomeScreen(props) {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../../assets/fonts/Lato-Regular.ttf"),
-    moondance: require("../../../assets/fonts/MoonDance-Regular.ttf"),
-    inter: require("../../../assets/fonts/Inter-Regular.ttf"),
-    poppins: require("../../../assets/fonts/Poppins-Regular.ttf"),
-  });
   return (
     <View style={styles.container}>
       <View style={styles.image}>
@@ -33,16 +27,11 @@ function WelcomeScreen(props) {
       <View style={{ marginHorizontal: 25, marginRight: 50 }}>
         <AppText theText={"Welcome"} fontSize={30} fontWeight={"700"} />
         <View style={{ marginHorizontal: 2 }}>
-          <Text
-            style={{
-              fontFamily: "inter",
-              fontSize: 14,
-              fontWeight: "200",
-              lineHeight: 22,
-            }}
-          >
-            Make Transactions on your Phone, Whenever, Wherever with TITA.
-          </Text>
+          <AppText
+            theText={
+              "Make Transactions on your Phone, Whenever, Wherever with TITA."
+            }
+          />
         </View>
       </View>
 

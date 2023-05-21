@@ -68,7 +68,7 @@ function LoginPage({ navigation }) {
 
   return (
     <AppContainerView>
-      <Header headerTitle={"Login"} />
+      <Header headerTitle={"Login"} canGoBack />
       <View style={{ alignItems: "center" }}>
         <LoginPageSvg />
         <Spacer height={30} />

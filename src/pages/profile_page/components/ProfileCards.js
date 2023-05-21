@@ -3,6 +3,7 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AppText from "../../components/AppText";
 
 function ProfileCards({ title, subtitle, imageSource, subtitle2 }) {
   return (
@@ -25,7 +26,7 @@ function ProfileCards({ title, subtitle, imageSource, subtitle2 }) {
           <View
             style={{
               height: 70,
-              width: 70,
+              width: 65,
               justifyContent: "center",
               alignItems: "center",
               borderRadius: 25,
@@ -56,9 +57,9 @@ function ProfileCards({ title, subtitle, imageSource, subtitle2 }) {
             </View>
           </View>
           <View>
-            <Text>{title}</Text>
-            <Text>{subtitle}</Text>
-            <Text>{subtitle2}</Text>
+            <AppText theText={title} />
+            <AppText theText={subtitle} />
+            {subtitle2 && <AppText theText={subtitle2} />}
           </View>
         </View>
         <MaterialCommunityIcons

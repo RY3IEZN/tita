@@ -72,19 +72,19 @@ function OnboardingScreen({ navigation }) {
               Great Experience with our Fintech App. We are here to satisfy you
               in all possible ways.
             </Text>
-            <TouchableOpacity>
-              <Image
-                source={require("../../../assets/icons/edgestart.png")}
-                style={{
-                  position: "absolute",
-                  left: width * 0.72,
-                  top: height * 0.16,
-                }}
-              />
-            </TouchableOpacity>
           </View>
         </View>
       </Swiper>
+      <TouchableOpacity>
+        <Image
+          source={require("../../../assets/icons/edgestart.png")}
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: -10,
+          }}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
