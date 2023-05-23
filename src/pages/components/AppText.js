@@ -13,6 +13,7 @@ function AppText({
   textAlign,
   lineHeight,
   textDecorationLine,
+  fontFamily = "poppins",
 }) {
   const [loaded] = useFonts({
     poppins: require("../../../assets/fonts/Poppins-Regular.ttf"),
@@ -25,7 +26,7 @@ function AppText({
   return (
     <Text
       style={{
-        fontFamily: "poppins",
+        fontFamily: fontFamily,
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color,

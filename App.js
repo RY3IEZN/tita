@@ -37,9 +37,12 @@ import AddMoneyPage from "./src/pages/home_page/AddMoneyPage";
 import HistoryPage from "./src/pages/history_page/HistoryPage";
 import RequestVirtualCardPage from "./src/pages/home_page/RequestVirtualCardPage";
 import ProfilePage from "./src/pages/profile_page/ProfilePage";
+import RequestVirtualCardApplication from "./src/pages/home_page/RequestVirtualCardApplication";
+import UpdateKyc from "./src/pages/update_kyc/UpdateKyc";
+import KycPage3 from "./src/pages/update_kyc/KycPage3";
 
 export default function App() {
-  return <LoginPage />;
+  return <KycPage3 />;
 }
 
 const styles = StyleSheet.create({

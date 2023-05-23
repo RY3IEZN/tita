@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   container: {},
   appBtn: {
     height: 55,
-    width: width * 0.85,
+    width: width * 0.9,
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",

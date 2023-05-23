@@ -6,13 +6,20 @@ import { KeyboardAvoidingView } from "react-native";
 import { ScrollView } from "react-native";
 import { View, StyleSheet } from "react-native";
 
-function AppContainerView({ children }) {
+function AppContainerView({ children, marginTop = 40 }) {
   return (
     <View style={styles.background}>
       <SafeAreaView>
         <ScrollView>
           <KeyboardAvoidingView>
-            <View style={styles.container}>{children}</View>
+            <View
+              style={{
+                marginHorizontal: 20,
+                marginTop: marginTop,
+              }}
+            >
+              {children}
+            </View>
           </KeyboardAvoidingView>
         </ScrollView>
       </SafeAreaView>
@@ -21,10 +28,7 @@ function AppContainerView({ children }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 15,
-    marginTop: 40,
-  },
+  container: {},
   background: {
     backgroundColor: "#ffffff",
     flex: 1,

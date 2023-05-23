@@ -11,7 +11,7 @@ function CustomeTextInputField({ inputTitle, inputfieldIcon, TextinputTitle }) {
     <>
       <Text style={styles.textInputName}>{inputTitle}</Text>
       <View style={styles.textInputBox}>
-        <View style={{ marginHorizontal: 10 }}>
+        <View style={{ marginHorizontal: 5 }}>
           <MaterialCommunityIcons
             name={inputfieldIcon}
             size={24}
@@ -29,7 +29,13 @@ function CustomeTextInputField({ inputTitle, inputfieldIcon, TextinputTitle }) {
 
 const styles = StyleSheet.create({
   container: {},
-  textInputName: { marginTop: 10, fontWeight: "500", fontSize: 15 },
+  textInputName: {
+    marginTop: 10,
+    fontWeight: "500",
+    fontSize: 15,
+    textAlign: "left",
+    alignItems: "flex-start",
+  },
   textInputBox: {
     height: 55,
     width: width * 0.8,

@@ -135,7 +135,7 @@ function LoginPage({ navigation }) {
               onPress={() => {
                 navigation.navigate("resetpasswordpage");
               }}
-              style={{ textAlign: "right", marginTop: 10, marginBottom: 120 }}
+              style={{ textAlign: "right", marginTop: 10, marginBottom: 110 }}
             >
               <AppText textAlign={"right"} theText={"Forgot Password?"} />
             </TouchableOpacity>
@@ -157,7 +157,7 @@ function LoginPage({ navigation }) {
         }}
       >
         <AppText theText={"Not a Member yet?"} />
-        <Spacer width={5} />
+        <Spacer width={2} />
         <TouchableOpacity onPress={() => navigation.navigate("createAccount")}>
           <AppText
             theText={"Register now"}

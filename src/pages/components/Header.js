@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
   backButtonContainer: {
     width: 24,
