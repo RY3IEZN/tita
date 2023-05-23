@@ -40,9 +40,11 @@ import ProfilePage from "./src/pages/profile_page/ProfilePage";
 import RequestVirtualCardApplication from "./src/pages/home_page/RequestVirtualCardApplication";
 import UpdateKyc from "./src/pages/update_kyc/UpdateKyc";
 import KycPage3 from "./src/pages/update_kyc/KycPage3";
+import KycPage2 from "./src/pages/update_kyc/KycPage2";
+import KycPage1 from "./src/pages/update_kyc/KycPage1";
 
 export default function App() {
-  return <KycPage3 />;
+  return <KycPage1 />;
 }
 
 const styles = StyleSheet.create({
