@@ -68,7 +68,11 @@ function LoginPage({ navigation }) {
 
   return (
     <AppContainerView>
-      <Header headerTitle={"Login"} canGoBack />
+      <Header
+        headerTitle={"Login"}
+        canGoBack
+        onPress={() => navigation.goBack()}
+      />
       <View style={{ alignItems: "center" }}>
         <LoginPageSvg />
         <Spacer height={30} />
@@ -77,9 +81,10 @@ function LoginPage({ navigation }) {
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
           console.log(values);
-          onFormSubmit(values);
+          // onFormSubmit(values);
+          navigation.navigate("NestedTabs", { screen: "Home" });
         }}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
           <>

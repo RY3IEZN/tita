@@ -8,11 +8,16 @@ import Header from "../components/Header";
 import CountryAppPicker from "./components/CountryAppPicker";
 import RegionAppPicker from "./components/RegionAppPicker";
 import CustomeTextInputField from "../profile_page/components/CustomeTextInputField";
+import Spacer from "../components/Spacer";
 
 function UpdateKyc({ navigation }) {
   return (
     <AppContainerView>
-      <Header headerTitle={"Update KYC"} canGoBack />
+      <Header
+        headerTitle={"Update KYC"}
+        canGoBack
+        onPress={() => navigation.goBack()}
+      />
 
       <View
         style={{
@@ -37,12 +42,11 @@ function UpdateKyc({ navigation }) {
           Update your Know Your Client form (KYC form) in other for us (TITA) to
           know more about you.
         </Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("changepin2")}
-          style={{ marginVertical: 40 }}
-        >
-          <AppButton AppBtnText={"Continue"} />
-        </TouchableOpacity>
+        <Spacer height={30} />
+        <AppButton
+          AppBtnText={"Continue"}
+          onPress={() => navigation.navigate("kycpage1")}
+        />
       </View>
     </AppContainerView>
   );

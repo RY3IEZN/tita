@@ -5,14 +5,18 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "./AppText";
 
-function Header({ headerTitle, fontSize = 30, fontWeight, canGoBack }) {
+function Header({
+  headerTitle,
+  fontSize = 30,
+  fontWeight,
+  canGoBack,
+  navigation,
+  onPress,
+}) {
   const renderBackButton = () => {
     if (canGoBack) {
       return (
-        <TouchableOpacity
-          onPress={handleGoBack}
-          style={styles.backButtonContainer}
-        >
+        <TouchableOpacity onPress={onPress} style={styles.backButtonContainer}>
           <MaterialCommunityIcons
             name="chevron-left"
             size={24}
@@ -23,10 +27,6 @@ function Header({ headerTitle, fontSize = 30, fontWeight, canGoBack }) {
       );
     }
     return null;
-  };
-
-  const handleGoBack = () => {
-    // Handle the go back action here
   };
 
   return (

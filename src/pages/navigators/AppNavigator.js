@@ -35,6 +35,7 @@ import ResetPassword from "../reset_password/ResetPassword";
 import ChooseWallet from "../sign_up/ChooseWallet";
 import AddPhoneNumber from "../sign_up/AddPhoneNumber";
 import HistoryPage from "../history_page/HistoryPage";
+import KycPage1 from "../update_kyc/KycPage1";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -291,6 +292,13 @@ function AppNavigator(props) {
         <Stack.Screen
           name="transactionSuccessful"
           component={TransactionSuccessful}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="kycpage1"
+          component={KycPage1}
           options={{
             headerShown: false,
           }}

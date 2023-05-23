@@ -1,4 +1,7 @@
 installation
+
+!!!!!!for some wierd reason i have to use --force!!!!!!!!
+
 - react-native-swiper
 - react-native-paper
 - expo-linear-gradient
@@ -9,3 +12,4 @@ installation
 - npm i yup
 - npm i react-native-svg
 - npm i react-native-svg-transformer
+- expo install expo-image-picker
