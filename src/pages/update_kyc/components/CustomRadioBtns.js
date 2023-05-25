@@ -13,7 +13,12 @@ function CustomRadioBtns({ radioBtnText, value, status, onPress }) {
         alignItems: "center",
       }}
     >
-      <RadioButton value={value} status={status} onPress={onPress} />
+      <RadioButton
+        value={value}
+        status={status}
+        onPress={onPress}
+        color="#3862F8"
+      />
       <AppText theText={radioBtnText} />
     </View>
   );

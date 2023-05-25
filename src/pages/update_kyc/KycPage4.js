@@ -9,6 +9,8 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  Image,
+  SafeAreaView,
 } from "react-native";
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
@@ -21,8 +23,27 @@ import Header from "../components/Header";
 import DatePicker from "react-native-modern-datepicker";
 import NationalityAppPicker from "./components/NationalityAppPicker";
 import Uploadaimg from "../../../assets/svg/Uploadaimg";
+import { StatusBar } from "expo-status-bar";
+import PageIndicator2 from "../components/PageIndicator2";
+import * as ImagePicker from "expo-image-picker";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function KycPage4({ navigation, route }) {
+
+// ============deleteme later=============
+if you are getting an error, it because of this lines
+ about 80% done, what is left is to
+
+ i wrote this on purpose 25th may 2023 
+
+get the values all from page1,2,3 and let then load into 4.
+set their values to the values that loaded which will make this page
+editable
+// ============deleteme later=============
+
+
+
+
   //   =====================page1============================================
   // states
   // radiobtn states
@@ -58,6 +79,7 @@ function KycPage4({ navigation, route }) {
     setSelectedDate(date);
     setDob(date);
     setShowCalendar(false);
+    console.log(date);
   };
 
   // pick image function
@@ -119,17 +141,29 @@ function KycPage4({ navigation, route }) {
 
   return (
     <ScrollView showsVerticalScrollIndicator>
-      <View>
-        <Spacer height={40} />
+      <SafeAreaView style={{ justifyContent: "center" }}>
+        <StatusBar />
+        <Spacer height={30} />
         {/* page1 =================================================================>*/}
         <Header headerTitle={"KYC Form"} canGoBack />
-        <Spacer height={10} />
-        <Spacer height={20} />
+        <Spacer height={5} />
+        <View style={{ justifyContent: "center", alignSelf: "center" }}>
+          <PageIndicator2 pageIndex={4} />
+        </View>
+        <Spacer height={15} />
         {/* bannner */}
-        <View style={styles.bannerSection}>
+        <View style={styles.banner}>
+          <AppText
+            theText={"D. Details Review"}
+            color={"white"}
+            fontSize={24}
+          />
+        </View>
+        {/* bannner */}
+        <View style={[styles.banner2]}>
           <AppText
             theText={"A. Identity Details"}
-            color={"white"}
+            color={"#3862F8"}
             fontSize={24}
           />
         </View>
@@ -139,7 +173,7 @@ function KycPage4({ navigation, route }) {
             alignSelf: "center",
           }}
         >
-          <Spacer height={20} />
+          <Spacer height={10} />
           <AppText theText={"Full Name"} fontWeight={"600"} fontSize={18} />
           <View style={styles.textInput}>
             <TextInput
@@ -373,10 +407,8 @@ function KycPage4({ navigation, route }) {
             />
           </TouchableOpacity>
           {image && <Image source={{ uri: image }} style={styles.image} />}
-          <Spacer height={30} />
         </View>
         {/* page2 =================================================================>*/}
-        <Spacer height={40} />
         <View style={{ justifyContent: "center", alignSelf: "center" }}></View>
         <Spacer height={20} />
         <View style={styles.banner2}>
@@ -388,7 +420,6 @@ function KycPage4({ navigation, route }) {
             alignSelf: "center",
           }}
         >
-          <Spacer height={20} />
           <AppText theText={"Next of Kin"} />
           <Spacer height={10} />
           <View style={styles.textInput}>
@@ -493,12 +524,11 @@ function KycPage4({ navigation, route }) {
               onChangeText={(text) => setNextOfKinPhoneNumber(text)}
             />
           </View>
-          <Spacer height={30} />
         </View>
 
         {/* page3 =================================================================>*/}
         <View style={styles.container}>
-          <Spacer height={40} />
+          <Spacer height={20} />
           <View style={styles.banner2}>
             <AppText
               theText={"C. Address Details"}
@@ -512,7 +542,6 @@ function KycPage4({ navigation, route }) {
               alignSelf: "center",
             }}
           >
-            <Spacer height={20} />
             <AppText theText={"Country"} />
             <Spacer height={10} />
             <CountryAppPicker
@@ -539,7 +568,83 @@ function KycPage4({ navigation, route }) {
             <Spacer height={30} />
           </View>
         </View>
-      </View>
+        {/* page4 =================================================================>*/}
+        <View style={{ justifyContent: "flex-start" }}>
+          <View style={styles.banner2}>
+            <AppText
+              theText={"D. Declaration"}
+              color={"#3862F8"}
+              fontSize={24}
+            />
+          </View>
+          <View
+            style={{
+              paddingHorizontal: 30,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <MaterialCommunityIcons
+              name="checkbox-blank-outline"
+              size={24}
+              color="black"
+            />
+            <Spacer width={5} />
+            <AppText
+              textAlign={"left"}
+              fontSize={15}
+              theText={
+                "I do hereby declare that the information provided above with respect to my account is up to and correct."
+              }
+            />
+          </View>
+          {/* dob textinput */}
+          <View style={{ justifyContent: "center", marginHorizontal: 20 }}>
+            <AppText
+              theText={"Date of Birth"}
+              fontWeight={"600"}
+              fontSize={18}
+            />
+            <Spacer height={10} />
+            <View style={styles.textInput}>
+              <TouchableOpacity onPress={() => setShowCalendar(true)}>
+                <AppText theText={selectedDate ? selectedDate : "dd-mm-yyyy"} />
+              </TouchableOpacity>
+              <Modal
+                visible={showCalendar}
+                animationType="slide"
+                transparent={true}
+                onRequestClose={() => setShowCalendar(false)}
+              >
+                <View style={styles.modalContainer}>
+                  <View style={styles.modalContent}>
+                    <DatePicker
+                      style={{ width: 400 }}
+                      date={selectedDate}
+                      mode="calendar"
+                      placeholder="Select date"
+                      format="DD-MM-YYYY"
+                      minDate="01-01-1900"
+                      maxDate="31-12-2100"
+                      confirmBtnText="Confirm"
+                      cancelBtnText="Cancel"
+                      onDateChange={handleDateChange}
+                    />
+                    <TouchableOpacity onPress={() => setShowCalendar(false)}>
+                      <Text style={styles.closeButton}>Close</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </Modal>
+            </View>
+          </View>
+          <View style={{ alignItems: "center" }}>
+            <Spacer height={15} />
+            <AppButton AppBtnText={"Procced"} />
+            <Spacer height={15} />
+          </View>
+        </View>
+      </SafeAreaView>
     </ScrollView>
   );
 }
@@ -575,6 +680,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 10,
     borderRadius: 5,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginTop: 20,
   },
 });
 
