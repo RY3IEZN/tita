@@ -1,30 +1,29 @@
 /** @format */
 
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
-  StyleSheet,
-  TextInput,
-  Image,
-  ScrollView,
-  TouchableOpacity,
   Modal,
-  Alert,
+  StyleSheet,
   Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
 } from "react-native";
+import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
 import Spacer from "../components/Spacer";
-import AppText from "../components/AppText";
-import Header from "../components/Header";
-import PageIndicator2 from "../components/PageIndicator2";
-import NationalityAppPicker from "./components/NationalityAppPicker";
-import { StatusBar } from "expo-status-bar";
+import RegionAppPicker from "./components/RegionAppPicker";
+import CountryAppPicker from "./components/CountryAppPicker";
+import { useState } from "react";
 import CustomRadioBtns from "./components/CustomRadioBtns";
-import Uploadaimg from "../../../assets/svg/Uploadaimg";
-import * as ImagePicker from "expo-image-picker";
+import Header from "../components/Header";
 import DatePicker from "react-native-modern-datepicker";
+import NationalityAppPicker from "./components/NationalityAppPicker";
+import Uploadaimg from "../../../assets/svg/Uploadaimg";
 
-function KycPage1({ navigation }) {
+function KycPage4({ navigation, route }) {
+  //   =====================page1============================================
   // states
   // radiobtn states
   const [checkedGender, setCheckedGender] = useState("");
@@ -82,17 +81,49 @@ function KycPage1({ navigation }) {
     console.log(nationality);
     setNationality(nationality);
   };
+  //   =====================page1============================================
+
+  //   =====================page2============================================
+  //   =====================page2============================================
+  // formstate to be handled by formik later
+  const [nextOfKin, setNextOfKin] = useState("");
+  const [nextOfKinRelationship, setNextOfKinRelationship] = useState("");
+  const [nextOfKinGender, setNextOfKinGender] = useState("");
+  const [nextOfKinAddress, setNextOfKinAddress] = useState("");
+  const [nextOfKinPhoneNumber, setNextOfKinPhoneNumber] = useState("");
+  const [nextOfKinMaritialStatus, setNextOfKinMaritialStatus] = useState("");
+  // radiobtn states
+  const [checkedGenderNok, setCheckedGenderNok] = useState("");
+  const [checkedMaritialStatusNok, setCheckedMaritialStatusNok] = useState("");
+  //   =====================page2============================================
+  //   =====================page2============================================
+
+  //   =====================page3============================================
+  //   =====================page3============================================
+  const [residentialAddress, setResidentialAddress] = useState("");
+  const [selectedContinent, setSelectedContinent] = useState("Please select");
+  const [continent, setContinent] = useState("Please select");
+  const [selectedCountry, setSelectedCountry] = useState("Please select");
+  const [country, setCountry] = useState("Please select");
+
+  const handleContinentChange = (continent) => {
+    setSelectedContinent(continent);
+    setContinent(continent);
+  };
+  const handleCountryChange = (country) => {
+    setSelectedCountry(country);
+    setCountry(country);
+  };
+  //   =====================page3============================================
+  //   =====================page3============================================
 
   return (
     <ScrollView showsVerticalScrollIndicator>
-      <View style={styles.container}>
-        <StatusBar />
+      <View>
         <Spacer height={40} />
+        {/* page1 =================================================================>*/}
         <Header headerTitle={"KYC Form"} canGoBack />
         <Spacer height={10} />
-        <View style={{ justifyContent: "center", alignSelf: "center" }}>
-          <PageIndicator2 pageIndex={1} />
-        </View>
         <Spacer height={20} />
         {/* bannner */}
         <View style={styles.bannerSection}>
@@ -343,34 +374,170 @@ function KycPage1({ navigation }) {
           </TouchableOpacity>
           {image && <Image source={{ uri: image }} style={styles.image} />}
           <Spacer height={30} />
-          {/* next */}
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <AppButton
-              AppBtnText={"Next"}
-              onPress={() => {
-                console.log(
-                  fullName,
-                  gender,
-                  dob,
-                  nationality,
-                  maritialStatus,
-                  residentialStatus,
-                  meansOfIdentification
-                );
-                navigation.navigate("kycpage2", {
-                  fullName: fullName,
-                  gender: gender,
-                  dob: dob,
-                  nationality: nationality,
-                  maritialStatus: maritialStatus,
-                  residentialStatus: residentialStatus,
-                  meansOfIdentification: meansOfIdentification,
-                  image: image,
-                });
-              }}
+        </View>
+        {/* page2 =================================================================>*/}
+        <Spacer height={40} />
+        <View style={{ justifyContent: "center", alignSelf: "center" }}></View>
+        <Spacer height={20} />
+        <View style={styles.banner2}>
+          <AppText theText={"B. Next Of Kin"} color={"#3862F8"} fontSize={24} />
+        </View>
+        <View
+          style={{
+            justifyContent: "center",
+            alignSelf: "center",
+          }}
+        >
+          <Spacer height={20} />
+          <AppText theText={"Next of Kin"} />
+          <Spacer height={10} />
+          <View style={styles.textInput}>
+            <TextInput
+              placeholder="Next of Kin"
+              onChangeText={(text) => setNextOfKin(text)}
             />
           </View>
           <Spacer height={20} />
+          {/* nextOfKinGendet and maritial status */}
+          <View style={{ height: 100, paddingHorizontal: 20 }}>
+            <View style={{ flexDirection: "row" }}>
+              <View>
+                <AppText theText={"Gender"} />
+                {/* male radiobtn */}
+                <CustomRadioBtns
+                  radioBtnText={"Male"}
+                  value={"first"}
+                  status={
+                    checkedGenderNok === "first" ? "checked" : "unchecked"
+                  }
+                  onPress={() => {
+                    setCheckedGenderNok("first");
+                    setNextOfKinGender("Male");
+                    console.log("male selected");
+                  }}
+                />
+                {/* female radiobtn */}
+                <CustomRadioBtns
+                  radioBtnText={"Female"}
+                  value={"first"}
+                  status={
+                    checkedGenderNok === "second" ? "checked" : "unchecked"
+                  }
+                  onPress={() => {
+                    setCheckedGenderNok("second");
+                    setNextOfKinGender("Female");
+                    console.log("female selected");
+                  }}
+                />
+              </View>
+              {/* ss */}
+              <Spacer width={50} />
+              <View>
+                <AppText theText={"Marital Status"} />
+                {/* male radiobtn */}
+                <CustomRadioBtns
+                  radioBtnText={"Married"}
+                  value={"Third"}
+                  status={
+                    checkedMaritialStatusNok === "Third"
+                      ? "checked"
+                      : "unchecked"
+                  }
+                  onPress={() => {
+                    setCheckedMaritialStatusNok("Third");
+                    setNextOfKinMaritialStatus("Married");
+                    console.log("Married selected");
+                  }}
+                />
+                {/* single radiobtn */}
+                <CustomRadioBtns
+                  radioBtnText={"Single"}
+                  value={"fourth"}
+                  status={
+                    checkedMaritialStatusNok === "fourth"
+                      ? "checked"
+                      : "unchecked"
+                  }
+                  onPress={() => {
+                    setCheckedMaritialStatusNok("fourth");
+                    setNextOfKinMaritialStatus("single");
+                    console.log("single selected");
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+          <Spacer height={15} />
+          {/* relationship */}
+          <AppText theText={"Relationship"} />
+          <Spacer height={10} />
+          <View style={styles.textInput}>
+            <TextInput
+              placeholder="Relationship"
+              onChangeText={(text) => setNextOfKinRelationship(text)}
+            />
+          </View>
+          <Spacer height={20} />
+          <AppText theText={"Address"} />
+          <View style={styles.textInput}>
+            <TextInput
+              placeholder="Address"
+              onChangeText={(text) => setNextOfKinAddress(text)}
+            />
+          </View>
+          <Spacer height={10} />
+          <AppText theText={"Phone Number"} />
+          <View style={styles.textInput}>
+            <TextInput
+              placeholder="Phone Number"
+              onChangeText={(text) => setNextOfKinPhoneNumber(text)}
+            />
+          </View>
+          <Spacer height={30} />
+        </View>
+
+        {/* page3 =================================================================>*/}
+        <View style={styles.container}>
+          <Spacer height={40} />
+          <View style={styles.banner2}>
+            <AppText
+              theText={"C. Address Details"}
+              color={"#3862F8"}
+              fontSize={24}
+            />
+          </View>
+          <View
+            style={{
+              justifyContent: "center",
+              alignSelf: "center",
+            }}
+          >
+            <Spacer height={20} />
+            <AppText theText={"Country"} />
+            <Spacer height={10} />
+            <CountryAppPicker
+              selectedValue={selectedCountry}
+              onValueChange={handleCountryChange}
+            />
+            <Spacer height={20} />
+            <AppText theText={"City/Region"} />
+            <Spacer height={10} />
+            <RegionAppPicker
+              selectedValue={selectedContinent}
+              onValueChange={handleContinentChange}
+            />
+            <Spacer height={20} />
+            <View style={{ justifyContent: "center" }}>
+              <AppText theText={"Residential Address"} />
+              <View style={styles.textInput}>
+                <TextInput
+                  placeholder="Residential Address"
+                  onChangeText={(text) => setResidentialAddress(text)}
+                />
+              </View>
+            </View>
+            <Spacer height={30} />
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -380,14 +547,8 @@ function KycPage1({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
   },
-  image: {
-    width: 200,
-    height: 200,
-    marginTop: 20,
-  },
-  bannerSection: {
+  banner: {
     width: 500,
     height: 65,
     backgroundColor: "#305af9",
@@ -400,6 +561,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 2,
   },
+  banner2: {
+    width: 500,
+    height: 65,
+    overflow: "visible",
+    justifyContent: "center",
+    paddingHorizontal: 30,
+  },
   textInput: {
     width: 370,
     backgroundColor: "#f4f4f4",
@@ -408,18 +576,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 5,
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  modalContent: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-  },
 });
 
-export default KycPage1;
+export default KycPage4;

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-const RegionAppPicker = () => {
+const RegionAppPicker = ({ selectedValue, onValueChange }) => {
   const [selectedContinent, setSelectedContinent] = useState("Please select");
 
   const continents = [
@@ -18,16 +18,13 @@ const RegionAppPicker = () => {
     "Antarctica",
   ];
 
-  const handleContinentChange = (continent) => {
-    setSelectedContinent(continent);
-  };
+  // const handleContinentChange = (continent) => {
+  //   setSelectedContinent(continent);
+  // };
 
   return (
     <View style={styles.container}>
-      <Picker
-        selectedValue={selectedContinent}
-        onValueChange={handleContinentChange}
-      >
+      <Picker selectedValue={selectedValue} onValueChange={onValueChange}>
         {continents.map((continent, index) => (
           <Picker.Item key={index} label={continent} value={continent} />
         ))}

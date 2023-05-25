@@ -42,9 +42,10 @@ import UpdateKyc from "./src/pages/update_kyc/UpdateKyc";
 import KycPage3 from "./src/pages/update_kyc/KycPage3";
 import KycPage2 from "./src/pages/update_kyc/KycPage2";
 import KycPage1 from "./src/pages/update_kyc/KycPage1";
+import KycPage4 from "./src/pages/update_kyc/KycPage4";
 
 export default function App() {
-  return <AppNavigator />;
+  return <KycPage4 />;
 }
 
 const styles = StyleSheet.create({

@@ -37,6 +37,8 @@ import AddPhoneNumber from "../sign_up/AddPhoneNumber";
 import HistoryPage from "../history_page/HistoryPage";
 import KycPage1 from "../update_kyc/KycPage1";
 import KycPage2 from "../update_kyc/KycPage2";
+import KycPage3 from "../update_kyc/KycPage3";
+import KycPage4 from "../update_kyc/KycPage4";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -307,6 +309,20 @@ function AppNavigator(props) {
         <Stack.Screen
           name="kycpage2"
           component={KycPage2}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="kycpage3"
+          component={KycPage3}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="kycpage4"
+          component={KycPage4}
           options={{
             headerShown: false,
           }}
