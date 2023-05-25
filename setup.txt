@@ -13,3 +13,4 @@ installation
 - npm i react-native-svg
 - npm i react-native-svg-transformer
 - expo install expo-image-picker
+- npm install react-native-modern-datepicker --save

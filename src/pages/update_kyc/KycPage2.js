@@ -11,7 +11,9 @@ import AppButton from "../components/AppButton";
 import Header from "../components/Header";
 import { RadioButton } from "react-native-paper";
 
-function KycPage2(props) {
+function KycPage2({ navigation, route }) {
+  let values = route.params;
+  console.log(values);
   return (
     <>
       <Spacer height={40} />
@@ -50,7 +52,7 @@ function KycPage2(props) {
         <View
           style={{
             width: 370,
-            backgroundColor: "#F4F4F4",
+            backgroundColor: "#e3e4e6",
             height: 60,
             justifyContent: "center",
             paddingHorizontal: 10,
@@ -125,7 +127,7 @@ function KycPage2(props) {
         <View
           style={{
             width: 370,
-            backgroundColor: "#F4F4F4",
+            backgroundColor: "#e3e4e6",
             height: 60,
             justifyContent: "center",
             paddingHorizontal: 10,
@@ -139,7 +141,7 @@ function KycPage2(props) {
         <View
           style={{
             width: 370,
-            backgroundColor: "#F4F4F4",
+            backgroundColor: "#e3e4e6",
             height: 60,
             justifyContent: "center",
             paddingHorizontal: 10,
@@ -153,7 +155,7 @@ function KycPage2(props) {
         <View
           style={{
             width: 370,
-            backgroundColor: "#F4F4F4",
+            backgroundColor: "#e3e4e6",
             height: 60,
             justifyContent: "center",
             paddingHorizontal: 10,

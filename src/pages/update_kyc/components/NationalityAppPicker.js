@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-const NationalityAppPicker = () => {
+const NationalityAppPicker = ({ onValueChange, selectedValue }) => {
   const [selectedNationality, setSelectedNationality] =
     useState("Please select");
 
@@ -32,16 +32,13 @@ const NationalityAppPicker = () => {
     // Add more nationalities as needed
   ];
 
-  const handleNationalityChange = (nationality) => {
-    setSelectedNationality(nationality);
-  };
+  // const handleNationalityChange = (nationality) => {
+  //   setSelectedNationality(nationality);
+  // };
 
   return (
     <View style={styles.container}>
-      <Picker
-        selectedValue={selectedNationality}
-        onValueChange={handleNationalityChange}
-      >
+      <Picker selectedValue={selectedValue} onValueChange={onValueChange}>
         {nationalities.map((nationality, index) => (
           <Picker.Item key={index} label={nationality} value={nationality} />
         ))}

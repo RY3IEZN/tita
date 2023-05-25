@@ -44,7 +44,7 @@ import KycPage2 from "./src/pages/update_kyc/KycPage2";
 import KycPage1 from "./src/pages/update_kyc/KycPage1";
 
 export default function App() {
-  return <KycPage1 />;
+  return <AppNavigator />;
 }
 
 const styles = StyleSheet.create({

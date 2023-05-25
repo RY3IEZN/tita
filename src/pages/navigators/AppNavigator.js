@@ -36,6 +36,7 @@ import ChooseWallet from "../sign_up/ChooseWallet";
 import AddPhoneNumber from "../sign_up/AddPhoneNumber";
 import HistoryPage from "../history_page/HistoryPage";
 import KycPage1 from "../update_kyc/KycPage1";
+import KycPage2 from "../update_kyc/KycPage2";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -299,6 +300,13 @@ function AppNavigator(props) {
         <Stack.Screen
           name="kycpage1"
           component={KycPage1}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="kycpage2"
+          component={KycPage2}
           options={{
             headerShown: false,
           }}

@@ -5,7 +5,7 @@ import { View, StyleSheet } from "react-native";
 import { RadioButton } from "react-native-paper";
 import AppText from "../../components/AppText";
 
-function CustomRadioBtns({ radioBtnText }) {
+function CustomRadioBtns({ radioBtnText, value, status, onPress }) {
   return (
     <View
       style={{
@@ -13,7 +13,7 @@ function CustomRadioBtns({ radioBtnText }) {
         alignItems: "center",
       }}
     >
-      <RadioButton />
+      <RadioButton value={value} status={status} onPress={onPress} />
       <AppText theText={radioBtnText} />
     </View>
   );
