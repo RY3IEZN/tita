@@ -29,23 +29,6 @@ import * as ImagePicker from "expo-image-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function KycPage4({ navigation, route }) {
-
-// ============deleteme later=============
-if you are getting an error, it because of this lines
- about 80% done, what is left is to
-
- i wrote this on purpose 25th may 2023 
-
-get the values all from page1,2,3 and let then load into 4.
-set their values to the values that loaded which will make this page
-editable
-// ============deleteme later=============
-
-
-
-
-  //   =====================page1============================================
-  // states
   // radiobtn states
   const [checkedGender, setCheckedGender] = useState("");
   const [checkedMaritialStatus, setCheckedMaritialStatus] = useState("");
