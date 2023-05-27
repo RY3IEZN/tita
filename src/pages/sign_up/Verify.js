@@ -16,14 +16,31 @@ import Spacer from "../components/Spacer";
 import CustomeTextInputField from "../profile_page/components/CustomeTextInputField";
 import PageIndicator from "../components/PageIndicator";
 
+import UseApi from "../../api/UseApi";
+import AuthApi from "../../api/auth/AuthApi";
+
 function Verify(props) {
-  const firstInput = useRef();
-  const secondInput = useRef();
-  const thirdInput = useRef();
-  const fourthInput = useRef();
-  const fifthInput = useRef();
-  const sixthInput = useRef();
-  const [otp, setOtp] = useState({ 1: "", 2: "", 3: "", 4: "", 5: "", 6: "" });
+  const firstInput = useRef(null);
+  const inputs = Array.from({ length: 6 }, () => useRef(null));
+  const [otp, setOtp] = useState(Array(6).fill(""));
+
+  const verifyOtpApi = UseApi(AuthApi.verify_code);
+
+  const handleInputChange = (index, text) => {
+    const updatedOtp = [...otp];
+    updatedOtp[index] = text;
+    setOtp(updatedOtp);
+
+    if (text && index < 5) {
+      inputs[index + 1].current.focus();
+    } else if (!text && index > 0) {
+      inputs[index - 1].current.focus();
+    }
+  };
+
+  const handleSubmit = () => {
+    console.log(otp.join(""));
+  };
 
   return (
     <AppContainerView>
@@ -40,80 +57,17 @@ function Verify(props) {
         />
         <Spacer height={35} />
         <View style={styles.otpContainer}>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={firstInput}
-              onChangeText={(text) => {
-                setOtp({ ...otp, 1: text });
-                text && secondInput.current.focus();
-              }}
-            />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={secondInput}
-              onChangeText={(text) => {
-                setOtp({ ...otp, 2: text });
-                text ? thirdInput.current.focus() : firstInput.current.focus();
-              }}
-            />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={thirdInput}
-              onChangeText={(text) => {
-                setOtp({ ...otp, 3: text });
-                text
-                  ? fourthInput.current.focus()
-                  : secondInput.current.focus();
-              }}
-            />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={fourthInput}
-              onChangeText={(text) => {
-                setOtp({ ...otp, 4: text });
-                text ? fifthInput.current.focus() : thirdInput.current.focus();
-              }}
-            />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={fifthInput}
-              onChangeText={(text) => {
-                setOtp({ ...otp, 5: text });
-                text ? sixthInput.current.focus() : fourthInput.current.focus();
-              }}
-            />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={sixthInput}
-              onChangeText={(text) => {
-                setOtp({ ...otp, 6: text });
-                !text && fifthInput.current.focus();
-              }}
-            />
-          </View>
+          {otp.map((digit, index) => (
+            <View style={styles.otpBox} key={index}>
+              <TextInput
+                style={styles.otpText}
+                maxLength={1}
+                ref={inputs[index]}
+                onChangeText={(text) => handleInputChange(index, text)}
+                value={digit}
+              />
+            </View>
+          ))}
         </View>
         <Spacer height={35} />
         <AppText theText={"Didn’t receive a Code?"} />
@@ -124,7 +78,7 @@ function Verify(props) {
           textDecorationLine={"underline"}
         />
         <Spacer height={40} />
-        <AppButton AppBtnText={"Verify"} onPress={() => console.log(otp)} />
+        <AppButton AppBtnText={"Verify"} onPress={handleSubmit} />
       </View>
     </AppContainerView>
   );
@@ -134,36 +88,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
-  input: {
-    width: 40,
-    height: 40,
-    borderWidth: 1,
-    borderColor: "gray",
-    marginHorizontal: 8,
-    textAlign: "center",
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 20,
-  },
-  button: {
-    backgroundColor: "blue",
-    padding: 12,
-    marginTop: 20,
-    alignItems: "center",
-    borderRadius: 4,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-  },
   otpContainer: {
     marginHorizontal: 20,
     marginBottom: 20,
+    flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    flexDirection: "row",
   },
   otpBox: {
     borderRadius: 5,
@@ -173,11 +103,8 @@ const styles = StyleSheet.create({
   },
   otpText: {
     fontSize: 27,
-    // color: Colors.DEFAULT_BLACK,
-    padding: 0,
-    textAlign: "center",
     paddingHorizontal: 10,
-    // paddingVertical: ,
+    textAlign: "center",
   },
 });
 

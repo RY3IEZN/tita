@@ -37,7 +37,8 @@
     "react-native-svg-transformer": "^1.0.0",
     "react-native-swiper": "^1.6.0",
     "react-native-web": "~0.18.7",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-local-authentication": "~13.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

@@ -6,30 +6,30 @@ import AppButton from "../../components/AppButton";
 import Spacer from "../../components/Spacer";
 import CustomeTextInputField2 from "../../recieve_transactions/components/CustomTextInputField2";
 import Transact from "../../../api/transactions/Transact";
-import UseApi from "../../../api/UseApi";
+import useApi from "../../../api/UseApi";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 // const validationSchema = Yup.object().shape({
-//   email: Yup.string().required("Required").label("Username").email(),
-//   password: Yup.string().required("Required").min(6).label("Password"),
+//   account_number: Yup.string().required("Required"),
+//   amount: Yup.number().required("Required").positive("Amount must be positive"),
+//   description: Yup.string().required("Required"),
 // });
 
 function TransferToTita(props) {
-  const [beneficiaryDetails, setBeneficiaryDetails] = useState("");
-  const [amount, setAmount] = useState("");
-  const [descripttion, setdescripttion] = useState("");
-
-  const sendMoneyApi = UseApi(Transact.transfer_to_tita_user);
+  const sendMoneyApi = useApi(Transact.transfer_to_tita_user);
 
   const onFormSubmit = (values) => {
     sendMoneyApi.makeRequest(values);
-    console.log(sendMoneyApi.statusCode, "----------------------------------");
+
+    console.log(sendMoneyApi.statusCode, "aaaaaaaaaaaaaaaaaaaaaaa");
+
     console.log(
       "++++++++++++++++++++++++++++=",
       sendMoneyApi.data,
       "##########################"
     );
+
     console.log(sendMoneyApi.error, "##########################");
   };
 

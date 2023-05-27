@@ -47,10 +47,10 @@ function CreateAccount({ navigation }) {
   return (
     <AppContainerView>
       <View style={{ alignItems: "center" }}>
+        <Spacer height={10} />
         <Header headerTitle={"Create Account"} />
-        <Spacer height={20} />
         <PageIndicator />
-        <Spacer height={20} />
+        <Spacer height={10} />
         <Formik
           initialValues={{
             first_name: "",

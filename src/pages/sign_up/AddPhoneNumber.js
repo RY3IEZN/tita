@@ -15,6 +15,7 @@ import { useState } from "react";
 import { Alert } from "react-native";
 import AuthApi from "../../api/auth/AuthApi";
 import UseApi from "../../api/UseApi";
+import { Formik } from "formik";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -22,52 +23,45 @@ function AddPhoneNumber({ navigation, route }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // const { newValues } = route.params;
-  // console.log(newValues, "this has been passed 3 times");
+  // const valuess = route.params;
 
+  // console.log(newValues, "this has been passed 3 times");
   const verifyPhoneNumberApi = UseApi(AuthApi.verify_phone_number);
 
   const updateNewValues = () => {
-    const newValues2 = {
-      ...values,
+    const newValues = {
+      ...valuess,
       phone_number: phoneNumber,
     };
-    console.log(newValues2, "0000000000000000000000000");
+    console.log(newValues, "0000000000000000000000000");
     // Navigate to the next page with the updated data
-    // navigation.navigate("verifypage", { newValues2 });
+    navigation.navigate("verifypage", { newValues });
   };
 
-  const handleProceed = async () => {
-    // Check if phone number is valid Nigerian number
-    const isValidNigerianNumber = /^\+234\d{10}$/.test(phoneNumber);
+  const onFormSubmit = (values) => {
+    // // Check if phone number is valid Nigerian number
+    // precisely +2348012345678
 
-    if (!isValidNigerianNumber) {
-      Alert.alert("Invalid phone number");
-      return;
-    } else {
-      console.log("continue");
-    }
+    // const isValidNigerianNumber = /^\+234\d{10}$/.test(phoneNumber);
+    // if (!isValidNigerianNumber) {
+    //   Alert.alert("Invalid phone number");
+    //   return;
+    // } else {
+    //   console.log("continue");
+    // }
 
     setIsLoading(true);
 
-    // verifyPhoneNumberApi.makeRequest(+23409121738252);
-    // console.log(verifyPhoneNumberApi.statusCode, "#########################3");
+    verifyPhoneNumberApi.makeRequest(values);
 
-    // if (verifyPhoneNumberApi.statusCode == 200) {
-    //   console.log(true);
-    //   Alert.alert("Verification Code sent to phone");
-    // } else {
-    //   console.log(false);
-    //   Alert.alert("Please try again");
-    //   return;
-    // }
+    console.log(verifyPhoneNumberApi.statusCode, "#########################3");
+
     updateNewValues();
     // // Do something with the phone number, like sending a text
-    // // send to the backend get a token validate and all that good good
+    // // send to thce backend get a token validate and all that good good
     // //possibly Alert.alert succefully verified
 
-    // console.log(phoneNumber);
-    // setIsLoading(false);
+    setIsLoading(false);
   };
 
   return (
@@ -81,27 +75,42 @@ function AddPhoneNumber({ navigation, route }) {
         <Spacer height={20} />
         <Telephone />
         <Spacer height={50} />
-        <View style={styles.textInputBox}>
-          <View style={{ marginHorizontal: 10 }}>
-            <Image source={require("../../../assets/icons/nigerianflag.png")} />
-          </View>
-          <TextInput
-            placeholder="+23480123456789"
-            style={{ width: width * 0.75 }}
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
-            keyboardType="phone-pad"
-          />
-        </View>
-        <Spacer height={50} />
-        <AppButton AppBtnText={"Procced"} onPress={handleProceed} />
+        <Formik
+          initialValues={{ phone_number: "" }}
+          onSubmit={(values) => {
+            console.log(values);
+            onFormSubmit(values);
+          }}
+        >
+          {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+            <>
+              <View style={styles.textInputBox}>
+                <View style={{ marginHorizontal: 10 }}>
+                  <Image
+                    source={require("../../../assets/icons/nigerianflag.png")}
+                  />
+                </View>
+                <TextInput
+                  placeholder="+23480123456789"
+                  keyboardType="phone-pad"
+                  style={{ width: width * 0.75 }}
+                  onChangeText={handleChange("phone_number")}
+                  value={values.phone_number}
+                />
+              </View>
+
+              <Spacer height={50} />
+              <AppButton AppBtnText={"Procced"} onPress={handleSubmit} />
+            </>
+          )}
+        </Formik>
         <Spacer height={30} />
         <View
           style={{
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            marginHorizontal: 10,
+            marginHorizontal: 15,
           }}
         >
           <Checkbox value color={"blue"} />

@@ -43,9 +43,10 @@ import KycPage3 from "./src/pages/update_kyc/KycPage3";
 import KycPage2 from "./src/pages/update_kyc/KycPage2";
 import KycPage1 from "./src/pages/update_kyc/KycPage1";
 import KycPage4 from "./src/pages/update_kyc/KycPage4";
+import AddFingerPrint from "./src/pages/sign_up/AddFingerPrint";
 
 export default function App() {
-  return <KycPage4 />;
+  return <AddFingerPrint />;
 }
 
 const styles = StyleSheet.create({

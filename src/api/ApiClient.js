@@ -4,10 +4,10 @@ import { create } from "apisauce";
 // import { getAsyncStoredInformation_ } from "../config/appfunctions";
 
 const apiClient = create({
-  baseURL: "http://13.42.58.165:8000/api/v1/",
+  baseURL: "http://18.130.116.139:8000/api/v1/",
   headers: {
-    accept: "application/json",
-    "Content-Type": "application/json",
+    // accept: "application/json",
+    // "Content-Type": "application/json",
     "Content-Type": "multipart/form-data",
   },
   // timeout in mili seconds (1.5 Minute)

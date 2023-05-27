@@ -81,8 +81,8 @@ function LoginPage({ navigation }) {
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
           console.log(values);
-          // onFormSubmit(values);
-          navigation.navigate("NestedTabs", { screen: "Home" });
+          onFormSubmit(values);
+          // navigation.navigate("NestedTabs", { screen: "Home" });
         }}
         // validationSchema={validationSchema}
       >
