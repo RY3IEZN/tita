@@ -52,7 +52,7 @@ function NestedTabs() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="Wallet"
         component={HomeScreen}
         options={{
           headerShown: false,
@@ -68,7 +68,7 @@ function NestedTabs() {
         }}
       />
       <Tab.Screen
-        name="Invest"
+        name="Cards"
         component={InvestScreen}
         options={{
           headerShown: false,

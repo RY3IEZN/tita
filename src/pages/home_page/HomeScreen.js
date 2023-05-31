@@ -69,6 +69,7 @@ function HomeScreen({ navigation }) {
         />
       </View>
       {/* whats new section */}
+      <Spacer height={5} />
       <AppText theText={"Whats New"} fontSize={18} fontWeight={"600"} />
       <Image
         source={require("../../../assets/icons/titatransitiamge.png")}

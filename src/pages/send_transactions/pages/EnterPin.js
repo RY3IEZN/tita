@@ -16,11 +16,14 @@ import AppText from "../../components/AppText";
 import LineDivider from "../../components/LineDivider";
 import Otp from "../../components/Otp";
 import Spacer from "../../components/Spacer";
+import EmptyModal from "../../../components/modal/EmptyModal";
 
 const { width, height } = Dimensions.get("screen");
 
 function EnterPin({ navigation }) {
   const [isVerified, setIsVerified] = useState(false);
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <AppContainerView>
@@ -106,7 +109,15 @@ function EnterPin({ navigation }) {
               : () => setIsVerified(true)
           }
         />
+        <AppButton
+          AppBtnText={"emptymodal"}
+          onPress={() => setModalVisible(!modalVisible)}
+        />
       </View>
+      <EmptyModal
+        isModalVisible={modalVisible}
+        onModalClose={() => setModalVisible(false)}
+      />
     </AppContainerView>
   );
 }

@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#4361EE",
-    elevation: 0.5,
-    shadowColor: "#4361EE",
+    // elevation: 0.5,
+    // shadowColor: "#4361EE",
     marginBottom: 5,
   },
   appBtnText: {

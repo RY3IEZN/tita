@@ -1,12 +1,12 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import AppButton from "../../components/AppButton";
 import Spacer from "../../components/Spacer";
 import CustomeTextInputField2 from "../../recieve_transactions/components/CustomTextInputField2";
 import Transact from "../../../api/transactions/Transact";
-import useApi from "../../../api/UseApi";
+import UseApi from "../../../api/UseApi";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -17,21 +17,23 @@ import * as Yup from "yup";
 // });
 
 function TransferToTita(props) {
-  const sendMoneyApi = useApi(Transact.transfer_to_tita_user);
+  const sendMoneyApi = UseApi(Transact.transfer_to_tita_user);
 
   const onFormSubmit = (values) => {
     sendMoneyApi.makeRequest(values);
-
-    console.log(sendMoneyApi.statusCode, "aaaaaaaaaaaaaaaaaaaaaaa");
-
-    console.log(
-      "++++++++++++++++++++++++++++=",
-      sendMoneyApi.data,
-      "##########################"
-    );
-
-    console.log(sendMoneyApi.error, "##########################");
   };
+
+  useEffect(() => {
+    if (sendMoneyApi.data) {
+      console.log(sendMoneyApi.statusCode, "aaaaaaaaaaaaaaaaaaaaaaa");
+
+      console.log(
+        "++++++++++++++++++++++++++++=",
+        sendMoneyApi.data,
+        "##########################"
+      );
+    }
+  }, [sendMoneyApi.data]);
 
   return (
     <>

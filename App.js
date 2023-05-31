@@ -46,7 +46,7 @@ import KycPage4 from "./src/pages/update_kyc/KycPage4";
 import AddFingerPrint from "./src/pages/sign_up/AddFingerPrint";
 
 export default function App() {
-  return <AddFingerPrint />;
+  return <EnterPin />;
 }
 
 const styles = StyleSheet.create({
