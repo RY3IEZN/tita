@@ -15,6 +15,7 @@ import ProfileApi from "../../api/user/ProfileApi";
 import UseApi from "../../api/UseApi";
 import apiClient, { updateApiSauceSettings } from "../../api/ApiClient";
 import AppText from "../components/AppText";
+import * as SecureStore from "expo-secure-store";
 
 function ProfilePage({ navigation }) {
   const [profileDetails, setProfileDetails] = useState([]);
@@ -31,13 +32,14 @@ function ProfilePage({ navigation }) {
     }
   }, [getUserApi.data, profileDetails]);
 
-  // // calling a function inside a function, helper function
+  // calling a function inside a function, helper function
   const LogOutApi = UseApi(ProfileApi.logout);
 
   // function to logout the user
-  const onLogOut = () => {
+  const onLogOut = async () => {
     LogOutApi.makeRequest();
-    updateApiSauceSettings("");
+    await updateApiSauceSettings("");
+    await SecureStore.deleteItemAsync("tokenId");
     navigation.replace("loginpage");
   };
 

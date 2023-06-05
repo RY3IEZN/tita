@@ -39,7 +39,14 @@ function TransferType({ itemValue, navigation }) {
           setTypeOfTransfer(value);
         }}
       />
-      {typeOfTransfer == "TITA TO TITA" ? <TransferToTita /> : ""}
+      {typeOfTransfer == "TITA TO TITA" ? (
+        <TransferToTita
+          navigation={navigation}
+          onPress={() => navigation.navigate("pinauthentication")}
+        />
+      ) : (
+        ""
+      )}
       {typeOfTransfer == "TITA TO OTHER BANKS" ? (
         <TransferToOtherBanks
           onPress={() => navigation.navigate("enterAmount")}

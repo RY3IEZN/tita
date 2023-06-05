@@ -14,6 +14,7 @@ import UseApi from "../../api/UseApi";
 import IncomingTransactions from "./pages/IncomingTransactions";
 import OutgoingTransactions from "./pages/OutgoingTransactions";
 import AllTransactions from "./pages/AllTransactions";
+import { ActivityIndicator } from "react-native-paper";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -31,7 +32,6 @@ function HistoryPage(props) {
   useEffect(() => {
     if (getTransactionDetailsApi.data && getTransactionDetailsApi.statusCode) {
       setTransactionDetails(getTransactionDetailsApi.data);
-      console.log(getTransactionDetailsApi.data, "#################3");
     }
   }, [getTransactionDetailsApi.data, transactionDetails]);
 
@@ -58,23 +58,37 @@ function HistoryPage(props) {
       </View>
     );
   };
+
+  const deposits = transactionDetails
+    ? transactionDetails.filter((transaction) => transaction.type === "deposit")
+    : [];
+
+  const withdraw = transactionDetails
+    ? transactionDetails.filter(
+        (transaction) => transaction.type === "withdraw"
+      )
+    : [];
+
+  const allDetails = transactionDetails ? [...transactionDetails] : [];
+
   return (
     <AppContainerView>
       <Header headerTitle={"History"} />
       <Spacer height={20} />
       <CategoriesList />
+
       {categoryIndex == 0 ? (
-        <AllTransactions transactionDetails={transactionDetails} />
+        <AllTransactions transactionDetails={allDetails} />
       ) : (
         ""
       )}
       {categoryIndex == 1 ? (
-        <IncomingTransactions transactionDetails={transactionDetails} />
+        <IncomingTransactions transactionDetails={deposits} />
       ) : (
         ""
       )}
       {categoryIndex == 2 ? (
-        <OutgoingTransactions transactionDetails={transactionDetails} />
+        <OutgoingTransactions transactionDetails={withdraw} />
       ) : (
         ""
       )}

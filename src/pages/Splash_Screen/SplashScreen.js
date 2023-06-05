@@ -12,33 +12,30 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Titamainlogo from "../../../assets/svg/Titamainlogo";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as SecureStore from "expo-secure-store";
+import { useEffect } from "react";
+import { updateApiSauceSettings } from "../../api/ApiClient";
 
 const { width, height } = Dimensions.get("screen");
 
 function SplashScreen({ navigation }) {
-  // useEffect(() => {
-  //   checkLoginStatus();
-  // }, []);
+  useEffect(() => {
+    checkLoginStatus();
+  }, []);
 
-  // const checkLoginStatus = async () => {
-  //   try {
-  //     const storedToken = await AsyncStorage.getItem("bearerToken");
-  //     const isLoggedIn = storedToken !== null;
-
-  //     // Navigate to the appropriate screen based on login status
-  //     if (isLoggedIn) {
-  //       // User is logged in, navigate to the home screen
-  //       navigation.navigate("Home");
-  //     } else {
-  //       // User is not logged in, navigate to the login screen
-  //       navigation.navigate("Login");
-  //     }
-  //   } catch (error) {
-  //     console.log("Error retrieving stored token:", error);
-  //     // Handle the error
-  //   }
-  // };
+  const checkLoginStatus = async () => {
+    const value = await SecureStore.getItemAsync("tokenId");
+    if (value) {
+      // Do something with the retrieved value
+      console.log(value, "+++++++++++++++++=");
+      await updateApiSauceSettings(value);
+      navigation.replace("NestedTabs", { screen: "Home" });
+    } else {
+      // No value found for the given key
+      console.log("No value found for the given key");
+      navigation.navigate("onboarding");
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -55,6 +52,7 @@ function SplashScreen({ navigation }) {
           alignItems: "center",
         }}
         // onPress={() => navigation.navigate("NestedTabs", { screen: "home" })}
+        // replace navigate with replace when live
         onPress={() => navigation.navigate("loginpage")}
       >
         <Text style={{ fontWeight: "700", color: "black", fontSize: 20 }}>

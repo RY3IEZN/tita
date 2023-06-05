@@ -83,7 +83,7 @@ function Authentication(props) {
         <AppButton
           AppBtnText={"Authenticate"}
           onPress={() => {
-            setShowLoadingModal(true);
+            // setShowLoadingModal(true);
             console.log(otp);
           }}
         />
@@ -103,23 +103,22 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     justifyContent: "space-evenly",
     alignItems: "center",
+    // backgroundColor: "red",
     flexDirection: "row",
   },
   otpBox: {
     borderRadius: 5,
     borderColor: "blue",
     marginHorizontal: 10,
-    borderWidth: 0.5,
+    borderWidth: 1.5,
+    elevation: 5,
   },
   otpText: {
     backgroundColor: "white",
     height: 47,
     fontSize: 27,
-    // color: Colors.DEFAULT_BLACK,
-    // padding: 0,
+    padding: 0,
     textAlign: "center",
-    paddingHorizontal: 15,
-    // paddingVertical: -10,
   },
 });
 

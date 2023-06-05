@@ -1,6 +1,5 @@
 /** @format */
-
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -10,120 +9,139 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Swiper from "react-native-swiper";
-import { useFonts } from "expo-font";
-import * as Font from "expo-font";
 import Splashscreen1 from "../../../assets/svg/Splashscreen1";
 import Onboarding2 from "../../../assets/svg/Onboarding2";
 import Onboarding3 from "../../../assets/svg/Onboarding3";
+import Getstarted from "../../../assets/svg/Getstarted";
+import AppText from "../components/AppText";
 
 const { width, height } = Dimensions.get("screen");
 
+const slides = [
+  {
+    image: <Splashscreen1 />,
+    title: "Send Money",
+    description:
+      "Send money to all networks and banks with assured security right from where you are.",
+  },
+  {
+    image: <Onboarding2 />,
+    title: "Pay Bills",
+    description:
+      "Pay bills such as Electricity, Water bill, TV subscriptions, etc. Buy airtime & Bundles.",
+  },
+  {
+    image: <Onboarding3 />,
+    title: "Great Experience",
+    description:
+      "Great Experience with our Fintech App. We are here to satisfy you in all possible ways.",
+  },
+];
+
 function OnboardingScreen({ navigation }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSwiperIndexChanged = (index) => {
+    setActiveIndex(index);
+  };
+
+  const renderSlides = () => {
+    return slides.map((slide, index) => (
+      <View key={index} style={styles.slide}>
+        {slide.image}
+        <Text style={styles.title}>{slide.title}</Text>
+        <Text style={styles.description}>{slide.description}</Text>
+        {index === 2 && (
+          <TouchableOpacity
+            onPress={() => navigation.navigate("welcomepage")}
+            style={styles.getStartedButton}
+          >
+            <Getstarted />
+            <View style={styles.startTextContainer}>
+              <AppText
+                theText="Start"
+                color="white"
+                fontSize={20}
+                fontWeight="700"
+              />
+            </View>
+          </TouchableOpacity>
+        )}
+      </View>
+    ));
+  };
+
   return (
     <View style={styles.container}>
       <Swiper
         style={styles.wrapper}
-        paginationStyle={{ bottom: height * 0.2, right: width * 0.7 }}
+        loop={false}
+        index={0}
+        onIndexChanged={handleSwiperIndexChanged}
+        dot={<View style={styles.dot} />}
+        activeDot={<View style={styles.activeDot} />}
+        paginationStyle={styles.paginationStyle} //
       >
-        {/* Slide 1 */}
-        <View style={styles.slide1}>
-          <Splashscreen1 />
-          <View style={{ marginTop: 50 }}>
-            <Text style={styles.text}>Send Money</Text>
-          </View>
-
-          <View style={{ marginHorizontal: 20, margin: 17 }}>
-            <Text style={styles.subText}>
-              Send money to all networks and banks with assured security right
-              from where you are.{" "}
-            </Text>
-          </View>
-          <View style={{ marginLeft: width * 0.5, marginTop: 40 }}>
-            <Text style={{ color: "#4361ee", fontWeight: "500" }}>Skip</Text>
-          </View>
-        </View>
-
-        {/* slide2 */}
-        <View style={styles.slide1}>
-          <Onboarding2 />
-          <View style={{ marginTop: 50 }}>
-            <Text style={styles.text}>Pay Bills</Text>
-          </View>
-
-          <View style={{ marginHorizontal: 20, margin: 10 }}>
-            <Text style={styles.subText}>
-              Pay Bills such as Electricity, Water bill, TV subscriptions etc.
-              Buy airtime & Bundles.
-            </Text>
-          </View>
-          <View style={{ marginLeft: width * 0.5, marginTop: 69 }}>
-            <Text style={{ color: "#4361ee", fontWeight: "500" }}>Skip</Text>
-          </View>
-        </View>
-        {/* slide3 */}
-        <View style={styles.slide1}>
-          <Onboarding3 />
-          <View style={{ marginTop: 50 }}>
-            <Text style={styles.text}>Great Experience</Text>
-          </View>
-
-          <View style={{ marginHorizontal: 20, margin: 10 }}>
-            <Text style={styles.subText}>
-              Great Experience with our Fintech App. We are here to satisfy you
-              in all possible ways.
-            </Text>
-          </View>
-        </View>
+        {renderSlides()}
       </Swiper>
-      <TouchableOpacity>
-        <Image
-          source={require("../../../assets/icons/edgestart.png")}
-          style={{
-            position: "absolute",
-            bottom: 0,
-            right: -10,
-          }}
-        />
-      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  paginationStyle: {
+    bottom: height * 0.25, // Adjust the value as needed
+    right: 300, // Adjust the value as needed
+    alignItems: "flex-start",
+  },
   container: {
     flex: 1,
-  },
-  wrapper: {},
-  slide1: {
-    flex: 1,
-    marginTop: 210,
-    alignItems: "center",
     backgroundColor: "white",
   },
-  slide2: {
+  wrapper: {},
+  slide: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "red",
+    marginTop: 210,
   },
-  slide3: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "blue",
-  },
-  text: {
+  title: {
     color: "#000000",
     fontSize: 18,
     fontWeight: "bold",
     lineHeight: 22,
+    marginTop: 50,
   },
-  subText: {
+  description: {
     color: "#000000",
     fontSize: 15,
     fontWeight: "300",
     textAlign: "center",
     marginHorizontal: 20,
+    marginTop: 17,
+  },
+  dot: {
+    backgroundColor: "#c4c4c4",
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    margin: 3,
+  },
+  activeDot: {
+    backgroundColor: "#4361ee",
+    width: 8,
+    height: 8,
+    borderRadius: 6,
+    margin: 3,
+  },
+  getStartedButton: {
+    position: "absolute",
+    bottom: 0,
+    right: -10,
+  },
+  startTextContainer: {
+    position: "absolute",
+    bottom: 30,
+    right: 30,
   },
 });
 

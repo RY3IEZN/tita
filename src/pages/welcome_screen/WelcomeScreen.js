@@ -17,7 +17,7 @@ import AppText from "../components/AppText";
 
 const { width, height } = Dimensions.get("screen");
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.image}>
@@ -45,13 +45,13 @@ function WelcomeScreen(props) {
         }}
       >
         {/* loginbtn */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.replace("loginpage")}>
           <View style={styles.loginBtn}>
             <Text style={styles.loginBtnText}>Login</Text>
           </View>
         </TouchableOpacity>
         {/* create account */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("createAccount")}>
           <View style={styles.createBtn}>
             <Text style={styles.createBtnText}>Create Account</Text>
           </View>
@@ -62,7 +62,10 @@ function WelcomeScreen(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: "white",
+    flex: 1,
+  },
   image: {
     marginHorizontal: 50,
     marginVertical: height * 0.15,
@@ -78,7 +81,6 @@ const styles = StyleSheet.create({
   },
   loginBtnText: {
     color: "#4361EE",
-    fontFamily: "lato",
     fontSize: 16,
     fontWeight: "bold",
   },
@@ -93,7 +95,6 @@ const styles = StyleSheet.create({
   },
   createBtnText: {
     color: "white",
-    fontFamily: "lato",
     fontSize: 16,
     fontWeight: "bold",
   },

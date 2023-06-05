@@ -8,6 +8,7 @@ import {
   Image,
   Dimensions,
   TextInput,
+  BackHandler,
   TouchableOpacity,
   Alert,
 } from "react-native";
@@ -26,6 +27,9 @@ import AuthApi from "../../api/auth/AuthApi";
 import { useEffect } from "react";
 import LoginPageSvg from "../../../assets/svg/LoginPageSvg";
 import axios, { Axios } from "axios";
+// import { NavigationEvents } from "@react-navigation";
+
+import * as SecureStore from "expo-secure-store";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -56,7 +60,8 @@ function LoginPage({ navigation }) {
   const responseAction = async (values) => {
     if (loginUserApi.statusCode == "200") {
       await updateApiSauceSettings(loginUserApi.data.token);
-      navigation.navigate("NestedTabs", { screen: "Home" });
+      await SecureStore.setItemAsync("tokenId", `${loginUserApi.data.token}`);
+      navigation.replace("NestedTabs", { screen: "Home" });
     }
     if (loginUserApi.statusCode == "422") {
       Alert.alert(
@@ -68,6 +73,7 @@ function LoginPage({ navigation }) {
 
   return (
     <AppContainerView>
+      {/* <NavigationEvents onWillFocus={handleBackPress} /> */}
       <Header
         headerTitle={"Login"}
         canGoBack

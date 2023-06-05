@@ -9,6 +9,8 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  // BackHandler,
+  Alert,
   ImageBackground,
   Modal,
   Pressable,
@@ -29,16 +31,55 @@ import BalanceCard from "./components/BalanceCard";
 import LoadingModal from "../components/LoadingModal";
 import { useEffect } from "react";
 import HistoryPage from "../history_page/HistoryPage";
+import { useNavigationState } from "@react-navigation/native";
+import ProfileApi from "../../api/user/ProfileApi";
+import UseApi from "../../api/UseApi";
+import { updateApiSauceSettings } from "../../api/ApiClient";
+import * as SecureStore from "expo-secure-store";
 
 const { width, height } = Dimensions.get("screen");
 
 function HomeScreen({ navigation }) {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  // useEffect(() => {
+  //   // Add event listener for the hardware back button
+  //   BackHandler.addEventListener("hardwareBackPress", handleBackPress);
+
+  //   // Clean up the event listener on component unmount
+  //   return () => {
+  //     BackHandler.removeEventListener("hardwareBackPress", handleBackPress);
+  //   };
+  // }, []);
+
   useEffect(() => {
     setModalVisible(true);
   }, []);
 
-  const [modalVisible, setModalVisible] = useState(false);
+  const handleBackPress = () => {
+    if (
+      (useNavigationState?.routes?.[0]?.name === "NestedTabs",
+      { screen: "Home" })
+    ) {
+      Alert.alert("Confirmation", "Do you want to logout?", [
+        { text: "No", style: "cancel" },
+        { text: "Yes", onPress: () => handleLogout() },
+      ]);
+      return true; // Prevent default behavior (going back)
+    }
+    return false; // Allow default behavior (going back)
+  };
 
+  // calling a function inside a function, helper function
+  const LogOutApi = UseApi(ProfileApi.logout);
+
+  const handleLogout = async () => {
+    // Perform logout logic here
+    LogOutApi.makeRequest();
+    await updateApiSauceSettings("");
+    await SecureStore.deleteItemAsync("tokenId");
+    navigation.replace("loginpage");
+  };
   return (
     <AppContainerView>
       {/* header section */}

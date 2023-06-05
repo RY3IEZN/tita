@@ -39,6 +39,8 @@ import KycPage1 from "../update_kyc/KycPage1";
 import KycPage2 from "../update_kyc/KycPage2";
 import KycPage3 from "../update_kyc/KycPage3";
 import KycPage4 from "../update_kyc/KycPage4";
+import Authentication from "../sign_up/Authentication";
+import TransferToTita from "../send_transactions/pages/TransferToTita";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -286,6 +288,13 @@ function AppNavigator(props) {
           }}
         />
         <Stack.Screen
+          name="pinauthentication"
+          component={Authentication}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
           name="enterPin"
           component={EnterPin}
           options={{
@@ -295,6 +304,13 @@ function AppNavigator(props) {
         <Stack.Screen
           name="transactionSuccessful"
           component={TransactionSuccessful}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="TransferToTita"
+          component={TransferToTita}
           options={{
             headerShown: false,
           }}

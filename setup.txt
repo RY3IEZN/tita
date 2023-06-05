@@ -1,6 +1,8 @@
 installation
 
-!!!for some wierd reason i have to use --force, some had to use npx, some had to use npm and some -- --force !!!
+!!!for some wierd reason i have to use --force, some had to use npx, some had to use npm and some "-- --force" !!!
+
+
 - react-native-swiper
 - react-native-paper
 - expo-linear-gradient
@@ -14,3 +16,5 @@ installation
 - expo install expo-image-picker
 - npm install react-native-modern-datepicker --save
 - expo install expo-local-authentication    /* --------fingerprint------ *\
+- expo install expo-secure-store
+
