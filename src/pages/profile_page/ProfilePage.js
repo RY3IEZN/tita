@@ -16,6 +16,7 @@ import UseApi from "../../api/UseApi";
 import apiClient, { updateApiSauceSettings } from "../../api/ApiClient";
 import AppText from "../components/AppText";
 import * as SecureStore from "expo-secure-store";
+import { ActivityIndicator } from "react-native";
 
 function ProfilePage({ navigation }) {
   const [profileDetails, setProfileDetails] = useState([]);
@@ -69,7 +70,15 @@ function ProfilePage({ navigation }) {
 
       <View style={styles.profileInfo}>
         <View style={{ flexDirection: "row" }}>
-          <AppText theText={profileDetails.first_name} />
+          <AppText
+            theText={
+              profileDetails.first_name ? (
+                profileDetails.first_name
+              ) : (
+                <ActivityIndicator />
+              )
+            }
+          />
           <Spacer width={10} />
           <AppText theText={profileDetails.last_name} />
         </View>

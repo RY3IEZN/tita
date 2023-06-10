@@ -30,6 +30,16 @@ import apiClient from "../ApiClient";
 // };
 
 // send money
+const create_tita_voucher = (values) => {
+  var info = new FormData();
+  info.append("amount", values.amount);
+  info.append("type", values.type);
+  info.append("condition", [values.condition]);
+  info.append("account_number", values.account_number);
+  info.append("description", values.description);
+  return apiClient.post("/voucher/create", info);
+};
+// send money
 const transfer_to_tita_user = (values) => {
   var info = new FormData();
   info.append("account_number", values.account_number);
@@ -44,5 +54,6 @@ export default {
   //   get_wallets,
   //   set_transaction_pin,
   //   get_transaction_hisory,
+  create_tita_voucher,
   transfer_to_tita_user,
 };

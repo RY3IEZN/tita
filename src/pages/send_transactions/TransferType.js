@@ -40,17 +40,12 @@ function TransferType({ itemValue, navigation }) {
         }}
       />
       {typeOfTransfer == "TITA TO TITA" ? (
-        <TransferToTita
-          navigation={navigation}
-          onPress={() => navigation.navigate("pinauthentication")}
-        />
+        <TransferToTita navigation={navigation} />
       ) : (
         ""
       )}
       {typeOfTransfer == "TITA TO OTHER BANKS" ? (
-        <TransferToOtherBanks
-          onPress={() => navigation.navigate("enterAmount")}
-        />
+        <TransferToOtherBanks navigation={navigation} />
       ) : (
         ""
       )}

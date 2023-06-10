@@ -8,82 +8,124 @@ import AppPicker from "../../components/AppPicker";
 import Header from "../../components/Header";
 import Spacer from "../../components/Spacer";
 import CustomeTextInputField2 from "../../recieve_transactions/components/CustomTextInputField2";
+import UseApi from "../../../api/UseApi";
+import Transact from "../../../api/transactions/Transact";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { useEffect } from "react";
 
 function InitiateVoucherTransfer(props) {
-  const [valueA, setValueA] = useState();
+  const [voucherType, setVoucherType] = useState();
   const [valueB, setValueB] = useState();
   const [valueC, setValueC] = useState();
   const [amount, setAmount] = useState();
+
+  const createTitaVoucher = UseApi(Transact.create_tita_voucher);
+
+  const onFormSubmit = (values) => {
+    createTitaVoucher.makeRequest(values);
+    console.log(values, "opopopopop");
+    console.log(createTitaVoucher.data);
+  };
+
+  useEffect(() => {
+    if (createTitaVoucher.data) {
+      console.log(createTitaVoucher.statusCode);
+      console.log(createTitaVoucher.data);
+    }
+  }, [createTitaVoucher.data]);
+
   return (
     <AppContainerView>
       <Header headerTitle={"Voucher Transfer"} fontWeight={"600"} />
-      <Spacer height={80} />
-      {/* app picker */}
-      <AppPicker
-        defaultTitle={"Voucher Type"}
-        label1={"Open"}
-        label2={"Program"}
-        value1={"Open"}
-        value2={"Program"}
-        onValueChange={(valueA) => {
-          console.log(valueA);
-          setValueA(valueA);
+      <Spacer height={50} />
+      <Formik
+        initialValues={{
+          amount: "",
+          type: "",
+          condition: ["beneficiary"],
+          account_number: [1415555267],
+          description: ["you will never be poor in your life"],
         }}
-        // for now it just console logs the value
-      />
-      <Spacer height={30} />
-      {/* account type */}
-      <AppPicker
-        defaultTitle={"Select Account "}
-        label1={"TITA Wallet"}
-        label2={"Savings Account"}
-        value1={"TITA Wallet"}
-        value2={"Savings Account"}
-        label3={"Business Account"}
-        value3={"Business Account"}
-        onValueChange={(valueB) => {
-          console.log(valueB);
-          setValueB(valueB);
+        onSubmit={(values) => {
+          console.log(values.condition);
+          onFormSubmit(values);
         }}
-        // for now it just console logs the value
-      />
-      <Spacer height={10} />
-      <View style={{ alignItems: "center" }}>
-        <CustomeTextInputField2
-          placeholder={"Amount"}
-          img={require("../../../../assets/icons/naira_sign_img.png")}
-          onChangeText={(text) => setAmount(text)}
-          keyboardType={"number-pad"}
-        />
-      </View>
+        // validationSchema={validationSchema}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+          <>
+            {/* app picker */}
+            <AppPicker
+              defaultTitle={"Voucher Type"}
+              label1={"Open"}
+              label2={"program"}
+              value1={"Open"}
+              value2={"program"}
+              onValueChange={(type) => {
+                handleChange("type")(type);
+                setVoucherType("program");
+              }}
+              // for now it just console logs the value
+            />
+            <Spacer height={30} />
+            {/* account type */}
+            <AppPicker
+              defaultTitle={"Select Account "}
+              label1={"TITA Wallet"}
+              label2={"Savings Account"}
+              value1={"TITA Wallet"}
+              value2={"Savings Account"}
+              label3={"Business Account"}
+              value3={"Business Account"}
+              onValueChange={(accountType) => {
+                handleChange("accountType")(accountType);
+              }}
+              // for now it just console logs the value
+            />
+            <Spacer height={10} />
+            <View style={{ alignItems: "center" }}>
+              <CustomeTextInputField2
+                placeholder={"Amount"}
+                img={require("../../../../assets/icons/naira_sign_img.png")}
+                keyboardType={"number-pad"}
+                onChangeText={handleChange("amount")}
+                values={values.amount}
+              />
+            </View>
 
-      <Spacer height={20} />
-      {/* voucher condition only shows when the program type is set to "program" */}
-      {valueA == "Program" ? (
-        <View style={{ marginVertical: 20 }}>
-          <AppPicker
-            defaultTitle={"Vocher Condition "}
-            label1={"Loading Date"}
-            label2={"Request Back for Pin"}
-            value1={"Request Back for Pin"}
-            value2={"Request Back for Pin"}
-            label3={"Beneficiary"}
-            value3={"Beneficiary"}
-            onValueChange={(valueC) => {
-              console.log(valueC);
-              setValueC(valueC);
-            }}
-          />
-        </View>
-      ) : (
-        ""
-      )}
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <AppButton
-          AppBtnText={"Procced"}
-          onPress={() => console.log(valueA, valueB, valueC, amount)}
-        />
-      </View>
+            <Spacer height={20} />
+            {/* voucher condition only shows when the program type is set to "program" */}
+            {voucherType == "program" ? (
+              <View style={{ marginVertical: 20 }}>
+                <AppPicker
+                  defaultTitle={"Vocher Condition "}
+                  label1={"Loading Date"}
+                  label2={"Request Back for Pin"}
+                  value1={"Loading Date"}
+                  value2={"Request Back for Pin"}
+                  label3={"Beneficiary"}
+                  value3={"beneficiary"}
+                  onValueChange={(condition) => {
+                    handleChange("condition")(condition);
+                  }}
+                />
+              </View>
+            ) : (
+              ""
+            )}
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 20,
+              }}
+            >
+              <AppButton AppBtnText={"Procced"} onPress={handleSubmit} />
+            </View>
+          </>
+        )}
+      </Formik>
     </AppContainerView>
   );
 }

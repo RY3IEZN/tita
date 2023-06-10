@@ -30,6 +30,7 @@ import axios, { Axios } from "axios";
 // import { NavigationEvents } from "@react-navigation";
 
 import * as SecureStore from "expo-secure-store";
+import { ActivityIndicator } from "react-native-paper";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -41,6 +42,7 @@ const validationSchema = Yup.object().shape({
 function LoginPage({ navigation }) {
   const [isVisible, setIsVisible] = useState(true);
   const [loginError, setLoginError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // // calling a function inside a function, helper function
   const loginUserApi = UseApi(AuthApi.login);
@@ -48,6 +50,7 @@ function LoginPage({ navigation }) {
   // onsubmit function to post
   const onFormSubmit = (values) => {
     loginUserApi.makeRequest(values);
+    setIsLoading(true);
   };
 
   useEffect(() => {
@@ -61,6 +64,7 @@ function LoginPage({ navigation }) {
     if (loginUserApi.statusCode == "200") {
       await updateApiSauceSettings(loginUserApi.data.token);
       await SecureStore.setItemAsync("tokenId", `${loginUserApi.data.token}`);
+      setIsLoading(false);
       navigation.replace("NestedTabs", { screen: "Home" });
     }
     if (loginUserApi.statusCode == "422") {
@@ -68,6 +72,7 @@ function LoginPage({ navigation }) {
         "Inavlid Credentials",
         "These credentials do not match our records. Kindly check your email or password"
       );
+      setIsLoading(false);
     }
   };
 
@@ -153,7 +158,12 @@ function LoginPage({ navigation }) {
 
             {/* how do you implment fingerprint verification na */}
             <View style={{ alignItems: "center" }}>
-              <AppButton AppBtnText={"Login"} onPress={handleSubmit} />
+              <AppButton
+                AppBtnText={
+                  isLoading ? <ActivityIndicator color="white" /> : "Login"
+                }
+                onPress={handleSubmit}
+              />
             </View>
           </>
         )}
