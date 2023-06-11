@@ -22,6 +22,7 @@ function CustomeTextInputField2({
   img,
   onChangeText,
   keyboardType,
+  tintColor = "black",
   values,
 }) {
   return (
@@ -40,6 +41,7 @@ function CustomeTextInputField2({
               width: 20,
               height: 20,
               marginBottom: 30,
+              tintColor: tintColor,
             }}
           />
         </View>

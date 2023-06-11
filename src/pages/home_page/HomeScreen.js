@@ -114,7 +114,7 @@ function HomeScreen({ navigation }) {
       <AppText theText={"Whats New"} fontSize={18} fontWeight={"600"} />
       <Image
         source={require("../../../assets/icons/titatransitiamge.png")}
-        style={{ width: width * 0.9, height: height * 0.2 }}
+        style={{ width: width * 0.95, height: height * 0.2 }}
       />
       {/* utlity section */}
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>

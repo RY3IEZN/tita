@@ -74,6 +74,7 @@ function LoginPage({ navigation }) {
       );
       setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   return (

@@ -39,7 +39,7 @@ function BalanceCard({ addMoneyonPress, navigation }) {
         source={require("../../../../assets/icons/customshape.png")}
         resizeMode="cover"
         style={{
-          width: width * 0.9,
+          width: width * 0.95,
           height: height * 0.2,
           flexDirection: "row",
           justifyContent: "center",

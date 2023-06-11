@@ -16,9 +16,9 @@ import UssdCode from "./pages/UssdCode";
 
 function InitiateRecieve(props) {
   const categories = ["Load Voucher", "Bank Transfer", "USSD Transfer", "Card"];
-  const [categoryIndex, setCategoryIndex] = useState(5);
+  const [categoryIndex, setCategoryIndex] = useState(0);
 
-  const CategoriesList = ({ navigation }) => {
+  const CategoriesList = ({ navigation, onPress }) => {
     return (
       <View style={styles.categoriescontainer}>
         {categories.map((item, index) => (
@@ -47,7 +47,7 @@ function InitiateRecieve(props) {
       <Spacer height={20} />
       <CategoriesList />
       {categoryIndex == 0 ? (
-        <CheckVoucher />
+        <CheckVoucher onPress={() => setCategoryIndex(5)} />
       ) : categoryIndex == 5 ? (
         <LoadVoucher />
       ) : (

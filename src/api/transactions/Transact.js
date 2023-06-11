@@ -35,6 +35,7 @@ const create_tita_voucher = (values) => {
   info.append("amount", values.amount);
   info.append("type", values.type);
   info.append("condition", [values.condition]);
+  info.append("loading_date", values.loading_date);
   info.append("account_number", values.account_number);
   info.append("description", values.description);
   return apiClient.post("/voucher/create", info);

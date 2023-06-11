@@ -16,6 +16,8 @@ import { useEffect } from "react";
 
 function InitiateVoucherTransfer(props) {
   const [voucherType, setVoucherType] = useState();
+  const [isBeneficiary, setIsBeneficiary] = useState(false);
+  const [loadingDate, setLoadingDate] = useState(false);
   const [valueB, setValueB] = useState();
   const [valueC, setValueC] = useState();
   const [amount, setAmount] = useState();
@@ -43,6 +45,7 @@ function InitiateVoucherTransfer(props) {
         initialValues={{
           amount: "",
           type: "",
+          loading_date: "",
           condition: ["beneficiary"],
           account_number: [1415555267],
           description: ["you will never be poor in your life"],
@@ -64,7 +67,11 @@ function InitiateVoucherTransfer(props) {
               value2={"program"}
               onValueChange={(type) => {
                 handleChange("type")(type);
-                setVoucherType("program");
+                if (type == "program") {
+                  setVoucherType("program");
+                } else {
+                  setVoucherType("");
+                }
               }}
               // for now it just console logs the value
             />
@@ -94,6 +101,21 @@ function InitiateVoucherTransfer(props) {
               />
             </View>
 
+            {isBeneficiary ? (
+              <View style={{ alignItems: "center" }}>
+                <CustomeTextInputField2
+                  placeholder={"Account Number"}
+                  img={require("../../../../assets/icons/profile-circle.png")}
+                  tintColor={"black"}
+                  keyboardType={"number-pad"}
+                  onChangeText={handleChange("account_number")}
+                  values={values.account_number}
+                />
+              </View>
+            ) : (
+              ""
+            )}
+
             <Spacer height={20} />
             {/* voucher condition only shows when the program type is set to "program" */}
             {voucherType == "program" ? (
@@ -102,13 +124,36 @@ function InitiateVoucherTransfer(props) {
                   defaultTitle={"Vocher Condition "}
                   label1={"Loading Date"}
                   label2={"Request Back for Pin"}
+                  label3={"Beneficiary"}
                   value1={"Loading Date"}
                   value2={"Request Back for Pin"}
-                  label3={"Beneficiary"}
                   value3={"beneficiary"}
                   onValueChange={(condition) => {
                     handleChange("condition")(condition);
+                    if (condition == "beneficiary") {
+                      setIsBeneficiary(true);
+                    } else {
+                      setIsBeneficiary("");
+                    }
+                    if (condition == "Loading Date") {
+                      setLoadingDate(true);
+                      setIsBeneficiary("");
+                    }
                   }}
+                />
+              </View>
+            ) : (
+              ""
+            )}
+            {loadingDate ? (
+              <View style={{ alignItems: "center" }}>
+                <CustomeTextInputField2
+                  placeholder={"Loading Date"}
+                  img={require("../../../../assets/icons/calendar.png")}
+                  tintColor={"black"}
+                  // keyboardType={"number-pad"}
+                  onChangeText={handleChange("account_number")}
+                  values={values.account_number}
                 />
               </View>
             ) : (

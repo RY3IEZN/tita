@@ -18,36 +18,40 @@ import Spacer from "../../components/Spacer";
 import CustomeTextInputField from "../../profile_page/components/CustomeTextInputField";
 import CustomTextInputField2 from "../components/CustomTextInputField2";
 import LoadVouchersvg from "../../../../assets/svg/LoadVouchersvg";
+import CustomeTextInputField2 from "../components/CustomTextInputField2";
 
 const { width, height } = Dimensions.get("screen");
 
-function CheckVoucher(props) {
+function CheckVoucher({ onPress }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [showLoadingModal, setShowLoadingModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   return (
     <>
-      <View style={{ alignItems: "center" }}>
+      <View style={{ justifyContent: "center" }}>
         <Spacer height={30} />
-        <LoadVouchersvg />
-        <Spacer height={10} />
-        <AppText
-          textAlign={"center"}
-          theText={
-            "Add Money to your TITA Bank Account by Loading a TITA Voucher Token and card pin below"
-          }
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <LoadVouchersvg />
+          <Spacer height={10} />
+          <AppText
+            textAlign={"center"}
+            theText={
+              "Add Money to your TITA Bank Account by Loading a TITA Voucher Token and card pin below"
+            }
+          />
+        </View>
+        <CustomeTextInputField2
+          inputTitle={"Voucher code"}
+          placeholder={"Voucher Code"}
         />
-        <CustomeTextInputField inputTitle={"Voucher code"} />
         <Spacer height={30} />
-        <AppButton
-          AppBtnText={"Verify"}
-          onPress={() => setShowLoadingModal(!showLoadingModal)}
-        />
+        <AppButton AppBtnText={"Verify"} onPress={onPress} />
+        {/*
         <AppButton
           AppBtnText={"Verify"}
           onPress={() => setShowSuccessModal(!showSuccessModal)}
-        />
+        /> */}
         <LoadingModal
           isLoading={showLoadingModal}
           onPress={() => setShowLoadingModal(false)}
