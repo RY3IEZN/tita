@@ -8,7 +8,10 @@ import AppText from "../../components/AppText";
 import AppButton from "../../components/AppButton";
 import Spacer from "../../components/Spacer";
 
-function ElectricityConfirmationPage(props) {
+function ElectricityConfirmationPage({ navigation, route }) {
+  const values = route.params;
+
+  console.log(values);
   return (
     <AppContainerView>
       <Header
@@ -16,6 +19,7 @@ function ElectricityConfirmationPage(props) {
         fontWeight={"600"}
         headerTitle={"Electricity"}
         canGoBack
+        onPress={() => navigation.goBack()}
       />
       <Spacer height={30} />
       <View style={{ marginHorizontal: 15 }}>
@@ -27,7 +31,7 @@ function ElectricityConfirmationPage(props) {
             fontsize={20}
             fontWeight={"700"}
           />
-          <AppText theText={"201929109820"} />
+          <AppText theText={"1929109820"} />
         </View>
         <Spacer height={15} />
 
@@ -91,6 +95,18 @@ function ElectricityConfirmationPage(props) {
             textAlign={"right"}
           />
         </View>
+        <Spacer height={15} />
+        {/* amount */}
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <AppText
+            theText={"Amount"}
+            color={"blue"}
+            fontsize={20}
+            fontWeight={"700"}
+          />
+          <AppText theText={"4000"} />
+        </View>
+        <Spacer height={15} />
         <Spacer height={35} />
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <AppButton AppBtnText={"Proceed to payment"} />

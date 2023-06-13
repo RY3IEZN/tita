@@ -6,7 +6,13 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("screen");
 
-function CustomeTextInputField({ inputTitle, inputfieldIcon, TextinputTitle }) {
+function CustomeTextInputField({
+  inputTitle,
+  inputfieldIcon,
+  TextinputTitle,
+  onChangeText,
+  keyboardType,
+}) {
   return (
     <>
       <Text style={styles.textInputName}>{inputTitle}</Text>
@@ -21,6 +27,8 @@ function CustomeTextInputField({ inputTitle, inputfieldIcon, TextinputTitle }) {
         <TextInput
           placeholder={TextinputTitle}
           style={{ width: width * 0.75 }}
+          keyboardType={keyboardType}
+          onChangeText={onChangeText}
         />
       </View>
     </>

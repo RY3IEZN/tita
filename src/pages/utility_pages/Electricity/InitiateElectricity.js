@@ -20,8 +20,15 @@ const { width, height } = Dimensions.get("screen");
 function InitiateElectricity({ navigation }) {
   const [selectedDisco, setSelectedDisco] = useState("Please select");
 
+  const [meterNumber, setMeterNumber] = useState("");
+  const [state, setState] = useState("");
+  const [disco, setDisco] = useState("");
+  const [amount, setAmount] = useState("");
+  const [email, setEmail] = useState("");
+
   const handleDiscoChange = (discos) => {
     setSelectedDisco(discos);
+    setDisco(discos);
     console.log(discos);
   };
 
@@ -38,13 +45,18 @@ function InitiateElectricity({ navigation }) {
             placeholder="201929109820"
             maxLength={16}
             keyboardType="number-pad"
+            onChangeText={(text) => setMeterNumber(text)}
           />
         </View>
         <Spacer width={20} />
         {/* add or save meter number */}
         <UtilityButtons color={"blue"} AppBtnText={"+ Add Meter"} />
       </View>
-      <CustomeTextInputField inputTitle={"State*"} TextinputTitle={"Lagos"} />
+      <CustomeTextInputField
+        inputTitle={"State*"}
+        TextinputTitle={"Lagos"}
+        onChangeText={(text) => setState(text)}
+      />
       <Spacer height={30} />
       <AppText theText={"Distribution Company"} />
       <ElectricityAppPicker
@@ -57,18 +69,36 @@ function InitiateElectricity({ navigation }) {
           <CustomeTextInputField
             inputTitle={"How much Electricity do you want to buy?"}
             TextinputTitle={"N10,000"}
+            keyboardType={"number-pad"}
+            onChangeText={(text) => setAmount(text)}
           />
         </View>
         <View style={{ justifyContent: "center", marginHorizontal: 15 }}>
           <CustomeTextInputField
             inputTitle={"Email"}
             TextinputTitle={"Email"}
+            onChangeText={(text) => setEmail(text)}
           />
         </View>
         <Spacer height={30} />
         <AppButton
           AppBtnText={"Continue"}
-          onPress={() => navigation.navigate("ElectricityConfirmationPage")}
+          onPress={() => {
+            console.log({
+              amount: amount,
+              email: email,
+              disco: disco,
+              meterNumber: meterNumber,
+              state: state,
+            });
+            navigation.navigate("ElectricityConfirmationPage", {
+              amount: amount,
+              email: email,
+              disco: disco,
+              meterNumber: meterNumber,
+              state: state,
+            });
+          }}
         />
       </View>
     </AppContainerView>
