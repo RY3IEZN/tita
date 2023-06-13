@@ -19,7 +19,7 @@ function UtilityButtons({ onPress, AppBtnText, color }) {
       <View style={styles.appBtn}>
         <LinearGradient
           colors={
-            color == "blue" ? ["#3862F8", "#1740FF"] : ["#eaedfa", "#eaedfa"]
+            color == "blue" ? ["#3862F8", "#1740FF"] : ["#f4f4f4", "#f4f4f4"]
           }
           start={{ x: 1, y: 0 }}
           end={{ x: 0, y: 0 }}
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: "#4361EE",
     elevation: 1,
+    shadowColor: "white",
   },
   appBtnText: {
     color: "white",

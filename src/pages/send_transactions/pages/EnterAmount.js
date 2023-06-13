@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   Dimensions,
@@ -17,10 +17,21 @@ import Header from "../../components/Header";
 import LineDivider from "../../components/LineDivider";
 import Spacer from "../../components/Spacer";
 import ProfileBtn1 from "../../profile_page/components/ProfileBtn1";
+import SelectAccountType from "../../components/SelectAccountType";
+import SelectAccountTypeModal from "../../../components/modal/SelectAccountTypeModal";
 
 const { width, height } = Dimensions.get("screen");
 
 function EnterAmount({ navigation }) {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const [theAccountType, setTheAccountType] = useState("savings");
+  const handModalItemPress = (data) => {
+    // Perform actions on the red page based on the data received from the modal
+    setTheAccountType(data);
+    setModalVisible(!modalVisible);
+    console.log("Modal action performed with data:", data);
+  };
   return (
     <>
       <ScrollView style={styles.container}>
@@ -80,20 +91,38 @@ function EnterAmount({ navigation }) {
                   borderTopRightRadius: 50,
                   paddingHorizontal: 20,
                   justifyContent: "center",
-                  elevation: 10,
+                  elevation: 5,
                 }}
               >
-                <AppPicker
-                  defaultTitle={"Select Account "}
-                  label1={"TITA Wallet"}
-                  label2={"Savings Account"}
-                  value1={"TITA Wallet"}
-                  value2={"Savings Account"}
-                  label3={"Business Account"}
-                  value3={"Business Account"}
-                  onValueChange={(valueB) => console.log(valueB)}
-                  // for now it just console logs the value
-                />
+                {theAccountType === "savings" && (
+                  <SelectAccountType
+                    imgSrc={require("../../../../assets/icons/savingsaccoubticon.png")}
+                    accountType={"Savings Account"}
+                    accountnumber={"Change"}
+                    textColour={"blue"}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  />
+                )}
+
+                {theAccountType === "titawallet" && (
+                  <SelectAccountType
+                    imgSrc={require("../../../../assets/icons/titawalleticon.png")}
+                    accountType={"Tita Wallet"}
+                    accountnumber={"Change"}
+                    textColour={"blue"}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  />
+                )}
+
+                {theAccountType === "business" && (
+                  <SelectAccountType
+                    imgSrc={require("../../../../assets/icons/businessaccounticon.png")}
+                    accountType={"Business Wallet"}
+                    accountnumber={"Change"}
+                    textColour={"blue"}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  />
+                )}
                 <Spacer height={30} />
                 <AppButton
                   AppBtnText={"Next"}
@@ -102,6 +131,11 @@ function EnterAmount({ navigation }) {
               </View>
             </View>
           </View>
+          <SelectAccountTypeModal
+            isModalVisible={modalVisible}
+            onModalClose={() => setModalVisible(false)}
+            handModalItemPress={(data) => handModalItemPress(data)}
+          />
         </KeyboardAvoidingView>
       </ScrollView>
     </>

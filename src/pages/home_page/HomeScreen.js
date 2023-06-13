@@ -84,13 +84,19 @@ function HomeScreen({ navigation }) {
     <AppContainerView>
       {/* header section */}
       <HomePageHeaderSection
-        navigateToProfilePage={() => navigation.navigate("profilePage")}
+        navigateToProfilePage={() =>
+          navigation.navigate("NestedTabs", {
+            screen: "Account",
+          })
+        }
         navigateToNotificationPage={() =>
           navigation.navigate("notificationpage")
         }
       />
       {/* balance at a glance */}
-      <BalanceCard addMoneyonPress={() => console.log("didnnt ahappen")} />
+      <BalanceCard
+        addMoneyonPress={() => navigation.navigate("addmoneypage")}
+      />
       {/* quick actions */}
       <View style={styles.quickActionSection}>
         <QuickActionButton

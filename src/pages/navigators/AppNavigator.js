@@ -41,6 +41,8 @@ import KycPage3 from "../update_kyc/KycPage3";
 import KycPage4 from "../update_kyc/KycPage4";
 import Authentication from "../sign_up/Authentication";
 import TransferToTita from "../send_transactions/pages/TransferToTita";
+import AddMoneyPage from "../home_page/AddMoneyPage";
+import ElectricityConfirmationPage from "../utility_pages/Electricity/ElectricityConfirmationPage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -339,6 +341,20 @@ function AppNavigator(props) {
         <Stack.Screen
           name="kycpage4"
           component={KycPage4}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="addmoneypage"
+          component={AddMoneyPage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ElectricityConfirmationPage"
+          component={ElectricityConfirmationPage}
           options={{
             headerShown: false,
           }}

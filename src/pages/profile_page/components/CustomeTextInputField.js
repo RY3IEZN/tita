@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: 15,
     textAlign: "left",
-    alignItems: "flex-start",
+    alignItems: "stretch",
   },
   textInputBox: {
     height: 55,
-    width: width * 0.8,
+    width: width * 0.9,
     borderRadius: 15,
     borderColor: "black",
     backgroundColor: "#F4F4F4",

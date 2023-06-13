@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
 import AppText from "../../components/AppText";
 
 function AllTransactions({ transactionDetails }) {
@@ -17,39 +17,47 @@ function AllTransactions({ transactionDetails }) {
 
   return (
     <View>
-      {transactionDetails.map((allTransactions) => (
-        <View
-          key={allTransactions.id}
-          style={{
-            marginHorizontal: 10,
-            height: 80,
-            // backgroundColor: "red",
-            marginTop: 10,
-          }}
-        >
-          <AppText theText={formatDate(allTransactions.created_at)} />
+      {transactionDetails == [] ? (
+        transactionDetails.map((allTransactions) => (
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            key={allTransactions.id}
+            style={{
+              marginHorizontal: 10,
+              height: 80,
+              // backgroundColor: "red",
+              marginTop: 10,
+            }}
           >
-            <AppText theText={allTransactions.id} />
+            <AppText theText={formatDate(allTransactions.created_at)} />
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <AppText theText={allTransactions.id} />
+              <AppText
+                theText={`+ N ${allTransactions.amount}`}
+                color={allTransactions.type === "deposit" ? "green" : "red"}
+              />
+            </View>
             <AppText
-              theText={`+ N ${allTransactions.amount}`}
-              color={allTransactions.type === "deposit" ? "green" : "red"}
+              theText={
+                allTransactions.type === "deposit"
+                  ? `Payment - ${
+                      allTransactions.confirmed == true
+                        ? "completed"
+                        : "pending"
+                    }`
+                  : `Send Money - ${
+                      allTransactions.confirmed == true
+                        ? "completed"
+                        : "pending"
+                    }`
+              }
             />
           </View>
-          <AppText
-            theText={
-              allTransactions.type === "deposit"
-                ? `Payment - ${
-                    allTransactions.confirmed == true ? "completed" : "pending"
-                  }`
-                : `Send Money - ${
-                    allTransactions.confirmed == true ? "completed" : "pending"
-                  }`
-            }
-          />
-        </View>
-      ))}
+        ))
+      ) : (
+        <ActivityIndicator />
+      )}
     </View>
   );
 }

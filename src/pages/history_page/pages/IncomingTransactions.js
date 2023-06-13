@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
 import AppText from "../../components/AppText";
 
 function IncomingTransactions({ transactionDetails }) {
@@ -17,38 +17,42 @@ function IncomingTransactions({ transactionDetails }) {
 
   return (
     <View style={styles.container}>
-      {transactionDetails.map((deposit) => (
-        <View
-          key={deposit.id}
-          style={{
-            marginHorizontal: 10,
-            height: 80,
-            marginTop: 10,
-          }}
-        >
-          <AppText theText={formatDate(deposit.created_at)} />
+      {transactionDetails == [] ? (
+        transactionDetails.map((deposit) => (
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            key={deposit.id}
+            style={{
+              marginHorizontal: 10,
+              height: 80,
+              marginTop: 10,
+            }}
           >
-            <AppText theText={deposit.id} />
+            <AppText theText={formatDate(deposit.created_at)} />
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <AppText theText={deposit.id} />
+              <AppText
+                theText={`+ N ${deposit.amount}`}
+                color={deposit.type === "deposit" ? "green" : "red"}
+              />
+            </View>
             <AppText
-              theText={`+ N ${deposit.amount}`}
-              color={deposit.type === "deposit" ? "green" : "red"}
+              theText={
+                deposit.type === "deposit"
+                  ? `Payment - ${
+                      deposit.confirmed == true ? "completed" : "pending"
+                    }`
+                  : `Send Money - ${
+                      deposit.confirmed == true ? "completed" : "pending"
+                    }`
+              }
             />
           </View>
-          <AppText
-            theText={
-              deposit.type === "deposit"
-                ? `Payment - ${
-                    deposit.confirmed == true ? "completed" : "pending"
-                  }`
-                : `Send Money - ${
-                    deposit.confirmed == true ? "completed" : "pending"
-                  }`
-            }
-          />
-        </View>
-      ))}
+        ))
+      ) : (
+        <ActivityIndicator color={"blue"} size={30} />
+      )}
     </View>
   );
 }

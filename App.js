@@ -44,6 +44,7 @@ import KycPage2 from "./src/pages/update_kyc/KycPage2";
 import KycPage1 from "./src/pages/update_kyc/KycPage1";
 import KycPage4 from "./src/pages/update_kyc/KycPage4";
 import AddFingerPrint from "./src/pages/sign_up/AddFingerPrint";
+import ElectricityConfirmationPage from "./src/pages/utility_pages/Electricity/ElectricityConfirmationPage";
 
 export default function App() {
   return <AppNavigator />;

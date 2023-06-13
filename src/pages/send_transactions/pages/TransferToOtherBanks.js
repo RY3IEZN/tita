@@ -12,22 +12,26 @@ import CustomeTextInputField2 from "../../recieve_transactions/components/Custom
 function TransferToOtherBanks({ navigation, onPress }) {
   return (
     <>
-      <Spacer height={30} />
-      <CustomeTextInputField2
-        placeholder={"Search for banks"}
-        inputfieldIcon={"magnify"}
-      />
-      <Spacer height={20} />
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Spacer height={30} />
+        <CustomeTextInputField2
+          placeholder={"Search for banks"}
+          inputfieldIcon={"magnify"}
+        />
+        <Spacer height={20} />
+      </View>
       {/* <AppText theText={"Select Bank"} /> */}
       <AppPicker defaultTitle={"select bank"} />
-      <CustomeTextInputField2 placeholder={"123456789"} />
-      <Spacer height={20} />
-      <CustomeTextInputField2 placeholder={"Aliyu kwankwaso"} />
-      <Spacer height={50} />
-      <AppButton
-        AppBtnText={"Next"}
-        onPress={() => navigation.navigate("enterAmount")}
-      />
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <CustomeTextInputField2 placeholder={"123456789"} />
+        <Spacer height={20} />
+        <CustomeTextInputField2 placeholder={"Aliyu kwankwaso"} />
+        <Spacer height={50} />
+        <AppButton
+          AppBtnText={"Next"}
+          onPress={() => navigation.navigate("enterAmount")}
+        />
+      </View>
     </>
   );
 }
