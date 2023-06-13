@@ -84,7 +84,7 @@ function LoadVoucher(props) {
               </View>
             </View>
             <Spacer height={20} />
-            <View style={{ alignItems: "center" }}>
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
               <AppButton AppBtnText={"Load"} onPress={handleSubmit} />
             </View>
           </>

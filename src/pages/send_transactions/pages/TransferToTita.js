@@ -79,6 +79,7 @@ function TransferToTita({ navigation, onPress }) {
               <CustomeTextInputField2
                 placeholder={"Amount"}
                 img={require("../../../../assets/icons/naira_sign_img.png")}
+                // tintColor="black"
                 keyboardType={"number-pad"}
                 onChangeText={handleChange("amount")}
                 values={values.amount}

@@ -44,11 +44,16 @@ function SplashScreen({ navigation }) {
       console.log(value, "+++++++++++++++++=");
       await updateApiSauceSettings(value);
       getUserApi.makeRequest();
-      if (profileDetails.message !== "Unauthenticated.") {
-        navigation.replace("NestedTabs", { screen: "Home" });
-      }
+    }
+    if (
+      profileDetails.message !== "Unauthenticated." &&
+      profileDetails.message !== undefined
+    ) {
+      navigation.replace("NestedTabs", { screen: "Home" });
+      console.log("do this");
     } else {
       // No value found for the given key
+      console.log("do that");
       console.log("No value found for the given key");
       Alert.alert("Oops...", "Session has expired due to inactivity");
       navigation.navigate("onboarding");

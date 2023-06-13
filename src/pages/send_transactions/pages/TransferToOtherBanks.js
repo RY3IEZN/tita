@@ -24,7 +24,10 @@ function TransferToOtherBanks({ navigation, onPress }) {
       <Spacer height={20} />
       <CustomeTextInputField2 placeholder={"Aliyu kwankwaso"} />
       <Spacer height={50} />
-      <AppButton AppBtnText={"Next"} onPress={onPress} />
+      <AppButton
+        AppBtnText={"Next"}
+        onPress={() => navigation.navigate("enterAmount")}
+      />
     </>
   );
 }

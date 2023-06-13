@@ -23,7 +23,7 @@ const { width, height } = Dimensions.get("screen");
 function EnterAmount({ navigation }) {
   return (
     <>
-      <ScrollView>
+      <ScrollView style={styles.container}>
         <KeyboardAvoidingView>
           <View style={{ alignItems: "center" }}>
             <Spacer height={40} />
@@ -79,9 +79,8 @@ function EnterAmount({ navigation }) {
                   borderTopLeftRadius: 50,
                   borderTopRightRadius: 50,
                   paddingHorizontal: 20,
-                  alignItems: "center",
                   justifyContent: "center",
-                  elevation: 1,
+                  elevation: 10,
                 }}
               >
                 <AppPicker
@@ -110,7 +109,9 @@ function EnterAmount({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: "white",
+  },
   amountCard: {
     height: height * 0.3,
     width: width * 0.9,
