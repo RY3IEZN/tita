@@ -14,6 +14,7 @@ function BankTransfer(props) {
       <View style={{ alignItems: "center" }}>
         <Spacer height={10} />
         <Spacer height={10} />
+        <BankTransfersvg />
         <AppText
           textAlign={"center"}
           theText={
@@ -21,19 +22,18 @@ function BankTransfer(props) {
           }
         />
       </View>
-      <View style={{ alignItems: "center" }}>
-        <BankTransfersvg />
-      </View>
+      <View style={{ alignItems: "center" }}></View>
       <Spacer height={20} />
       <CustomeTextInputField2
-        inputTitle={"Voucher code"}
+        inputTitle={"Bank"}
         inputfieldIcon={"wallet"}
-        placeholder={"Voucher code"}
+        placeholder={"Bank"}
       />
       <CustomeTextInputField2
         inputTitle={"Account Number"}
         placeholder={"Account Number"}
         inputfieldIcon={"credit-card-outline"}
+        keyboardType={"number-pad"}
       />
       <CustomeTextInputField2
         inputTitle={"Beneficiary"}

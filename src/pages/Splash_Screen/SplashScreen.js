@@ -22,43 +22,49 @@ import UseApi from "../../api/UseApi";
 const { width, height } = Dimensions.get("screen");
 
 function SplashScreen({ navigation }) {
-  const [profileDetails, setProfileDetails] = useState([]);
-
   const getUserApi = UseApi(ProfileApi.get_profile);
-
-  useEffect(() => {
-    if (getUserApi.data && getUserApi.statusCode) {
-      setProfileDetails(getUserApi.data);
-      console.log(profileDetails);
-    }
-  }, [getUserApi.data, profileDetails]);
 
   useEffect(() => {
     checkLoginStatus();
   }, []);
 
   const checkLoginStatus = async () => {
-    const value = await SecureStore.getItemAsync("tokenId");
-    if (value) {
-      // Do something with the retrieved value
-      console.log(value, "+++++++++++++++++=");
-      await updateApiSauceSettings(value);
-      getUserApi.makeRequest();
-    }
-    if (
-      profileDetails.message !== "Unauthenticated." &&
-      profileDetails.message !== undefined
-    ) {
+    const tokenId = await SecureStore.getItemAsync("tokenId");
+
+    if (tokenId) {
+      await updateApiSauceSettings(tokenId);
       navigation.replace("NestedTabs", { screen: "Home" });
-      console.log("do this");
     } else {
-      // No value found for the given key
-      console.log("do that");
-      console.log("No value found for the given key");
-      Alert.alert("Oops...", "Session has expired due to inactivity");
-      navigation.navigate("onboarding");
+      const hasVisitedOnboarding = await SecureStore.getItemAsync(
+        "hasVisitedOnboarding"
+      );
+
+      if (!hasVisitedOnboarding) {
+        navigateToOnboarding();
+        await SecureStore.setItemAsync("hasVisitedOnboarding", "true");
+      } else {
+        navigateToWelcomeScreen();
+        console.log("has_visited_before");
+      }
     }
   };
+
+  const navigateToOnboarding = () => {
+    navigation.navigate("onboarding");
+  };
+
+  const navigateToWelcomeScreen = () => {
+    navigation.navigate("welcomepage");
+  };
+
+  useEffect(() => {
+    if (getUserApi.data && getUserApi.statusCode) {
+      if (getUserApi.data.message === "Unauthenticated." || undefined) {
+        Alert.alert("Oops...", "Session has expired due to inactivity");
+        navigateToWelcomeScreen();
+      }
+    }
+  }, [getUserApi.data, getUserApi.statusCode]);
 
   return (
     <View style={styles.container}>

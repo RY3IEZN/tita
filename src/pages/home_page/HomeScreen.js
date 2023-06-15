@@ -89,9 +89,7 @@ function HomeScreen({ navigation }) {
             screen: "Account",
           })
         }
-        navigateToNotificationPage={() =>
-          navigation.navigate("notificationpage")
-        }
+        navigateToNotificationPage={() => navigation.navigate("addfing")}
       />
       {/* balance at a glance */}
       <BalanceCard
@@ -170,7 +168,7 @@ function HomeScreen({ navigation }) {
           imageSource={require("../../../assets/icons/seemore.png")}
         />
       </View>
-      {/* pop up modal */}
+      {/* pop up modal
       <LoadingModal isLoading={modalVisible} />
       <Modal
         animationType="slide"
@@ -204,7 +202,7 @@ function HomeScreen({ navigation }) {
             ModalAppButtonText={"Lets go"}
           />
         </View>
-      </Modal>
+      </Modal> */}
     </AppContainerView>
   );
 }

@@ -82,6 +82,7 @@ function ElectricityConfirmationPage({ navigation, route }) {
           <AppText theText={"kingsleyd@gmail.com"} />
         </View>
         <Spacer height={15} />
+
         {/* Distribution Company*/}
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <AppText
@@ -96,6 +97,7 @@ function ElectricityConfirmationPage({ navigation, route }) {
           />
         </View>
         <Spacer height={15} />
+
         {/* amount */}
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <AppText
@@ -107,6 +109,7 @@ function ElectricityConfirmationPage({ navigation, route }) {
           <AppText theText={"4000"} />
         </View>
         <Spacer height={15} />
+
         <Spacer height={35} />
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <AppButton AppBtnText={"Proceed to payment"} />

@@ -41,6 +41,7 @@ function ProfilePage({ navigation }) {
     LogOutApi.makeRequest();
     await updateApiSauceSettings("");
     await SecureStore.deleteItemAsync("tokenId");
+    // await SecureStore.deleteItemAsync("hasVisitedOnboarding");
     navigation.replace("loginpage");
   };
 

@@ -13,6 +13,7 @@ import Transact from "../../../api/transactions/Transact";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useEffect } from "react";
+import VouchersApi from "../../../api/services/VouchersApi";
 
 function InitiateVoucherTransfer(props) {
   const [voucherType, setVoucherType] = useState();
@@ -26,8 +27,7 @@ function InitiateVoucherTransfer(props) {
 
   const onFormSubmit = (values) => {
     createTitaVoucher.makeRequest(values);
-    console.log(values, "opopopopop");
-    console.log(createTitaVoucher.data);
+    console.log(values);
   };
 
   useEffect(() => {
@@ -45,10 +45,10 @@ function InitiateVoucherTransfer(props) {
         initialValues={{
           amount: "",
           type: "",
-          loading_date: "",
           condition: ["beneficiary"],
-          account_number: [1415555267],
-          description: ["you will never be poor in your life"],
+          account_number: "",
+          description: "",
+          loading_date: "",
         }}
         onSubmit={(values) => {
           console.log(values.condition);
@@ -94,10 +94,19 @@ function InitiateVoucherTransfer(props) {
             <View style={{ alignItems: "center" }}>
               <CustomeTextInputField2
                 placeholder={"Amount"}
-                img={require("../../../../assets/icons/naira_sign_img.png")}
+                img={require("../../../../assets/icons/nairasign2.png")}
                 keyboardType={"number-pad"}
                 onChangeText={handleChange("amount")}
                 values={values.amount}
+              />
+            </View>
+
+            <View style={{ alignItems: "center" }}>
+              <CustomeTextInputField2
+                placeholder={"Description"}
+                img={require("../../../../assets/icons/nairasign2.png")}
+                onChangeText={handleChange("description")}
+                values={values.description}
               />
             </View>
 
@@ -126,17 +135,20 @@ function InitiateVoucherTransfer(props) {
                   label2={"Request Back for Pin"}
                   label3={"Beneficiary"}
                   value1={"Loading Date"}
-                  value2={"Request Back for Pin"}
+                  value2={"request_pin"}
                   value3={"beneficiary"}
                   onValueChange={(condition) => {
-                    handleChange("condition")(condition);
+                    handleChange("condition[0]")(condition);
                     if (condition == "beneficiary") {
                       setIsBeneficiary(true);
-                    } else {
-                      setIsBeneficiary("");
+                      setLoadingDate(false);
                     }
                     if (condition == "Loading Date") {
                       setLoadingDate(true);
+                      setIsBeneficiary("");
+                    }
+                    if (condition == "request_pin") {
+                      setLoadingDate(false);
                       setIsBeneficiary("");
                     }
                   }}

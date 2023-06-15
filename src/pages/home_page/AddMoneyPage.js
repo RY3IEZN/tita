@@ -43,11 +43,11 @@ function AddMoneyPage(props) {
           </View>
         </View>
         {/* lower section of 1stcard */}
-        <AppText theText={"---------------------------------------------"} />
+        <AppText theText={"---------------------------------------"} />
         <View style={styles.bankTransferCardLowerSection}>
           <View style={styles.bankTransferCardLowerInnerSection}>
             <View style={styles.bankTransferCardIconsAndTitle}>
-              <Spacer width={45.5} />
+              <Spacer width={10} />
               <View>
                 <AppText
                   theText={"Tita Account Number"}
@@ -115,6 +115,7 @@ function AddMoneyPage(props) {
         subTitle={"Show Barcode to any Tita user"}
         imgUrl={require("../../../assets/icons/scan_my_barcode.png")}
       />
+      <Spacer height={50} />
     </AppContainerView>
   );
 }
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bankTransferCard: {
-    width: width * 0.9,
+    width: "95%",
     backgroundColor: "white",
     borderRadius: 20,
     elevation: 5,

@@ -47,6 +47,7 @@ function LoadVoucher(props) {
           "Add Money to your TITA Bank Account by Loading a TITA Voucher Token and card pin below."
         }
       />
+      <Spacer height={20} />
       <Formik
         initialValues={{ voucher_code: "", voucher_pin: "" }}
         onSubmit={(values) => {

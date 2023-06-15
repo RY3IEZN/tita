@@ -41,10 +41,14 @@ function CheckVoucher({ onPress }) {
             }
           />
         </View>
-        <CustomeTextInputField2
-          inputTitle={"Voucher code"}
-          placeholder={"Voucher Code"}
-        />
+        <Spacer height={20} />
+        <View style={{ alignItems: "center" }}>
+          <CustomeTextInputField2
+            inputTitle={"Voucher code"}
+            placeholder={"Voucher Code"}
+            keyboardType={"number-pad"}
+          />
+        </View>
         <Spacer height={30} />
         <AppButton AppBtnText={"Verify"} onPress={onPress} />
         {/*

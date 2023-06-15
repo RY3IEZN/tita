@@ -36,9 +36,9 @@ function AddMoneyPageCards({ title, subTitle, imgUrl, onPress }) {
         }}
       >
         <Image source={imgUrl} />
-        <Spacer width={10} />
+        <Spacer width={5} />
         <View>
-          <AppText theText={title} fontSize={15} fontWeight={"600"} />
+          <AppText theText={title} fontSize={14} fontWeight={"600"} />
           <AppText theText={subTitle} fontSize={11} fontWeight={"500"} />
         </View>
       </View>

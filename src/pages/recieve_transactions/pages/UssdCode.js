@@ -26,7 +26,11 @@ function UssdCode(props) {
       <Spacer height={20} />
       <View style={styles.textInputBox}>
         <View style={{ marginHorizontal: 10 }}></View>
-        <TextInput placeholder="Amount" style={{ width: width * 0.75 }} />
+        <TextInput
+          placeholder="Amount"
+          style={{ width: width * 0.75 }}
+          keyboardType="number-pad"
+        />
       </View>
       <Spacer height={25} />
       <FlatList
