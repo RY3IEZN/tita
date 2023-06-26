@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Alert } from "react-native";
 import AppButton from "../../components/AppButton";
 import AppContainerView from "../../components/AppContainerView";
 import AppPicker from "../../components/AppPicker";
@@ -15,25 +15,36 @@ import * as Yup from "yup";
 import { useEffect } from "react";
 import VouchersApi from "../../../api/services/VouchersApi";
 
-function InitiateVoucherTransfer(props) {
+function InitiateVoucherTransfer({ navigation }) {
   const [voucherType, setVoucherType] = useState();
   const [isBeneficiary, setIsBeneficiary] = useState(false);
   const [loadingDate, setLoadingDate] = useState(false);
-  const [valueB, setValueB] = useState();
-  const [valueC, setValueC] = useState();
-  const [amount, setAmount] = useState();
 
   const createTitaVoucher = UseApi(Transact.create_tita_voucher);
 
   const onFormSubmit = (values) => {
     createTitaVoucher.makeRequest(values);
-    console.log(values);
   };
 
   useEffect(() => {
-    if (createTitaVoucher.data) {
-      console.log(createTitaVoucher.statusCode);
-      console.log(createTitaVoucher.data);
+    if (createTitaVoucher.data && createTitaVoucher.data.errors) {
+      const { errors } = createTitaVoucher.data;
+
+      if (errors.account_number) {
+        Alert.alert("Error", errors.account_number[0]);
+      } else if (errors.amount) {
+        Alert.alert("Error", errors.amount[0]);
+      } else if (errors.description) {
+        Alert.alert("Error", errors.description[0]);
+      } else if (errors.type) {
+        Alert.alert("Error", errors.type[0]);
+      } else {
+        Alert.alert("Error", "An error occurred.");
+      }
+    } else if (createTitaVoucher.data) {
+      navigation.navigate("voucherdetailspage", {
+        voucherDetails: createTitaVoucher.data,
+      });
     }
   }, [createTitaVoucher.data]);
 
@@ -45,7 +56,7 @@ function InitiateVoucherTransfer(props) {
         initialValues={{
           amount: "",
           type: "",
-          condition: ["beneficiary"],
+          condition: [""],
           account_number: "",
           description: "",
           loading_date: "",
@@ -130,7 +141,7 @@ function InitiateVoucherTransfer(props) {
             {voucherType == "program" ? (
               <View style={{ marginVertical: 20 }}>
                 <AppPicker
-                  defaultTitle={"Vocher Condition "}
+                  defaultTitle={"Voucher Condition"}
                   label1={"Loading Date"}
                   label2={"Request Back for Pin"}
                   label3={"Beneficiary"}

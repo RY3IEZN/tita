@@ -16,7 +16,7 @@ function AppContainerView({ children, marginTop = 30 }) {
           <KeyboardAvoidingView>
             <View
               style={{
-                marginHorizontal: 15,
+                marginHorizontal: 18,
                 marginTop: marginTop,
               }}
             >

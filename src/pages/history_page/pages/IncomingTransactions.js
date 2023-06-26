@@ -17,7 +17,7 @@ function IncomingTransactions({ transactionDetails }) {
 
   return (
     <View style={styles.container}>
-      {transactionDetails == [] ? (
+      {transactionDetails != [] ? (
         transactionDetails.map((deposit) => (
           <View
             key={deposit.id}

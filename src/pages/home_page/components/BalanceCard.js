@@ -9,11 +9,13 @@ import AddMoneyBtn from "./AddMoneyBtn";
 import UseApi from "../../../api/UseApi";
 import ProfileApi from "../../../api/user/ProfileApi";
 import { ActivityIndicator } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 const { width, height } = Dimensions.get("screen");
 
 function BalanceCard({ addMoneyonPress, navigation }) {
   const [walletDetails, setWalletDetails] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   const getUserWalletApi = UseApi(ProfileApi.get_wallets);
 
@@ -70,11 +72,13 @@ function BalanceCard({ addMoneyonPress, navigation }) {
               fontWeight={"bold"}
             />
             <Spacer width={10} />
-            <MaterialCommunityIcons
-              name="eye-off-outline"
-              color={"white"}
-              size={30}
-            />
+            <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
+              <MaterialCommunityIcons
+                name={isVisible ? "eye-outline" : "eye-off-outline"}
+                color={"white"}
+                size={30}
+              />
+            </TouchableOpacity>
           </View>
         </View>
         <Spacer width={50} />

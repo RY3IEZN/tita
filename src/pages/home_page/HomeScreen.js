@@ -130,13 +130,13 @@ function HomeScreen({ navigation }) {
         />
         <UtilityButtons
           utilityBtnTitle={"Electricity"}
-          tileColor={"#f2f4fa"}
+          tileColor={"#fdf4cc"}
           imageSource={require("../../../assets/icons/electricity.png")}
           onPress={() => navigation.navigate("initiateElectricity")}
         />
         <UtilityButtons
           utilityBtnTitle={"Transport"}
-          tileColor={"#decce9"}
+          tileColor={"#28304b"}
           imageSource={require("../../../assets/icons/bus.png")}
         />
         <UtilityButtons
@@ -153,7 +153,7 @@ function HomeScreen({ navigation }) {
         />
         <UtilityButtons
           utilityBtnTitle={"Data"}
-          tileColor={"#e8dbf0"}
+          tileColor={"#9556B533"}
           imageSource={require("../../../assets/icons/data.png")}
         />
         <UtilityButtons
@@ -163,7 +163,7 @@ function HomeScreen({ navigation }) {
         />
         <UtilityButtons
           utilityBtnTitle={"See all"}
-          tileColor={"#b2bfff"}
+          tileColor={"#002CFC4D"}
           onPress={() => setModalVisible(!modalVisible)}
           imageSource={require("../../../assets/icons/seemore.png")}
         />

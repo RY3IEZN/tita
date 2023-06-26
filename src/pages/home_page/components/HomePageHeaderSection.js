@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native";
 import { View, StyleSheet, Image } from "react-native";
 import AppText from "../../components/AppText";
 import Spacer from "../../components/Spacer";
+import Titamainlogo from "../../../../assets/svg/Titamainlogo";
 
 function HomePageHeaderSection({
   navigation,
@@ -19,7 +20,7 @@ function HomePageHeaderSection({
         marginVertical: 10,
       }}
     >
-      <AppText fontSize={25} fontWeight={"600"} theText={"TITA"} />
+      <Titamainlogo height={40} width={100} />
       <View style={{ flexDirection: "row" }}>
         <TouchableOpacity onPress={navigateToProfilePage}>
           <Image

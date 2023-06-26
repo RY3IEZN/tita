@@ -17,7 +17,7 @@ function AllTransactions({ transactionDetails }) {
 
   return (
     <View>
-      {transactionDetails == [] ? (
+      {transactionDetails != [] ? (
         transactionDetails.map((allTransactions) => (
           <View
             key={allTransactions.id}

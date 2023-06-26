@@ -43,6 +43,7 @@ import Authentication from "../sign_up/Authentication";
 import TransferToTita from "../send_transactions/pages/TransferToTita";
 import AddMoneyPage from "../home_page/AddMoneyPage";
 import ElectricityConfirmationPage from "../utility_pages/Electricity/ElectricityConfirmationPage";
+import VoucherDetails from "../send_transactions/pages/VoucherDetails";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,11 +64,7 @@ function NestedTabs() {
           tabBarActiveTintColor: "#4361EE",
           tabBarInactiveTintColor: "gray",
           tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons
-              name="wallet"
-              size={25}
-              color={focused ? "#4361EE" : "grey"}
-            />
+            <Image source={require("../../../assets/icons/titaLogo.png")} />
           ),
         }}
       />
@@ -355,6 +352,13 @@ function AppNavigator(props) {
         <Stack.Screen
           name="ElectricityConfirmationPage"
           component={ElectricityConfirmationPage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="voucherdetailspage"
+          component={VoucherDetails}
           options={{
             headerShown: false,
           }}

@@ -75,10 +75,20 @@ function Faqs(props) {
           "Tita is a digital wallet that allows you to convert money into a unique code for safe, easy, and quick cross-platform transactions.Tita gives you access to add different conditions to your payment methods to ensure safety and transparency "
         }
       />
-      <ExpandableCards cardTitle={"How do i send money"} />
+      <ExpandableCards
+        cardTitle={"How do i send money"}
+        faqText={
+          "Tita is a financial service that allows you send and receive money, program and tracking of funds, tokenization, transfer and payment of utility bills"
+        }
+      />
       <ExpandableCards cardTitle={"How do i exit the app"} />
       <ExpandableCards cardTitle={"Can i delete my account"} />
-      <ExpandableCards cardTitle={"How do i purchase a voucher"} />
+      <ExpandableCards
+        cardTitle={"How do i purchase a voucher"}
+        faqText={
+          "Tita token is a unique 16 digit pin that helps you save, send and lock money, and an easy transfer from one Tita account to another.  It is also useful for promotional giveaways"
+        }
+      />
     </View>
   );
 }

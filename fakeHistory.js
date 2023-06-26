@@ -1,53 +1,14 @@
 /** @format */
 
-const historicalData = [
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-  {
-    amount: "20,000",
-    name: "ghost",
-    paymentStatus: "payment complete",
-    transactionDate: Date.now(),
-  },
-];
-export default historicalData;
+function isPalindrome(word) {
+  // Remove whitespace and convert to lowercase
+  word = word.toLowerCase().replace(/\s/g, "");
+
+  // Reverse the word
+  var reversedWord = word.split("").reverse().join("");
+
+  // Compare the original word with the reversed word
+  return word === reversedWord;
+}
+
+console.log(isPalindrome("book"));

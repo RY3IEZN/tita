@@ -41,7 +41,6 @@ function ProfilePage({ navigation }) {
     LogOutApi.makeRequest();
     await updateApiSauceSettings("");
     await SecureStore.deleteItemAsync("tokenId");
-    // await SecureStore.deleteItemAsync("hasVisitedOnboarding");
     navigation.replace("loginpage");
   };
 
@@ -52,7 +51,7 @@ function ProfilePage({ navigation }) {
       <View style={styles.logoutSection}>
         <AppSoftButton
           onPress={() => console.log("ddddd")}
-          source={require("../../../assets/icons/Moon.png")}
+          source={require("../../../assets/icons/moon.png")}
         />
         <AppSoftButton
           onPress={() => onLogOut()}

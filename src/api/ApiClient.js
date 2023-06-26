@@ -4,7 +4,7 @@ import { create } from "apisauce";
 // import { getAsyncStoredInformation_ } from "../config/appfunctions";
 
 const apiClient = create({
-  baseURL: "http://3.9.176.225:8000/api/v1/",
+  baseURL: "http://3.9.14.86:8000/api/v1/",
   headers: {
     accept: "application/json",
     "Content-Type": "application/json",

@@ -8,6 +8,7 @@ import { useFonts } from "expo-font";
 function AppText({
   theText,
   fontSize,
+  // fontWeight = "700",
   fontWeight,
   color,
   textAlign,

@@ -59,7 +59,7 @@ function TransferToTita({ navigation, onPress }) {
         initialValues={{ account_number: "", amount: "", descripttion: "" }}
         onSubmit={(values) => {
           console.log(values);
-          // onFormSubmit(values);
+          onFormSubmit(values);
         }}
         // validationSchema={validationSchema}
       >

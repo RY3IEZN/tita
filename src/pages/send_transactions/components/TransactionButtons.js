@@ -40,8 +40,8 @@ function TransactionButtons({ onPress, AppBtnText, color }) {
 const styles = StyleSheet.create({
   container: {},
   appBtn: {
-    height: height * 0.07,
-    width: width * 0.4,
+    height: height * 0.074,
+    width: width * 0.43,
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
