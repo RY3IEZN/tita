@@ -5,9 +5,9 @@ import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../../components/AppText";
 
-function ProfileCards({ title, subtitle, imageSource, subtitle2 }) {
+function ProfileCards({ title, subtitle, imageSource, subtitle2, onPress }) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View
         style={{
           marginTop: 5,
@@ -25,8 +25,8 @@ function ProfileCards({ title, subtitle, imageSource, subtitle2 }) {
         >
           <View
             style={{
-              height: 70,
-              width: 65,
+              height: 65,
+              width: 60,
               justifyContent: "center",
               alignItems: "center",
               borderRadius: 25,
@@ -53,7 +53,7 @@ function ProfileCards({ title, subtitle, imageSource, subtitle2 }) {
                 alignItems: "center",
               }}
             >
-              <Image source={imageSource} style={{ width: 25, height: 25 }} />
+              <Image source={imageSource} style={{ width: 20, height: 25 }} />
             </View>
           </View>
           <View>

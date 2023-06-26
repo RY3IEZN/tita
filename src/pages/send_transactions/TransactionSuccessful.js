@@ -10,7 +10,7 @@ import TransactionButtons from "./components/TransactionButtons";
 
 const { width, height } = Dimensions.get("screen");
 
-function TransactionSuccessful(props) {
+function TransactionSuccessful({ navigation }) {
   return (
     <AppContainerView>
       <View style={{ alignItems: "center" }}>
@@ -28,7 +28,12 @@ function TransactionSuccessful(props) {
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
           <TransactionButtons AppBtnText={"View Details"} onPress />
           <Spacer width={30} />
-          <TransactionButtons AppBtnText={"Go Home"} />
+          <TransactionButtons
+            AppBtnText={"Go Home"}
+            onPress={() =>
+              navigation.navigate("NestedTabs", { screen: "Home" })
+            }
+          />
         </View>
         <Spacer height={height * 0.08} />
         <Image source={require("../../../assets/icons/poweredbytita.png")} />

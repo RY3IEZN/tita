@@ -9,8 +9,8 @@ function LineDivider({ height }) {
       style={{
         height: height,
         width: "100%",
-        backgroundColor: "grey",
-        borderColor: "grey",
+        backgroundColor: "lightgrey",
+        borderColor: "lightgrey",
       }}
     ></View>
   );

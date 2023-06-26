@@ -10,7 +10,7 @@ function AddMoneyBtn({ onPress }) {
       <View style={styles.outerCircle}>
         <View style={styles.innercircle1}>
           <View style={styles.innercircle2}>
-            <MaterialCommunityIcons name="plus" size={28} color="#597bf8" />
+            <MaterialCommunityIcons name="plus" size={20} color="#597bf8" />
           </View>
         </View>
       </View>
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   innercircle2: {
-    height: 30,
-    width: 30,
+    height: 25,
+    width: 25,
     borderRadius: 15,
     backgroundColor: "white",
     justifyContent: "center",

@@ -44,7 +44,7 @@ function RequestVirtualCardPage(props) {
       />
       <Spacer height={20} />
       <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <AppButton AppBtnText={"Get card now"} />
+        <AppButton AppBtnText={"Coming Soon"} />
       </View>
     </AppContainerView>
   );

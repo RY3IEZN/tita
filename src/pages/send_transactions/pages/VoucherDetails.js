@@ -125,7 +125,10 @@ function VoucherDetails({ navigation, route }) {
         }}
       >
         <TransactionButtons color={"blue"} AppBtnText={"Repeat Transaction"} />
-        <TransactionButtons AppBtnText={"Go to Home"} />
+        <TransactionButtons
+          AppBtnText={"Go to Home"}
+          onPress={() => navigation.push("NestedTabs", { screen: "Home" })}
+        />
       </View>
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <TouchableOpacity style={styles.btn}>

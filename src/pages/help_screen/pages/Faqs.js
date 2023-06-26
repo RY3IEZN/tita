@@ -21,34 +21,41 @@ function Faqs(props) {
   const categories = ["General", "Account", "Service", "Payment"];
   const [categoryIndex, setCategoryIndex] = useState(1);
 
-  //   const CategoriesList = ({ navigation }) => {
-  //     return (
-  //       <View style={styles.categoriescontainer}>
-  //         {categories.map((item, index) => (
-  //           <TouchableOpacity
-  //             activeOpacity={0.08}
-  //             key={index}
-  //             onPress={() => setCategoryIndex(index)}
-  //           >
-  //             <Text
-  //               style={[
-  //                 styles.categoryText,
-  //                 categoryIndex == index && styles.categoryselected,
-  //               ]}
-  //             >
-  //               {item}
-  //             </Text>
-  //           </TouchableOpacity>
-  //         ))}
-  //       </View>
-  //     );
-  //   };
+  const CategoriesList = ({ navigation }) => {
+    return (
+      <View style={styles.categoriescontainer}>
+        {categories.map((item, index) => (
+          <TouchableOpacity
+            activeOpacity={0.08}
+            key={index}
+            onPress={() => {
+              setCategoryIndex(index);
+              console.log(index);
+            }}
+          >
+            <Text
+              style={[
+                styles.categoryText,
+                categoryIndex === index
+                  ? styles.categoryselected
+                  : styles.categoryUnselected,
+                // categoryIndex == index && styles.categoryselected,
+              ]}
+            >
+              {item}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
       {/* <Text>grequesntly asjed question</Text> */}
       <Spacer height={15} />
-      {/* <CategoriesList /> */}
+      <CategoriesList />
+      <Spacer height={15} />
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <View style={styles.searchBox}>
           <View
@@ -98,6 +105,9 @@ const styles = StyleSheet.create({
   categoryText: {
     color: "grey",
     fontWeight: "bold",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
   categoriescontainer: {
     flexDirection: "row",
@@ -106,12 +116,27 @@ const styles = StyleSheet.create({
   categoryselected: {
     color: "white",
     fontWeight: "bold",
-    paddingBottom: 5,
+    paddingTop: 10,
     borderColor: "#3862F8",
-    backgroundColor: "blue",
-    borderRadius: 10,
-    width: width * 0.15,
-    // borderBottomWidth: 2,
+    backgroundColor: "#3862f8",
+    borderRadius: 25,
+    width: 90,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  categoryUnselected: {
+    color: "#3862F8",
+    backgroundColor: "#f6f8ff",
+    fontWeight: "bold",
+    paddingTop: 10,
+    borderColor: "#3862F8",
+    borderWidth: 1,
+    borderRadius: 25,
+    width: 90,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
   },
   searchBox: {
     width: width * 0.85,

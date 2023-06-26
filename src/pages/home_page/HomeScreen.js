@@ -36,50 +36,27 @@ import ProfileApi from "../../api/user/ProfileApi";
 import UseApi from "../../api/UseApi";
 import { updateApiSauceSettings } from "../../api/ApiClient";
 import * as SecureStore from "expo-secure-store";
+import { useIsFocused } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("screen");
 
 function HomeScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
-
-  // useEffect(() => {
-  //   // Add event listener for the hardware back button
-  //   BackHandler.addEventListener("hardwareBackPress", handleBackPress);
-
-  //   // Clean up the event listener on component unmount
-  //   return () => {
-  //     BackHandler.removeEventListener("hardwareBackPress", handleBackPress);
-  //   };
-  // }, []);
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     setModalVisible(true);
   }, []);
 
-  const handleBackPress = () => {
-    if (
-      (useNavigationState?.routes?.[0]?.name === "NestedTabs",
-      { screen: "Home" })
-    ) {
-      Alert.alert("Confirmation", "Do you want to logout?", [
-        { text: "No", style: "cancel" },
-        { text: "Yes", onPress: () => handleLogout() },
-      ]);
-      return true; // Prevent default behavior (going back)
+  useEffect(() => {
+    if (isFocused) {
+      // Perform the necessary actions or fetch data on focus
+      // This code will run whenever the screen is focused on
+      // You can reload or re-render the page here
+      console.log("Screen is focused");
     }
-    return false; // Allow default behavior (going back)
-  };
+  }, [isFocused]);
 
-  // calling a function inside a function, helper function
-  const LogOutApi = UseApi(ProfileApi.logout);
-
-  const handleLogout = async () => {
-    // Perform logout logic here
-    LogOutApi.makeRequest();
-    await updateApiSauceSettings("");
-    await SecureStore.deleteItemAsync("tokenId");
-    navigation.replace("loginpage");
-  };
   return (
     <AppContainerView>
       {/* header section */}
@@ -89,7 +66,9 @@ function HomeScreen({ navigation }) {
             screen: "Account",
           })
         }
-        navigateToNotificationPage={() => navigation.navigate("addfing")}
+        navigateToNotificationPage={() =>
+          navigation.navigate("notificationpage")
+        }
       />
       {/* balance at a glance */}
       <BalanceCard
@@ -118,7 +97,11 @@ function HomeScreen({ navigation }) {
       <AppText theText={"Whats New"} fontSize={18} fontWeight={"600"} />
       <Image
         source={require("../../../assets/icons/titatransitiamge.png")}
-        style={{ width: width * 0.95, height: height * 0.2 }}
+        style={{
+          width: width * 0.95,
+          height: height * 0.2,
+          marginHorizontal: -5,
+        }}
       />
       {/* utlity section */}
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>

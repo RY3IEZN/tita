@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import { View, StyleSheet, Text, Alert } from "react-native";
+import { View, StyleSheet, Text, Alert, ActivityIndicator } from "react-native";
 import AppButton from "../../components/AppButton";
 import AppContainerView from "../../components/AppContainerView";
 import AppPicker from "../../components/AppPicker";
@@ -19,11 +19,14 @@ function InitiateVoucherTransfer({ navigation }) {
   const [voucherType, setVoucherType] = useState();
   const [isBeneficiary, setIsBeneficiary] = useState(false);
   const [loadingDate, setLoadingDate] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const createTitaVoucher = UseApi(Transact.create_tita_voucher);
 
   const onFormSubmit = (values) => {
+    setIsLoading(true);
     createTitaVoucher.makeRequest(values);
+    console.log(createTitaVoucher.data);
   };
 
   useEffect(() => {
@@ -32,17 +35,26 @@ function InitiateVoucherTransfer({ navigation }) {
 
       if (errors.account_number) {
         Alert.alert("Error", errors.account_number[0]);
+        setIsLoading(false);
       } else if (errors.amount) {
         Alert.alert("Error", errors.amount[0]);
+        setIsLoading(false);
       } else if (errors.description) {
         Alert.alert("Error", errors.description[0]);
+        setIsLoading(false);
       } else if (errors.type) {
         Alert.alert("Error", errors.type[0]);
+        setIsLoading(false);
+      } else if (errors.message === "Insufficient balance to create voucher") {
+        Alert.alert("Error", "Insufficient balance to create voucher");
+        setIsLoading(false);
       } else {
         Alert.alert("Error", "An error occurred.");
+        setIsLoading(false);
       }
     } else if (createTitaVoucher.data) {
-      navigation.navigate("voucherdetailspage", {
+      setIsLoading(false);
+      navigation.replace("voucherdetailspage", {
         voucherDetails: createTitaVoucher.data,
       });
     }
@@ -189,7 +201,16 @@ function InitiateVoucherTransfer({ navigation }) {
                 marginTop: 20,
               }}
             >
-              <AppButton AppBtnText={"Procced"} onPress={handleSubmit} />
+              <AppButton
+                AppBtnText={
+                  isLoading ? (
+                    <ActivityIndicator color="white" size={40} />
+                  ) : (
+                    "Procced"
+                  )
+                }
+                onPress={handleSubmit}
+              />
             </View>
           </>
         )}

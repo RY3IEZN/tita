@@ -44,6 +44,10 @@ import TransferToTita from "../send_transactions/pages/TransferToTita";
 import AddMoneyPage from "../home_page/AddMoneyPage";
 import ElectricityConfirmationPage from "../utility_pages/Electricity/ElectricityConfirmationPage";
 import VoucherDetails from "../send_transactions/pages/VoucherDetails";
+import RequestVirtualCardPage from "../home_page/RequestVirtualCardPage";
+import Language from "../profile_page/Language";
+import PrivacyPolicy from "../profile_page/PrivacyPolicy";
+import SecurityPage from "../profile_page/SecurityPage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -70,14 +74,15 @@ function NestedTabs() {
       />
       <Tab.Screen
         name="Cards"
-        component={InvestScreen}
+        component={RequestVirtualCardPage}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons
-              name="currency-usd"
-              size={25}
-              color={focused ? "#4361EE" : "grey"}
+            <Image
+              source={require("../../../assets/icons/cards.png")}
+              style={{
+                tintColor: focused ? "#4361EE" : "grey",
+              }}
             />
           ),
         }}
@@ -88,10 +93,11 @@ function NestedTabs() {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons
-              name="account-circle-outline"
-              size={25}
-              color={focused ? "#4361EE" : "grey"}
+            <Image
+              source={require("../../../assets/icons/profile.png")}
+              style={{
+                tintColor: focused ? "#4361EE" : "grey",
+              }}
             />
           ),
         }}
@@ -102,10 +108,11 @@ function NestedTabs() {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons
-              name="help-circle-outline"
-              size={25}
-              color={focused ? "#4361EE" : "grey"}
+            <Image
+              source={require("../../../assets/icons/message-question.png")}
+              style={{
+                tintColor: focused ? "#4361EE" : "grey",
+              }}
             />
           ),
         }}
@@ -359,6 +366,27 @@ function AppNavigator(props) {
         <Stack.Screen
           name="voucherdetailspage"
           component={VoucherDetails}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="languagepage"
+          component={Language}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="privacypolicy"
+          component={PrivacyPolicy}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="securitypage"
+          component={SecurityPage}
           options={{
             headerShown: false,
           }}

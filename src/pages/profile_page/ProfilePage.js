@@ -61,7 +61,14 @@ function ProfilePage({ navigation }) {
       </View>
 
       <View style={styles.profilePicSection}>
-        <View style={styles.profilePic}></View>
+        <View>
+          <Image
+            source={{
+              uri: "https://picsum.photos/100/100",
+            }}
+            style={{ height: 100, width: 100, borderRadius: 50 }}
+          />
+        </View>
         <Image
           source={require("../../../assets/icons/editbtn.png")}
           style={{ height: 15, width: 15, marginTop: 80 }}
@@ -121,18 +128,21 @@ function ProfilePage({ navigation }) {
       />
       <ProfileCards
         title={"Language"}
-        subtitle={"You can change the app language"}
+        subtitle={"You can change the language"}
         imageSource={require("../../../assets/icons/Ticket.png")}
+        onPress={() => navigation.navigate("languagepage")}
       />
       <ProfileCards
         title={"Security"}
         subtitle={"Manage Touch ID or face ID"}
         imageSource={require("../../../assets/icons/openlock.png")}
+        onPress={() => navigation.navigate("securitypage")}
       />
       <ProfileCards
         title={"Privacy Policy"}
         subtitle={"Read our terms of service"}
-        imageSource={require("../../../assets/icons/privacypolicy.png")}
+        imageSource={require("../../../assets/icons/privacypolic.png")}
+        onPress={() => navigation.navigate("privacypolicy")}
       />
       <Spacer height={30} />
     </AppContainerView>
